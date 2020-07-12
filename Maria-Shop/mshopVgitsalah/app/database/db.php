@@ -1,8 +1,8 @@
-<?php 
-
+<?php
 session_start();
 
-class User extends DB {
+class User extends DB
+{
 
     public function addUser($table, $data)
     {
@@ -11,20 +11,22 @@ class User extends DB {
 
         $i = 0;
 
-        foreach($data as $key => $value){
-            if($i === 0){
+        foreach ($data as $key => $value) {
+            if ($i === 0) {
                 $sql = $sql . " $key = ?";
-                else{
-                    $sql = $sql . ", $key = ?";
-                }
-                $i++;
+            } else {
+                $sql = $sql . ", $key = ?";
             }
+            $i++;
         }
+
         $stmt = $conn->prepare($sql);
         $value = array_values($data);
         $type = str_repeat('s', count($value));
+        $stmt->bind_param($type, ...$value);
+        $stmt->execute();
+
+        $id = $stmt->insert_id;
+        return $id;
     }
-
-
-
 }
