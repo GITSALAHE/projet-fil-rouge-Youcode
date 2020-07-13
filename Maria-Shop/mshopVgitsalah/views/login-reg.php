@@ -1,7 +1,7 @@
 <?php
 include('../app/database/connect.php');
 include('../app/database/db.php');
-include('../app/controllers/users.php') ?>
+include('../app/controllers/users.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +23,7 @@ include('../app/controllers/users.php') ?>
 
             <div class="form-group">
                 <label for="my-input">full name</label>
-                <input id="my-input" class="form-control" type="text" name="full name">
+                <input id="my-input" class="form-control" type="text" name="fullname">
             </div>
             <div class="form-group">
                 <label for="my-input">email</label>
@@ -35,13 +35,25 @@ include('../app/controllers/users.php') ?>
             </div>
             <div class="form-group">
                 <label for="my-input">phone number</label>
-                <input id="my-input" class="form-control" type="text" name="phone">
+                <input id="my-input" class="form-control" type="text" name="phone_number">
             </div>
-            <input type="hidden" name="admin" value="0">
             <button type="submit" name="register" class="btn btn-primary">Submit</button>
         </form>
     </div>
-
+    <div class="container mt-10">
+        <h1>Login</h1>
+        <form method="POST" action="login-reg.php">
+            <div class="form-group">
+                <label for="my-input">email</label>
+                <input id="my-input" class="form-control" type="text" name="email">
+            </div>
+            <div class="form-group">
+                <label for="my-input">password</label>
+                <input id="my-input" class="form-control" type="text" name="password">
+            </div>
+            <button type="submit" name="login" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
