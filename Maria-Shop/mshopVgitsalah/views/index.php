@@ -41,7 +41,7 @@
           <li><a href="#">Store</a></li>
           <li><a href="#">Men</a></li>
           <li><a href="#">Women</a></li>
-          <li><a href="#">Account</a></li>
+          <li><a href="login-reg.php">Account</a></li>
           <li><a href="#">Contact Us</a></li>
           <li><a href="#">
               <div class="cart-nav nav-item-link">
@@ -84,13 +84,13 @@
 
   <div class="container card-shop">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="ps1"></div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="ps2"></div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="ps3"></div>
       </div>
     </div>

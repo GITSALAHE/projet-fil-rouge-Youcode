@@ -389,7 +389,7 @@ body {
 }
 
 .ps1 {
-  width: 374px;
+  width: 100%;
   height: 426px;
   background-image: url(../img/ps1.jpg);
   background-position: top right;
@@ -397,10 +397,11 @@ body {
   background-position-y: top;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 22px;
 }
 
 .ps2 {
-  width: 374px;
+  width: 100%;
   height: 426px;
   background-image: url(../img/ps2.jpg);
   background-position: top right;
@@ -408,10 +409,11 @@ body {
   background-position-y: top;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 22px;
 }
 
 .ps3 {
-  width: 374px;
+  width: 100%;
   height: 426px;
   background-image: url(../img/ps3.jpg);
   background-position: top right;
@@ -419,6 +421,7 @@ body {
   background-position-y: top;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 22px;
 }
 
 .card-shop {
