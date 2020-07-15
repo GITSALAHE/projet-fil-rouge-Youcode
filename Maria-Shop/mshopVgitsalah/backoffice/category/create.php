@@ -1,7 +1,8 @@
-<?php 
+<?php
 include('../../app/database/connect.php');
-include('../../app/database/db.php'); 
-include('../../app/controllers/category.php') 
+include('../../app/database/db.php');
+include('../../app/helpers/validateCategory.php');
+include('../../app/controllers/category.php')
 
 ?>
 <!DOCTYPE html>
@@ -15,12 +16,13 @@ include('../../app/controllers/category.php')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Title</title>
+    <title>Create category</title>
 </head>
 
 <body>
     <div class="container">
         <h1>Add Category</h1>
+        <?php include('../../app/helpers/flashmessage.php') ?>
         <form action="" method="post">
             <div class="form-group">
                 <label for="my-input">Name category</label>
@@ -28,6 +30,7 @@ include('../../app/controllers/category.php')
             </div>
             <button type="submit" name="addCategory" class="btn btn-primary">Submit</button>
         </form>
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>

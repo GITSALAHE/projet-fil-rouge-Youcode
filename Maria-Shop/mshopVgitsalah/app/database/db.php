@@ -6,47 +6,9 @@ function printIt($value)
 
 session_start();
 
-class User extends DB
+class CRUD extends DB
 {
-
-    public function executeQuery($sql, $data)
-    {
-        $conn = $this->connect();
-        $stmt = $conn->prepare($sql);
-        $value = array_values($data);
-        $type = str_repeat('s', count($value));
-        $stmt->bind_param($type, ...$value);
-        $stmt->execute();
-        return $stmt;
-    }
-    public function addUser($table, $data)
-    {
-        $conn = $this->connect();
-        $sql = "INSERT INTO $table SET ";
-
-        $i = 0;
-
-        foreach ($data as $key => $value) {
-            if ($i === 0) {
-                $sql = $sql . " $key = ?";
-            } else {
-                $sql = $sql . ", $key = ?";
-            }
-            $i++;
-        }
-
-        $stmt = $conn->prepare($sql);
-        $value = array_values($data);
-        $type = str_repeat('s', count($value));
-        $stmt->bind_param($type, ...$value);
-        $stmt->execute();
-
-        $id = $stmt->insert_id;
-        return $id;
-    }
-
-
-    public function login($table, $condition)
+    public function selectOne($table, $condition)
     {
         $conn = $this->connect();
         $sql = "SELECT * FROM $table";
@@ -60,7 +22,7 @@ class User extends DB
             $i++;
         }
         $sql = $sql . " LIMIT 1";
-
+        $stmt = $this->connect();
         $stmt = $conn->prepare($sql);
         $value = array_values($condition);
         $type = str_repeat('s', count($value));
@@ -69,21 +31,37 @@ class User extends DB
         $records = $stmt->get_result()->fetch_assoc();
         return $records;
     }
-}
 
-class Category extends DB
-{
-    public function executeQuery($sql, $data)
+    public function selectAll($table, $condition = [])
     {
         $conn = $this->connect();
-        $stmt = $conn->prepare($sql);
-        $value = array_values($data);
-        $type = str_repeat('s', count($value));
-        $stmt->bind_param($type, ...$value);
-        $stmt->execute();
-        return $stmt;
+        $sql = "SELECT * FROM $table";
+        if (empty($condition)) {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $records;
+        } else {
+            $i = 0;
+            foreach ($condition as $key => $value) {
+                if ($i === 0) {
+                    $sql = $sql . " WHERE $key=?";
+                } else {
+                    $sql = $sql . " AND $key=?";
+                }
+                $i++;
+            }
+            $stmt = $conn->prepare($sql);
+            $value = array_values($condition);
+            $type = str_repeat('s', count($value));
+            $stmt->bind_param($type, ...$value);
+            $stmt->execute();
+            $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $records;
+        }
     }
-    public function addCategory($table, $data)
+
+    public function create($table, $data)
     {
         $conn = $this->connect();
         $sql = "INSERT INTO $table SET ";
@@ -108,11 +86,19 @@ class Category extends DB
         $id = $stmt->insert_id;
         return $id;
     }
-
-    public function update($table, $id, $data)
+    public function executeQuery($sql, $data)
     {
-        
-
+        $conn = $this->connect();
+        $stmt = $conn->prepare($sql);
+        $value = array_values($data);
+        $type = str_repeat('s', count($value));
+        $stmt->bind_param($type, ...$value);
+        $stmt->execute();
+        return $stmt;
+    }
+    public function update($table, $id, $data, $idName)
+    {
+        $conn = $this->connect();
         $sql = "UPDATE $table SET ";
 
         $i = 0;
@@ -125,12 +111,16 @@ class Category extends DB
             $i++;
         }
 
-        $sql = $sql . " WHERE id=?";
-
-        $data['idC'] = $id;
-
+        $sql = $sql . " WHERE $table . $idName=?";
+        $data['$idName'] = $id;
         $stmt = $this->executeQuery($sql, $data);
-
+        return $stmt->affected_rows;
+    }
+    public function delete($table, $idName, $id)
+    {
+        $conn = $this->connect();
+        $sql = "DELETE FROM $table WHERE $idName=?";
+        $stmt = $this->executeQuery($sql, ['$idName' => $id]);
         return $stmt->affected_rows;
     }
 }

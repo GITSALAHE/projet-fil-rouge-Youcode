@@ -1,21 +1,64 @@
 <?php
+
+$crud = new CRUD();
 $table = 'category';
+$idName = 'idC';
+//showing 
+$data = $crud->selectAll($table);
+$errors = array();
+
 
 //add category
-$data = new Category();
 if (isset($_POST['addCategory'])) {
-    unset($_POST['addCategory']);
-    printIt($_POST);
-
-    $add_cat = $data->addCategory($table, $_POST);
+    $errors = validateCategory($_POST);
+    if (count($errors) == 0) {
+        unset($_POST['addCategory']);
+        $add_cat = $crud->create($table, $_POST);
+        header('location:index.php');
+        exit();
+    }
 }
+//end add category
+
+
 
 //update category 
-
-if (isset($_POST['editCategory'])) {
-    $id = $_POST['idC'];
-    unset($_POST['editCategory'], $_POST['idC']);
-
-    $add_cat = $data->update($table, $id, $_POST);
-   
+$idC = '';
+$dataname = '';
+if (isset($_GET['edit_idC'])) {
+    $idC = $_GET['edit_idC'];
+    $nameCategory = $crud->selectOne($table, ['idC' => $idC]);
+    $dataname = $nameCategory['nameCategory'];
 }
+
+$errorsEdit = array();
+if (isset($_POST['editCategory'])) {
+
+    $errorsEdit = validateEditCategory($_POST);
+
+    if (count($errorsEdit) == 0) {
+        $id = $_POST['idC'];
+        unset($_POST['editCategory'], $_POST['idC']);
+        $updatecat = $crud->update($table, $id, $_POST, $idName);
+        header('location:index.php');
+        exit();
+    }
+}
+//end update category
+
+
+//delete category 
+if (isset($_GET['delete_ctg'])) {
+    $delete = $crud->delete($table, $idName, $_GET['delete_ctg']);
+    header('location:index.php');
+    exit();
+}
+//end delete category 
+
+
+
+
+//validation category 
+
+
+//end verification

@@ -1,8 +1,8 @@
 <?php
 include('../../app/database/connect.php');
 include('../../app/database/db.php');
-include('../../app/helpers/validateCategory.php');
-include('../../app/controllers/category.php');
+include('../../app/helpers/validateProduct.php');
+include('../../app/controllers/product.php');
 
 ?>
 <!DOCTYPE html>
@@ -16,20 +16,20 @@ include('../../app/controllers/category.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>edit category : <?php echo $dataname ?> </title>
+    <title>Edit size</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Edit Category</h1>
-     <?php include('../../app/helpers/flashmessage.php') ?>
-        <form method="post">
-            <input type="hidden" name="idC" value="<?php echo $idC ?>">
+        <h1 style="text-align: center;">Edit size of <?php echo  "'"  . $sizename . "'"  ?></h1>
+        <?php include('../../app/helpers/flashmessage.php'); ?>
+        <form method="post" action="">
+            <input type="hidden" name="idSize" value="<?php echo $_GET['editSizeId'] ?>">
             <div class="form-group">
-                <label for="my-input">Name category</label>
-                <input id="my-input" class="form-control" value="<?php echo $dataname ?>" type="text" name="nameCategory">
+                <label for="my-input">name size</label>
+                <input id="my-input" class="form-control" value="<?php echo $sizename ?>" type="text" name="nameSize">
             </div>
-            <button type="submit" name="editCategory" class="btn btn-primary">Submit</button>
+            <button type="submit" name="editSize" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
