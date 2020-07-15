@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2020 at 08:35 PM
+-- Generation Time: Jul 15, 2020 at 11:07 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -49,8 +49,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`idC`, `nameCategory`) VALUES
-(2, 'mano'),
-(3, 'women');
+(10, 'women'),
+(12, 'men');
 
 -- --------------------------------------------------------
 
@@ -81,9 +81,37 @@ CREATE TABLE `product` (
   `Price` varchar(255) NOT NULL,
   `Qte` varchar(255) NOT NULL,
   `Image` varchar(255) NOT NULL,
-  `Size` varchar(255) NOT NULL,
   `idC` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`idP`, `nameProduct`, `Price`, `Qte`, `Image`, `idC`) VALUES
+(6, 'Jacketa', '1200', '23', '1594834578_4087400649_2_1_1-1-300x300.jpg', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `size`
+--
+
+CREATE TABLE `size` (
+  `idSize` int(11) NOT NULL,
+  `nameSize` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `size`
+--
+
+INSERT INTO `size` (`idSize`, `nameSize`) VALUES
+(1, 'S'),
+(3, 'M'),
+(4, 'L'),
+(7, 'XL'),
+(8, 'XXXL');
 
 -- --------------------------------------------------------
 
@@ -99,6 +127,14 @@ CREATE TABLE `users` (
   `phone_number` varchar(255) NOT NULL,
   `admin` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`idU`, `fullname`, `email`, `password`, `phone_number`, `admin`) VALUES
+(5, 'gitsalah', 'test', '111', '064664872', 1),
+(6, 'SALAHEDDINE ', 'salah.bouanba2@gmail.com', '$2y$10$mNK3IMFoEiN5zzrxSLBd4.07pV82uxtKSavDTsRZSnFfJ4.gE9m8W', '0661263709', 0);
 
 --
 -- Indexes for dumped tables
@@ -133,6 +169,12 @@ ALTER TABLE `product`
   ADD KEY `FK_Categorie` (`idC`);
 
 --
+-- Indexes for table `size`
+--
+ALTER TABLE `size`
+  ADD PRIMARY KEY (`idSize`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -152,7 +194,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -164,13 +206,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `size`
+--
+ALTER TABLE `size`
+  MODIFY `idSize` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `idU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
