@@ -59,10 +59,27 @@ if (isset($_GET['delete_ctg'])) {
 $navbar_categories = $crud->selectAll('category');
 
 
-//showing product in category page 
+//showing product in category page and pagination
+$pagination = new Paginator();
 
+//pagination 
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+//pagination formula 
+$perPage = 12;
+$start = ($perPage * $page) - $perPage;
 if (isset($_GET['categoryId'])) {
-   
-    $showing_product_inCategory = $crud->selectAll('product', ['idC' => $_GET['categoryId']]);
-    
+    $showingProduct =  $pagination->showingItems('product', 'idC', $_GET['categoryId'], $start, $perPage);
+    $row = $pagination->buttonPagination('product', 'idC', $_GET['categoryId']);
+    $pages = ceil($row / $perPage);
+}
+
+if (isset($_GET['store'])) {
+    $allProductShow = $pagination->showingAllItems('product', $start, $perPage);
+    $rows = $pagination->AllButtonPagination('product');
+    $pageStore = ceil($rows / $perPage);
 }

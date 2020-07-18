@@ -200,7 +200,7 @@ include('../app/controllers/category.php');
 <body>
     <div class="container">
         <div class="row">
-            <?php foreach ($showingProduct as $product) : ?>
+            <?php foreach ($allProductShow as $product) : ?>
 
                 <div class="col-md-3">
                     <div class="ibox">
@@ -232,11 +232,11 @@ include('../app/controllers/category.php');
     <div class="container d-flex justify-content-center">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <?php for ($i = 1; $i <= $pages; $i++) : ?>
+                <?php for ($i = 1; $i <= $pageStore; $i++) : ?>
                     <?php if ($i == $_GET['page']) : ?>
-                        <li class="page-item disabled"><a class="page-link" href="category_page.php?categoryId=12&page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                        <li class="page-item disabled"><a class="page-link" href="store.php?store=true&page=<?php echo $i ?>"><?php echo $i ?></a></li>
                     <?php else : ?>
-                        <li class="page-item "><a class="page-link" href="category_page.php?categoryId=12&page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                        <li class="page-item "><a class="page-link" href="store.php?store=true&page=<?php echo $i ?>"><?php echo $i ?></a></li>
                     <?php endif; ?>
                 <?php endfor; ?>
             </ul>

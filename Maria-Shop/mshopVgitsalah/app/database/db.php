@@ -96,6 +96,8 @@ class CRUD extends DB
         $stmt->execute();
         return $stmt;
     }
+
+
     public function update($table, $id, $data, $idName)
     {
         $conn = $this->connect();
@@ -116,11 +118,54 @@ class CRUD extends DB
         $stmt = $this->executeQuery($sql, $data);
         return $stmt->affected_rows;
     }
+
+
     public function delete($table, $idName, $id)
     {
         $conn = $this->connect();
         $sql = "DELETE FROM $table WHERE $idName=?";
         $stmt = $this->executeQuery($sql, ['$idName' => $id]);
         return $stmt->affected_rows;
+    }
+}
+
+class Paginator extends DB
+{
+    public function showingItems($table, $conditionName, $condition, $start, $perPage)
+    {
+        $conn = $this->connect();
+        $select_data = "SELECT * from $table WHERE $conditionName = $condition LIMIT $start, $perPage";
+        $query = mysqli_query($conn, $select_data);
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function buttonPagination($table, $conditionName, $condition)
+    {
+        $conn = $this->connect();
+        $select_all = "SELECT * from $table WHERE $conditionName = $condition";
+        $query_all = mysqli_query($conn, $select_all);
+        $row = mysqli_num_rows($query_all);
+        return $row;
+    }
+
+
+
+    public function showingAllItems($table, $start, $perPage)
+    {
+        $conn = $this->connect();
+        $select_data = "SELECT * from $table LIMIT $start, $perPage";
+        $query = mysqli_query($conn, $select_data);
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function AllButtonPagination($table)
+    {
+        $conn = $this->connect();
+        $select_all = "SELECT * from $table";
+        $query_all = mysqli_query($conn, $select_all);
+        $row = mysqli_num_rows($query_all);
+        return $row;
     }
 }
