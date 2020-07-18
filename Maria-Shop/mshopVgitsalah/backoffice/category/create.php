@@ -1,6 +1,8 @@
 <?php
 include('../../app/database/connect.php');
 include('../../app/database/db.php');
+include('../../app/controllers/middleware.php');
+adminOnly();
 include('../../app/helpers/validateCategory.php');
 include('../../app/controllers/category.php')
 

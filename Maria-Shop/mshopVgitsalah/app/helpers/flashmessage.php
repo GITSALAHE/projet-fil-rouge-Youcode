@@ -82,3 +82,28 @@ if (isset($_POST['register'])) {
         </div>
 <?php endif;
 } ?>
+
+<?php
+if (isset($_POST['loginAdmin'])) {
+    if (count($errorLoginAdmin) > 0) : ?>
+
+        <div class="alert alert-danger">
+            <?php foreach ($errorLoginAdmin as $error) : ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </div>
+<?php endif;
+} ?>
+
+
+<?php
+if (isset($_POST['addProductSize'])) {
+    if (count($errorsAddingSizeProduct) > 0) : ?>
+
+        <div class="alert alert-danger">
+            <?php foreach ($errorsAddingSizeProduct as $error) : ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </div>
+<?php endif;
+} ?>

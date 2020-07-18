@@ -1,6 +1,9 @@
 <?php
 include('../app/database/connect.php');
 include('../app/database/db.php');
+include('../app/controllers/middleware.php');
+alreadyLoggedAdmin();
+include('../app/helpers/validateUser.php');
 include('../app/controllers/users.php');
 ?>
 <!DOCTYPE html>
@@ -191,10 +194,11 @@ include('../app/controllers/users.php');
                             <div class="col-md-8 col-10 my-5">
                                 <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="../assets/img/your-logo__7_-removebg-preview.png"> </div>
                                 <h3 class="mb-5 text-center heading">We are MariaShop</h3>
+                                <?php include('../app/helpers/flashmessage.php') ?>
                                 <h6 class="msg-info">Please login to your account</h6>
                                 <div class="form-group"> <label class="form-control-label text-muted">Username</label> <input type="text" id="email" name="username" placeholder="your username" class="form-control"> </div>
                                 <div class="form-group"> <label class="form-control-label text-muted">Password</label> <input type="password" id="psw" name="password" placeholder="Password" class="form-control"> </div>
-                                <div class="row justify-content-center my-3 px-3"> <button type="submit" name="loginAdmin" class="btn-block btn-color">Login to Tidi</button> </div>
+                                <div class="row justify-content-center my-3 px-3"> <button type="submit" name="loginAdmin" class="btn-block btn-color">Login</button> </div>
                             </div>
                         </form>
 
@@ -203,7 +207,8 @@ include('../app/controllers/users.php');
                 </div>
                 <div class="card card2">
                     <div class="my-auto mx-md-5 px-md-5 right">
-                        <h3 class="text-white">We are more than just a company</h3> <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
+                        <h3 class="text-white">We are more than just a company :</h3>
+                        <h2 class="text-white">Space Adminstration</h1>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 <?php
 include('../../app/database/connect.php');
 include('../../app/database/db.php');
+include('../../app/controllers/middleware.php');
+adminOnly();
 include('../../app/helpers/validateProduct.php');
 include('../../app/controllers/product.php');
 
@@ -23,6 +25,7 @@ include('../../app/controllers/product.php');
     <div class="container">
         <h1 style="text-align: center;">Manage sizes</h1>
         <a name="" id="" class="btn btn-primary" href="addSize.php" role="button">Add size</a>
+        
         <table class="table table-dark mt-5">
             <tbody>
                 <?php foreach ($manage_sizes as $sizes) : ?>

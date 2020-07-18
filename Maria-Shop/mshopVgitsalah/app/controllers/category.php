@@ -55,10 +55,14 @@ if (isset($_GET['delete_ctg'])) {
 }
 //end delete category 
 
+//showing categories in navbar 
+$navbar_categories = $crud->selectAll('category');
 
 
+//showing product in category page 
 
-//validation category 
-
-
-//end verification
+if (isset($_GET['categoryId'])) {
+   
+    $showing_product_inCategory = $crud->selectAll('product', ['idC' => $_GET['categoryId']]);
+    
+}

@@ -5,7 +5,7 @@ include('../app/database/db.php');
 include('../app/controllers/middleware.php');
 adminOnly();
 include('../app/controllers/users.php');
-
+include('../app/controllers/dashboard.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +64,65 @@ include('../app/controllers/users.php');
                 margin-left: -15rem;
             }
         }
+
+        .card-counter {
+            box-shadow: 2px 2px 10px #DADADA;
+            margin: 5px;
+            padding: 20px 10px;
+            background-color: #fff;
+            height: 100px;
+            border-radius: 5px;
+            transition: .3s linear all;
+        }
+
+        .card-counter:hover {
+            box-shadow: 4px 4px 20px #DADADA;
+            transition: .3s linear all;
+        }
+
+        .card-counter.primary {
+            background-color: #007bff;
+            color: #FFF;
+        }
+
+        .card-counter.danger {
+            background-color: #ef5350;
+            color: #FFF;
+        }
+
+        .card-counter.success {
+            background-color: #66bb6a;
+            color: #FFF;
+        }
+
+        .card-counter.info {
+            background-color: #26c6da;
+            color: #FFF;
+        }
+
+        .card-counter i {
+            font-size: 5em;
+            opacity: 0.2;
+        }
+
+        .card-counter .count-numbers {
+            position: absolute;
+            right: 35px;
+            top: 20px;
+            font-size: 32px;
+            display: block;
+        }
+
+        .card-counter .count-name {
+            position: absolute;
+            right: 35px;
+            top: 65px;
+            font-style: italic;
+            text-transform: capitalize;
+            opacity: 0.5;
+            display: block;
+            font-size: 18px;
+        }
     </style>
 </head>
 
@@ -76,9 +135,9 @@ include('../app/controllers/users.php');
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action bg-dark active">Dashboard</a>
                 <a href="category/" class="list-group-item list-group-item-action bg-dark text-primary">Categories</a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-primary">Products</a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-primary">orders</a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-primary">Users</a>
+                <a href="products/" class="list-group-item list-group-item-action bg-dark text-primary">Products</a>
+                <a href="orders/" class="list-group-item list-group-item-action bg-dark text-primary">orders</a>
+                <a href="users/" class="list-group-item list-group-item-action bg-dark text-primary">Users</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -111,8 +170,56 @@ include('../app/controllers/users.php');
                     </ul>
                 </div>
             </nav>
+            <div>
 
 
+            </div>
+            <div class="container d-flex justify-content-center align-items-center h-75">
+                <div class="container">
+                    <div class="row ">
+
+                        <div class="col-md-3">
+                            <a href="category/">
+                                <div class="card-counter primary h-100">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span class="count-numbers"><?php echo $count_category ?></span>
+                                    <span class="count-name">categories</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <a href="products/">
+                                <div class="card-counter danger h-100">
+                                    <i class="fa fa-box-open"></i>
+                                    <span class="count-numbers"><?php echo $count_product ?></span>
+                                    <span class="count-name">products</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <a href="orders/">
+                                <div class="card-counter success h-100">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="count-numbers"><?php echo $count_orders ?></span>
+                                    <span class="count-name">Orders</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <a href="users/">
+                                <div class="card-counter info h-100">
+                                    <i class="fa fa-users"></i>
+                                    <span class="count-numbers"><?php echo $count_users ?></span>
+                                    <span class="count-name">Users</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /#page-content-wrapper -->
 

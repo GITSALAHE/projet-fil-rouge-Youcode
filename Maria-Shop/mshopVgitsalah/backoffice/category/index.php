@@ -1,6 +1,8 @@
 <?php
 include('../../app/database/connect.php');
 include('../../app/database/db.php');
+include('../../app/controllers/middleware.php');
+adminOnly();
 include('../../app/controllers/category.php')
 
 ?>
@@ -83,31 +85,8 @@ include('../../app/controllers/category.php')
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+        <?php include('../../app/includes/headAdmin.php') ?>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="../views/">Store <span class="sr-only">(current)</span></a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['Admin'] ?>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
             <div class="container">
                 <h1 style="text-align:center">Manage catogories</h1>
                 <div class="btn-group" role="group" aria-label="Button group">

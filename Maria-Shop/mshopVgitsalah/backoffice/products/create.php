@@ -1,6 +1,8 @@
 <?php
 include('../../app/database/connect.php');
 include('../../app/database/db.php');
+include('../../app/controllers/middleware.php');
+adminOnly();
 include('../../app/helpers/validateProduct.php');
 include('../../app/controllers/product.php');
 
@@ -25,6 +27,7 @@ include('../../app/controllers/product.php');
         <form method="post" action="" enctype="multipart/form-data">
             <h1 style="text-align: center;">Add product</h1>
             <?php include('../../app/helpers/flashmessage.php') ?>
+            <a name="" id="" class="btn btn-primary" href="index.php" role="button">Back to product</a>
             <div class="form-group">
                 <label for="my-input">Name product</label>
                 <input id="my-input" class="form-control" type="text" name="nameProduct">
@@ -44,7 +47,7 @@ include('../../app/controllers/product.php');
                     <span>Upload image</span>
                 </button>
             </div>
-       
+
             <div class="form-group">
                 <label for="my-select">Category</label>
                 <select id="my-select" class="form-control" name="idC">
@@ -54,7 +57,16 @@ include('../../app/controllers/product.php');
                     <?php endforeach; ?>
                 </select>
             </div>
-
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="my-select">size</label>
+                    <select id="my-select" class="form-control" name="size" multiple>
+                        <?php foreach ($manage_sizes as $size) : ?>
+                            <option><?php echo $size['nameSize'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
             <button name="addProduct" type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

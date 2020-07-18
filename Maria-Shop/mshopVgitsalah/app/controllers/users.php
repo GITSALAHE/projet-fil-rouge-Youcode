@@ -55,10 +55,15 @@ function loginAdmin($user)
     header('location:dashboard.php');
     exit();
 }
+$errorLoginAdmin = array();
 if (isset($_POST['loginAdmin'])) {
-    $loginAdmin = $crud->selectOne($table, ['fullname' => $_POST['username'], 'admin' => 1]);
+    $errorLoginAdmin = validateAdminLogin($_POST);
 
-    if ($loginAdmin && $_POST['password'] == $loginAdmin['password']) {
-        loginAdmin($loginAdmin);
+    if (count($errorLoginAdmin) == 0) {
+        $loginAdmin = $crud->selectOne($table, ['fullname' => $_POST['username'], 'admin' => 1]);
+
+        if ($loginAdmin && $_POST['password'] == $loginAdmin['password']) {
+            loginAdmin($loginAdmin);
+        }
     }
 }

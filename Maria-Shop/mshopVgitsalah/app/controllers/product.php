@@ -4,57 +4,10 @@ $table = 'product';
 
 
 
-
-//adding sizes to db
-$errorAddSize = array();
-if (isset($_POST['addSize'])) {
-    $errorAddSize = validateAddSize($_POST);
-    if (count($errorAddSize) == 0) {
-        unset($_POST['addSize']);
-        $add_size = $crud->create('size', $_POST);
-        header('location:manageSize.php');
-        exit();
-    }
-}
-//end adding sizes to db 
-
-//manage sizes 
-$manage_sizes = $crud->selectAll('size');
-//end manage sizes
-
-//editing sizes 
-$errorsEdit = array();
-$sizename = '';
-if (isset($_GET['editSizeId'])) {
-    $getsize = $crud->selectOne('size', ['idSize' => $_GET['editSizeId']]);
-    $sizename = $getsize['nameSize'];
-}
-
-if (isset($_POST['editSize'])) {
-    $errorsEdit = validateEditSize($_POST);
-    if (count($errorsEdit) == 0) {
-        $idSize = $_POST['idSize'];
-        unset($_POST['editSize'], $_POST['idSize']);
-        $update_size = $crud->update('size', $idSize, $_POST, 'idSize');
-        header('location:manageSize.php');
-        exit();
-    }
-}
-//end editing sizes
-
-//deleting sizes
-if (isset($_GET['del_idS'])) {
-    $del_size = $crud->delete('size', 'idSize', $_GET['del_idS']);
-    header('location:manageSize.php');
-    exit();
-}
-
-//end deleting sizes
-
-//selecting all categories and sizes from DATABASE 
+//selecting all categories and sizes from DATABASE for editing or adding product
 $categories_product = $crud->selectAll('category');
 $sizes = $crud->selectAll('size');
-//end selecting categories and sizes
+//end selecting categories and sizes for editing or adding product
 
 
 
@@ -92,7 +45,9 @@ if (isset($_POST['addProduct'])) {
 
 //manage product 
 $showing_product = $crud->selectAll($table);
+
 //end manage product 
+
 
 
 //edit Product 

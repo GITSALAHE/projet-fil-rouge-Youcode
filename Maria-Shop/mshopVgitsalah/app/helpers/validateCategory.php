@@ -17,6 +17,11 @@ function validateCategory($post)
         }
     }
 
+    $maxCategory = $crud->selectAll('category');
+    if (count($maxCategory) >= 3) {
+        array_push($errors, 'You are reached the max of categories');
+    }
+
     return $errors;
 }
 

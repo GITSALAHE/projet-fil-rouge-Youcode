@@ -190,17 +190,21 @@ body {
 .btn-grp {
   display: flex;
 }
+
 /* css brand slider */
 .customer-logos {
   background-color: #fff;
 }
+
 /* Slider */
 .slick-slide {
   margin: 0px 20px;
 }
+
 .slick-slide img {
   width: 50%;
 }
+
 .slick-slider {
   position: relative;
   display: block;
@@ -208,6 +212,7 @@ body {
   user-select: none;
   touch-action: pan-y;
 }
+
 .slick-list {
   position: relative;
   display: block;
@@ -302,14 +307,12 @@ body {
   height: 426px;
   margin-bottom: 22px;
   background:
-        /* top, transparent black, faked with gradient */ 
-        linear-gradient(
-          rgba(0, 0, 0, 0.3), 
-          rgba(0, 0, 0, 0.3)
-        ),
-        /* bottom, image */
-        url(../img/ps1.jpg);
-        background-position: center center;
+    /* top, transparent black, faked with gradient */
+    linear-gradient(rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)),
+    /* bottom, image */
+    url(../img/ps1.jpg);
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -321,14 +324,12 @@ body {
   width: 100%;
   height: 426px;
   background:
-        /* top, transparent black, faked with gradient */ 
-        linear-gradient(
-          rgba(0, 0, 0, 0.3), 
-          rgba(0, 0, 0, 0.3)
-        ),
-        /* bottom, image */
-        url(../img/ps2.jpg);
-        background-position: center center;
+    /* top, transparent black, faked with gradient */
+    linear-gradient(rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)),
+    /* bottom, image */
+    url(../img/ps2.jpg);
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 22px;
@@ -341,17 +342,15 @@ body {
   width: 100%;
   height: 426px;
   background:
-  /* top, transparent black, faked with gradient */ 
-  linear-gradient(
-    rgba(0, 0, 0, 0.3), 
-    rgba(0, 0, 0, 0.3)
-  ),
-  /* bottom, image */
-  url(../img/ps3.jpg);
+    /* top, transparent black, faked with gradient */
+    linear-gradient(rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)),
+    /* bottom, image */
+    url(../img/ps3.jpg);
   background-position: center center;
-background-repeat: no-repeat;
-background-size: cover;
-margin-bottom: 22px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 22px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -361,161 +360,186 @@ margin-bottom: 22px;
 .card-shop {
   margin-top: 32px;
 }
-.row p{
- 
+
+.row p {
+
   text-align: center;
   color: #ffffff;
   font-size: 40px;
   margin-bottom: 20px;
 }
-.mt-5{
+
+.mt-5 {
   height: 120vh;
-  width: 100%; 
-  background-color:#f4f4f4;
+  width: 100%;
+  background-color: #f4f4f4;
   margin-top: 150px;
-  color:white;
-}
-.Picontainer{
-  height: 600px;
-  width:70%;
-  margin-top: 100px;
-  background:
-  /* top, transparent black, faked with gradient */ 
-  linear-gradient(
-    rgba(49, 98, 172, 0.3), 
-    rgba(64, 118, 168, 0.3)
-  ),
-  /* bottom, image */
-url(../img/banner.jpg);
-background-position: center center;
-background-repeat: no-repeat;
-background-size: cover;
-background-attachment: fixed;
-display: block;
-margin-left: auto;
-margin-right: auto
+  color: white;
 }
 
-.spd-padding-top-50{
+.Picontainer {
+  height: 600px;
+  width: 70%;
+  margin-top: 100px;
+  background:
+    /* top, transparent black, faked with gradient */
+    linear-gradient(rgba(49, 98, 172, 0.3),
+      rgba(64, 118, 168, 0.3)),
+    /* bottom, image */
+    url(../img/banner.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.spd-padding-top-50 {
   margin-top: 100px;
   color: black;
 }
-.content-101 .icon-box > .icons{
-	width:80px;
-	height:80px;
-	line-height:80px;
-	border:2px solid #000000;
-	border-radius: 50%;
-	color: #000000;
-	position: relative;
-	z-index: 99;
-}
-.content-101 .icon-box > .icons:after{
-	content: "";
-	background-color:#000000;;
-	top: -2px;
-	position: absolute;
-	width: 80px;
-	height: 80px;
-	left: -2px;
-	border-radius: 50%;
-	transition: transform 0.4s ease 0s, opacity 0.3s ease 0s;
-	z-index: -9;
-	opacity: 0;
-	transform: scale(0);
-}
-.content-101 .icon-box-animaiton:hover .icon-box > .icons:after{
-	transform: scale(1.1);
-	opacity: 1;
-	color: #fff;
-}
-.content-101 .icon-box-animaiton:hover .icon-box > .icons:before{
-	color:#fff;
-}
-.content-101 .icon-box-animaiton h3{
-	text-transform: uppercase;
-	font-size: 18px;
+
+.content-101 .icon-box>.icons {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  color: #000000;
+  position: relative;
+  z-index: 99;
 }
 
-.content-101 .more-section{
-	text-transform: uppercase;
-	font-size: 11px;
-	color: rgb(255, 255, 255);
-	display: inline-block;
+.content-101 .icon-box>.icons:after {
+  content: "";
+  background-color: #000000;
+  ;
+  top: -2px;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: -2px;
+  border-radius: 50%;
+  transition: transform 0.4s ease 0s, opacity 0.3s ease 0s;
+  z-index: -9;
+  opacity: 0;
+  transform: scale(0);
 }
-.content-101 .icon-box-animaiton:hover .more-section{
-	border-bottom: 1px dotted;
-	text-decoration: none;
+
+.content-101 .icon-box-animaiton:hover .icon-box>.icons:after {
+  transform: scale(1.1);
+  opacity: 1;
+  color: #fff;
 }
-.content-101 .more-section i{
-	color: #000000;;
+
+.content-101 .icon-box-animaiton:hover .icon-box>.icons:before {
+  color: #fff;
+}
+
+.content-101 .icon-box-animaiton h3 {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.content-101 .more-section {
+  text-transform: uppercase;
+  font-size: 11px;
+  color: rgb(255, 255, 255);
+  display: inline-block;
+}
+
+.content-101 .icon-box-animaiton:hover .more-section {
+  border-bottom: 1px dotted;
+  text-decoration: none;
+}
+
+.content-101 .more-section i {
+  color: #000000;
+  ;
 }
 
 /* footer */
-a:hover{
-  text-decoration:none;
+a:hover {
+  text-decoration: none;
 }
+
 .section-padding {
-padding: 10px 0;
+  padding: 10px 0;
 }
 
 .bottom .copyright {
   color: #e5e5e5;
   font-weight: 600;
 }
+
 .copyright a {
   color: #ffb049;
   margin-left: 3px;
   padding-right: 3px;
 }
+
 .bottom p {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   line-height: 50px;
+  line-height: 50px;
   font-size: 16px;
   font-weight: 400;
 }
+
 .copyright p span {
   color: #d1caca;
 }
-.bottom .copyright p, .bottom .copyright a:hover{
+
+.bottom .copyright p,
+.bottom .copyright a:hover {
   color: #6c6d83;
 }
 
-.list-inline-item a{
+.list-inline-item a {
   color: #cecece;
   margin-left: 10px;
 }
-.list-inline-item a:hover{
+
+.list-inline-item a:hover {
   color: #8f8c8c;
   cursor: pointer;
 }
-.pt-4 h4{
+
+.pt-4 h4 {
   text-align: center;
   font-size: 25px;
   font-weight: 700;
   margin-top: 50px;
 
 }
+
 @media screen and (max-width:800px) {
 
-  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  .navbar-default .navbar-collapse,
+  .navbar-default .navbar-form {
     margin-top: 30px;
-}
-.navbar-nav {
-  text-align: center;
-  background-color: #c59d30;
-}
-.Picontainer{
-  width:100%;
-}
-.mt-5{
-  height: 170vh;
-}
-.spd-padding-top-50{
+  }
 
-  padding-bottom: 20px;
-}
-.col-md-3{
+  .navbar-nav {
+    text-align: center;
+    background-color: #c59d30;
+  }
 
-  padding-bottom: 30px;
-}
+  .Picontainer {
+    width: 100%;
+  }
+
+  .mt-5 {
+    height: 170vh;
+  }
+
+  .spd-padding-top-50 {
+
+    padding-bottom: 20px;
+  }
+
+  .col-md-3 {
+
+    padding-bottom: 30px;
+  }
 }

@@ -13,3 +13,11 @@ function adminOnly($redirect = '/views')
 function userOnly()
 {
 }
+
+function alreadyLoggedAdmin($redirect = '/backoffice/dashboard.php')
+{
+    if (!empty($_SESSION['Admin'])) {
+        header('location: ' . BASE_URL . $redirect);
+        exit(0);
+    }
+}

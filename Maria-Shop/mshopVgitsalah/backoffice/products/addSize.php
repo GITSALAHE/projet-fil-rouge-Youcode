@@ -1,6 +1,8 @@
 <?php
 include('../../app/database/connect.php');
 include('../../app/database/db.php');
+include('../../app/controllers/middleware.php');
+adminOnly();
 include('../../app/helpers/validateProduct.php');
 include('../../app/controllers/product.php');
 
@@ -23,6 +25,7 @@ include('../../app/controllers/product.php');
     <div class="container">
         <h1 style="text-align: center;">Add size</h1>
         <?php include('../../app/helpers/flashmessage.php'); ?>
+        <a name="" id="" class="btn btn-primary" href="index.php" role="button">Back to product</a>
         <form method="post" action="">
             <div class="form-group">
                 <label for="my-input">Name Size</label>

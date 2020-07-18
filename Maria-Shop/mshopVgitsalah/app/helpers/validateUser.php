@@ -51,3 +51,21 @@ function validateUserLogin($post)
 
     return $errorLogin;
 }
+
+function validateAdminLogin($post)
+{
+    $crud = new CRUD();
+    $errorLoginAdmin = array();
+
+    //Require email  
+    if (empty($post['username'])) {
+        array_push($errorLoginAdmin, 'username is required');
+    }
+    //Require password  
+    if (empty($post['password'])) {
+        array_push($errorLoginAdmin, 'password is required');
+    }
+
+
+    return $errorLoginAdmin;
+}

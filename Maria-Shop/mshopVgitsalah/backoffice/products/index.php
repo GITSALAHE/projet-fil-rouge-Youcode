@@ -1,6 +1,8 @@
 <?php
 include('../../app/database/connect.php');
 include('../../app/database/db.php');
+include('../../app/controllers/middleware.php');
+adminOnly();
 include('../../app/helpers/validateProduct.php');
 include('../../app/controllers/product.php');
 ?>
@@ -14,7 +16,7 @@ include('../../app/controllers/product.php');
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+
     <title>Manage product</title>
     <style>
         #wrapper {
@@ -84,54 +86,44 @@ include('../../app/controllers/product.php');
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+            <?php include('../../app/includes/headAdmin.php') ?>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="../views/">Store <span class="sr-only">(current)</span></a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['Admin'] ?>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
             <div class="container">
                 <h1 style="text-align: center;">List Product</h1>
                 <a name="" id="" class="btn btn-primary" href="create.php" role="button">Add product</a>
-                <table class="table table-light">
+                <a name="" id="" class="btn btn-primary" href="manageSize.php" role="button">Manage Sizes</a>
+                <table class="table table-light" id="table">
                     <tbody>
                         <tr>
                             <th>Image</th>
                             <th>name</th>
                             <th>price</th>
                             <th>quantity</th>
-                            <th>Category</th>
+                            <th style="cursor: pointer;" onclick="sortCategory()">Category</th>
+                            <th>sizes</th>
                             <th>Action</th>
                         </tr>
                         <?php foreach ($showing_product as $product) : ?>
                             <?php $nameC = $crud->selectOne('category', ['idC' => $product['idC']]) ?>
-                            <tr>
+                            <tr class="trow">
                                 <td><img src="../../assets/img/<?php echo $product['Image'] ?>" style="width: 100px;" alt=""></td>
                                 <td style="font-family: poppins;font-weight:bold;font-size:30px"><?php echo $product['nameProduct']; ?> </td>
-                                <td><?php echo $product['Price'] ?></td>
-                                <td><?php echo $product['Qte'] ?></td>
+                                <td><?php echo $product['Price'] ?> $</td>
+                                <td><?php echo $product['Qte'] ?> unt</td>
                                 <td><?php echo $nameC['nameCategory'] ?></td>
-                                <td><a name="" id="" class="btn btn-success ml-10" href="edit.php?idModPr=<?php echo $product['idP'] ?>" role="button">edit</a>
-                                    <a name="" id="" class="btn ml-2 btn-danger" href="index.php?del_pr=<?php echo $product['idP'] ?>" role="button">delete</a></td>
+                                <td><?php $sizeManageProduct = $crud->selectAll('size_product', ['idP' => $product['idP']]);
+                                    ?>
+                                    <?php foreach ($sizeManageProduct as $sizes) : ?>
+                                        <?php $nameSizeP = $crud->selectAll('size', ['idSize' => $sizes['idSize']]);
+                                        ?>
+                                        <?php foreach ($nameSizeP as $name) : ?>
+                                            <?php echo  ' | ' . $name['nameSize']  ?>
+                                        <?php endforeach; ?>
+                                        <?php endforeach; ?>|</td>
+                                <td>
+                                    <a name="" id="" class="btn btn-success" href="giveSize.php?idProductSize=<?php echo $product['idP'] ?>" role="button">Sizes</a>
+                                    <a name="" id="" class="btn btn-success ml-10" href="edit.php?idModPr=<?php echo $product['idP'] ?>" role="button">edit</a>
+                                    <a name="" id="" class="btn  btn-danger" href="index.php?del_pr=<?php echo $product['idP'] ?>" role="button">delete</a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -145,8 +137,10 @@ include('../../app/controllers/product.php');
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
@@ -155,6 +149,12 @@ include('../../app/controllers/product.php');
             $("#wrapper").toggleClass("toggled");
         });
     </script>
+    <script>
+        function sortCategory() {
+            w3.sortHTML('#table', '.trow', 'td:nth-child(5)')
+        }
+    </script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
 
 
 
@@ -168,9 +168,8 @@ include('../../app/controllers/product.php');
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
 </body>
 
 </html>
