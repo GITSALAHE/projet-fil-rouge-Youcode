@@ -386,7 +386,7 @@ margin-bottom: 22px;
     rgba(64, 118, 168, 0.3)
   ),
   /* bottom, image */
-url(http://localhost/wordpress/e-commerce/wp-content/uploads/sites/2/2019/12/banner-03.jpg);
+url(../img/banner.jpg);
 background-position: center center;
 background-repeat: no-repeat;
 background-size: cover;
