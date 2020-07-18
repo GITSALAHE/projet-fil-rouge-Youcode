@@ -19,9 +19,11 @@
 </head>
 
 <body>
-
+<!--.background-overlay-->
   <div class="background-overlay"></div>
+<!--/.background-overlay -->
 
+<!--.nav-collapse -->
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -51,14 +53,15 @@
             </a></li>
         </ul>
       </div>
-      <!--/.nav-collapse -->
     </div>
   </nav>
+ <!--/.nav-collapse -->
 
+  <!--container header-->
   <div class="image">
-    <div class="all">
+    <div class="container">
       <div class="promo-text">
-        <h1 class="heading">MARIASHOP</h1>
+        <h1 class="heading">MARIA SHOP</h1>
         <h1 class="promo">25% Off On All Products</h1>
       </div>
 
@@ -67,8 +70,10 @@
         <button class="btn btn-large btnm2">FIND MORE</button>
       </div>
     </div>
-
   </div>
+<!--end container header-->
+
+<!--Logo Slide-->
   <div class="container logos">
     <div class="customer-logos">
       <div class="slide"><img src="https://raw.githubusercontent.com/solodev/infinite-carousel/master/images/image1.png"></div>
@@ -82,31 +87,144 @@
     </div>
   </div>
 
+  <!--/Logo Slide-->
+
+  <!--Cards-->
   <div class="container card-shop">
     <div class="row">
       <div class="col-md-4 mb-4">
-        <div class="ps1"></div>
+        <div class="ps1">
+          <p>Amazing Stuff is here</p>
+          <div class="btnShop" style="text-align:center;">
+          <button class="btn btn-large btnm1">SHOP NOW</button>
+          </div>
+        </div>   
       </div>
       <div class="col-md-4 mb-4">
-        <div class="ps2"></div>
+        <div class="ps2">
+        <p>Shop Today and now</p>
+        <div class="btnShop" style="text-align:center;">
+          <button class="btn btn-large btnm1">SHOP NOW</button>
+          </div>
+        </div>
       </div>
       <div class="col-md-4 mb-4">
-        <div class="ps3"></div>
+        <div class="ps3">
+        <p>latest amazing trends</p>
+        <div class="btnShop" style="text-align:center;">
+          <button class="btn btn-large btnm1">SHOP NOW</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <!--/Cards-->
 
+  <!-- container gris-->
   <div class="container mt-5">
-    <div>
 
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus quos alias corporis commodi, vel
-        nesciunt? Qui nam cumque libero voluptatibus! Molestiae, et voluptates quibusdam reiciendis inventore quae
-        excepturi repellendus voluptatibus!
-      </p>
+    <!-- contenu-->
+    <div class="Picontainer">
+    <div class="container">
+      <div class="promo-text" style="margin-top:150px;">
+      <h1 class="promo">Spoil Yourself Today</h1>
+      <h1 class="heading">Stay Home And Shop Online</h1>
+      </div>
+      <div class="btn-grp" style="margin-top:50px;">
+        <button class="btn btn-large btnm1">BUY NOW</button>
+      </div>
     </div>
-  </div>
+    </div>
+ <!-- /contenu-->
 
+  <!-- icon box -->
+    <div class="container spd-padding-top-50">
+		<div class="spd-row content-101">
+			<div class="col-md-3 col-sm-3 icon-box-animaiton text-center">
+				<div class="icon-box">
+					<i class="fa fa-globe fa-2x icons"></i>
+				</div>
+				<h3>Worldwide Shipping</h3>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 icon-box-animaiton text-center">
+				<div class="icon-box">
+					<i class="fa fa-star fa-2x icons"></i>
+				</div>
+				<h3>Best Quality</h3>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 icon-box-animaiton text-center">
+				<div class="icon-box">
+					<i class="fa fa-heart fa-2x icons"></i>
+				</div>
+				<h3>Best Offers</h3>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 icon-box-animaiton text-center">
+				<div class="icon-box">
+					<i class="fa fa-lock fa-2x icons"></i>
+				</div>
+				<h3>Secure Payments</h3>
+			</div>
+			
+	</div>
+</div>
+<!-- icon box -->
+  </div>
+ <!-- /container gris-->
+ 
+
+<!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+<h4>Quick Links</h4>
+  <!-- Footer Elements -->
+  <div class="container" style="margin-top: 40px;">
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a class="btn-floating btn-fb mx-1">
+          Home
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-tw mx-1">
+        My account
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-gplus mx-1">
+        Cart
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+        Contact
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+  </div>
+  <!-- Footer Elements -->
+  <div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2020</span> <a href="#" class="transition">MariaShop</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</footer>
+<!-- Footer -->
+
+
+ <!--Bottom Footer-->
+<!--Bottom Footer-->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
