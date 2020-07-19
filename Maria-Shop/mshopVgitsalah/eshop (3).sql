@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2020 at 03:15 AM
+-- Generation Time: Jul 19, 2020 at 06:45 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -96,7 +96,15 @@ INSERT INTO `product` (`idP`, `nameProduct`, `Price`, `Qte`, `Image`, `idC`) VAL
 (10, 'Costume', '1000', '234', '1595016593_7545310401_1_1_1-300x300.jpg', 12),
 (11, 'Costume premium', '2000', '50', '1595016628_9621450800_1_1_1-300x300.jpg', 12),
 (12, 'Tshirt', '120', '50', '1595019958_harajuku-t-shirt-women-clothes-2019-streetwear-korean-style-tee-shirt-femme-hip-hop-tops-Japanese__26740.1563312756.jpg', 10),
-(13, 'test', '1200', '23', '1595022538_82553745_2216498978652522_7352167503109292032_n.jpg', 10);
+(13, 'test', '1200', '23', '1595022538_82553745_2216498978652522_7352167503109292032_n.jpg', 10),
+(14, 'PRODUCT1', '12', '12', '1595069596_4087400649_2_1_1-1-300x300.jpg', 12),
+(15, 'TEST2', '12', '12', '1595069614_4087400649_2_1_1-1-300x300.jpg', 12),
+(16, 'TEST4', '230', '23', '1595069636_4087400649_2_1_1-1-300x300.jpg', 12),
+(17, 'test23', '23', '23', '1595069666_4087400649_2_1_1-1-300x300.jpg', 12),
+(18, 'TEST32', '32', '32', '1595069682_4087400649_2_1_1-1-300x300.jpg', 12),
+(19, 'TEST46', '2000', '233', '1595069700_4087400649_2_1_1-1-300x300.jpg', 12),
+(20, 'TEST49', '40', '403', '1595069718_4087400649_2_1_1-1-300x300.jpg', 12),
+(21, 'TETS13', '232', '232', '1595069738_4087400649_2_1_1-1-300x300.jpg', 12);
 
 -- --------------------------------------------------------
 
@@ -274,7 +282,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `size`
