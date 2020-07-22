@@ -94,7 +94,7 @@ include('../../app/controllers/product.php');
                 <h1 style="text-align: center;">List Product</h1>
                 <a name="" id="" class="btn btn-primary" href="create.php" role="button">Add product</a>
                 <a name="" id="" class="btn btn-primary" href="manageSize.php" role="button">Manage Sizes</a>
-                <table class="table table-light" id="table">
+                <table class="table table-light" style="width: 104%;" id="table">
                     <tbody>
                         <tr>
                             <th>Image</th>
@@ -111,6 +111,8 @@ include('../../app/controllers/product.php');
                             <tr class="trow">
                                 <td>
                                     <img src="../../assets/img/<?php echo $product['Image'] ?>" style="width: 100px;" alt="">
+                                    <img src="../../assets/img/<?php echo $product['Image2'] ?>" style="width: 100px;" alt="">
+                                    
                                 </td>
                                 <td style="font-family: poppins;font-weight:bold;font-size:30px"><?php echo $product['nameProduct']; ?> </td>
                                 <td><?php echo $product['Price'] ?> $</td>

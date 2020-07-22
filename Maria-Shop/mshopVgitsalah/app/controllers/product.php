@@ -136,8 +136,25 @@ if (isset($_POST['editProduct'])) {
 
 if (isset($_GET['del_pr'])) {
     $idDelproduct = $_GET['del_pr'];
+    $crud->delete('size_product', 'idP', $idDelproduct);
     $crud->delete($table, 'idP', $idDelproduct);
     header('location:index.php');
     exit();
 }
 //end delete product 
+
+
+//showing product in sigleproduc.php 
+$nameProduct = '';
+$priceProduct = '';
+$image1 = '';
+$image2 = '';
+if(isset($_GET['singleIdP'])){
+    $singleProduct = $crud->selectOne($table, ['idP' => $_GET['singleIdP']]);
+    $nameProduct = $singleProduct['nameProduct'];
+    $priceProduct = $singleProduct['Price'];
+    $image1 = $singleProduct['Image'];
+    $image2 = $singleProduct['Image2'];
+    $sizeProduct = $crud->selectAll('size_product', ['idP' => $_GET['singleIdP']]);
+    
+}

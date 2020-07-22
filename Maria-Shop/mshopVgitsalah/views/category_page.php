@@ -79,15 +79,15 @@ include('../app/controllers/category.php');
                                 style="height: 260.5px;">
                         </a>
                         <ul class="social">
-                            <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                            <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                        
                         </ul>
                     </div>
                     <div class="product-content">
-                        <h3 class="title"><a href="#"><?php echo $product['nameProduct'] ?></a></h3>
+                        <h3 class="title"><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo $product['nameProduct'] ?></a></h3>
                         <div class="price">$ <?php echo $product['Price'] ?>.00
                         </div>
-                        <a class="add-to-cart" href="">+ More info</a>
+                        <a class="add-to-cart" href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>">+ More info</a>
                     </div>
                 </div>
             </div>
