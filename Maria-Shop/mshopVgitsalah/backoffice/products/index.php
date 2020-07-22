@@ -79,6 +79,8 @@ include('../../app/controllers/product.php');
                 <a href="" class="list-group-item list-group-item-action bg-dark active">Products</a>
                 <a href="../orders" class="list-group-item list-group-item-action bg-dark text-primary">orders</a>
                 <a href="../users" class="list-group-item list-group-item-action bg-dark text-primary">Users</a>
+                <a href="../livechat" class="list-group-item list-group-item-action bg-dark text-primary">LIVE CHAT</a>
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -99,14 +101,17 @@ include('../../app/controllers/product.php');
                             <th>name</th>
                             <th>price</th>
                             <th>quantity</th>
-                            <th style="cursor: pointer;" onclick="sortCategory()">Category</th>
+                            <th style="cursor: pointer;" onclick="sortCategory()">Category <i class="fa fa-sort"></i>
+</th>
                             <th>sizes</th>
                             <th>Action</th>
                         </tr>
                         <?php foreach ($showing_product as $product) : ?>
                             <?php $nameC = $crud->selectOne('category', ['idC' => $product['idC']]) ?>
                             <tr class="trow">
-                                <td><img src="../../assets/img/<?php echo $product['Image'] ?>" style="width: 100px;" alt=""></td>
+                                <td>
+                                    <img src="../../assets/img/<?php echo $product['Image'] ?>" style="width: 100px;" alt="">
+                                </td>
                                 <td style="font-family: poppins;font-weight:bold;font-size:30px"><?php echo $product['nameProduct']; ?> </td>
                                 <td><?php echo $product['Price'] ?> $</td>
                                 <td><?php echo $product['Qte'] ?> unt</td>

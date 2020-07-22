@@ -35,7 +35,7 @@ function validateAddProduct($post)
 }
 
 
-// validation adding product
+// validation edit product
 function validateEditProduct($post)
 {
     $crud = new CRUD();

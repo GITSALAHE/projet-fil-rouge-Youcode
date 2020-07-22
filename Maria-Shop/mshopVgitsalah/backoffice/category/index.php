@@ -78,6 +78,8 @@ include('../../app/controllers/category.php')
                 <a href="../products" class="list-group-item list-group-item-action bg-dark text-primary">Products</a>
                 <a href="../orders" class="list-group-item list-group-item-action bg-dark text-primary">orders</a>
                 <a href="../users" class="list-group-item list-group-item-action bg-dark text-primary">Users</a>
+                <a href="../livechat" class="list-group-item list-group-item-action bg-dark text-primary">LIVE CHAT</a>
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->

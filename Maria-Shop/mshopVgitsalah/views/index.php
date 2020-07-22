@@ -51,7 +51,11 @@ include('../app/controllers/category.php');
             <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1"><?php echo $category['nameCategory'] ?></a></li>
 
           <?php endforeach; ?>
-          <li><a href="login-reg.php">Account</a></li>
+          <?php if(isset($_SESSION['idU'])): ?>
+            <li><a href="myaccount.php">My Account</a></li>
+          <?php else: ?>
+            <li><a href="login-reg.php">Account</a></li>
+          <?php endif; ?>
           <li><a href="#">Contact Us</a></li>
           <li><a href="#">
               <div class="cart-nav nav-item-link">
@@ -262,6 +266,7 @@ include('../app/controllers/category.php');
       });
     });
   </script>
+  <script>(function(d,t,u,s,e){e=d.getElementsByTagName(t)[0];s=d.createElement(t);s.src=u;s.async=1;e.parentNode.insertBefore(s,e);})(document,'script','//localhost/eshop/backoffice/livechat/php/app.php?widget-init.js');</script>
 </body>
 
 </html>

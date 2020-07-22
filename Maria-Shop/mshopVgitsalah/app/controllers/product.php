@@ -16,6 +16,7 @@ $errorsProduct = array();
 if (isset($_POST['addProduct'])) {
     $errorsProduct = validateAddProduct($_POST);
 
+    //push image 1
     if (!empty($_FILES['Image']['name'])) {
         $image_name = time() . '_' . $_FILES['Image']['name'];
         $destination = "../../assets/img/" . $image_name;
@@ -28,11 +29,28 @@ if (isset($_POST['addProduct'])) {
             array_push($errorsProduct, "failed to upload image");
         }
     } else {
-        array_push($errorsProduct, 'Post image requiered');
+        array_push($errorsProduct, 'Post image 1 requiered');
+    }
+    
+    //push image 2
+    if (!empty($_FILES['Image2']['name'])) {
+        $image_name = time() . '_' . $_FILES['Image2']['name'];
+        $destination = "../../assets/img/" . $image_name;
+
+        $result =   move_uploaded_file($_FILES['Image2']['tmp_name'], $destination);
+
+        if ($result) {
+            $_POST['Image2'] = $image_name;
+        } else {
+            array_push($errorsProduct, "failed to upload image");
+        }
+    } 
+    else {
+        array_push($errorsProduct, 'Post image 2 requiered');
     }
 
     if (count($errorsProduct) == 0) {
-        printIt($_POST);
+        $_POST['description'] = htmlentities($_POST['description']);
         unset($_POST['addProduct']);
         $add_product = $crud->create($table, $_POST);
         header('location:index.php');
@@ -71,6 +89,7 @@ $errorsEditProduct = array();
 
 if (isset($_POST['editProduct'])) {
     $errorsEditProduct = validateEditProduct($_POST);
+    //push image 1
     if (!empty($_FILES['Image']['name'])) {
         $image_name = time() . '_' . $_FILES['Image']['name'];
         $destination = "../../assets/img/" . $image_name;
@@ -83,7 +102,24 @@ if (isset($_POST['editProduct'])) {
             array_push($errorsProduct, "failed to upload image");
         }
     } else {
-        array_push($errorsProduct, 'Post image requiered');
+        array_push($errorsProduct, 'Post image 1 requiered');
+    }
+    
+    //push image 2
+    if (!empty($_FILES['Image2']['name'])) {
+        $image_name = time() . '_' . $_FILES['Image2']['name'];
+        $destination = "../../assets/img/" . $image_name;
+
+        $result =   move_uploaded_file($_FILES['Image2']['tmp_name'], $destination);
+
+        if ($result) {
+            $_POST['Image2'] = $image_name;
+        } else {
+            array_push($errorsProduct, "failed to upload image");
+        }
+    } 
+    else {
+        array_push($errorsProduct, 'Post image 2 requiered');
     }
     if (count($errorsEditProduct) == 0) {
 

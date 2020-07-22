@@ -107,3 +107,27 @@ if (isset($_POST['addProductSize'])) {
         </div>
 <?php endif;
 } ?>
+
+<?php
+if (isset($_POST['registerBackoffice'])) {
+    if (count($errorRegisterBack) > 0) : ?>
+
+        <div class="alert alert-danger">
+            <?php foreach ($errorRegisterBack as $error) : ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </div>
+<?php endif;
+} ?>
+
+<?php
+if (isset($_POST['editUserBackoffice'])) {
+    if (count($errorEditUser) > 0) : ?>
+
+        <div class="alert alert-danger">
+            <?php foreach ($errorEditUser as $error) : ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </div>
+<?php endif;
+} ?>
