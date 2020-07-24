@@ -18,6 +18,9 @@ function validateUserRegister($post)
     if (empty($post['password'])) {
         array_push($errorRegister, 'password is required');
     }
+    elseif(strlen($post['password']) < 6){
+        array_push($errorRegister, 'please put 6 characters in password');
+    }
     //Require phone number 
     if (empty($post['phone_number'])) {
         array_push($errorRegister, 'phone number is required');
@@ -94,6 +97,9 @@ function validateUserRegisterBackoffice($post)
     if (empty($post['password'])) {
         array_push($errorRegisterBack, 'password is required');
     }
+    elseif(strlen($post['password']) < 6){
+        array_push($errorRegister, 'please put 6 characters in password');
+    }
     //Require phone number 
     if (empty($post['phone_number'])) {
         array_push($errorRegisterBack, 'phone number is required');
@@ -127,6 +133,9 @@ function validateUserEditBackoffice($post)
     //Require password  
     if (empty($post['password'])) {
         array_push($errorEditUser, 'password is required');
+    }
+    elseif(strlen($post['password']) < 6){
+        array_push($errorRegister, 'please put 6 characters in password');
     }
     //Require phone number 
     if (empty($post['phone_number'])) {

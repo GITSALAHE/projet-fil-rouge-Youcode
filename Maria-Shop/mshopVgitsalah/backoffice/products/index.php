@@ -16,6 +16,8 @@ include('../../app/controllers/product.php');
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <title>Manage product</title>
     <style>
@@ -88,7 +90,9 @@ include('../../app/controllers/product.php');
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <?php include('../../app/includes/headAdmin.php') ?>
+            <?php include('../../app/includes/headAdmin.php');
+            include('../../app/helpers/messageSuccess.php');
+            ?>
 
             <div class="container">
                 <h1 style="text-align: center;">List Product</h1>
@@ -110,8 +114,8 @@ include('../../app/controllers/product.php');
                             <?php $nameC = $crud->selectOne('category', ['idC' => $product['idC']]) ?>
                             <tr class="trow">
                                 <td>
-                                    <img src="../../assets/img/<?php echo $product['Image'] ?>" style="width: 100px;" alt="">
-                                    <img src="../../assets/img/<?php echo $product['Image2'] ?>" style="width: 100px;" alt="">
+                                    <img src="../../assets/img/<?php echo $product['Image'] ?>" style="width: 95px;" alt="">
+                                    <img src="../../assets/img/<?php echo $product['Image2'] ?>" style="width: 95px;" alt="">
                                     
                                 </td>
                                 <td style="font-family: poppins;font-weight:bold;font-size:30px"><?php echo $product['nameProduct']; ?> </td>

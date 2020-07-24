@@ -45,10 +45,16 @@
                     <div class="customer-chat-content-row">
                         <button type="submit" id="customer-chat-login-start" class="customer-chat-content-button"><?php echo $app->trans('login') ?> <i class="icon-circle-arrow-right icon-white" style="margin: 3px 0 0 3px;"></i></button>
                     </div>
+                    
                 </form>
+                
             </div>
+            
         </div>
-
+        <div style="display: flex; justify-content:center;align-items: center;" class="customer-chat-content-row">
+            <a href="../../" style="text-decoration: none;"><button type="submit" id="customer-chat-login-start" class="customer-chat-content-button">back to dashboard<i class="icon-circle-arrow-left icon-white" style="margin: 3px 0 0 3px;"></i></button></a>
+        </div>
+       
         <!-- Scripts -->
 
         <?php echo $app->renderView('blocks/debugScripts.html'); ?>

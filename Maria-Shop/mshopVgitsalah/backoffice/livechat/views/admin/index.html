@@ -45,6 +45,7 @@
                     <?php if($vars["installed"]) { ?>
                     <a href="<?php echo $app->path('Install:wizard') ?>" id="customer-chat-header-menu-edit-config" class="customer-chat-header-menu-item"><i class="icon-chevron-right"></i> <div><?php echo $app->trans('edit.config') ?></div></a>
                     <?php } ?>
+                    <a href="../../" class="customer-chat-header-menu-item"><i class="icon-chevron-left"></i><div>back to dashboard</div></a>
                     <a href="<?php echo $app->path('Install:uninstall') ?>" id="customer-chat-header-menu-uninstall" class="customer-chat-header-menu-item"><i class="icon-remove"></i> <div><?php echo $app->trans('uninstall') ?></div></a>
                     <a href="#" id="customer-chat-header-menu-qr" class="customer-chat-header-menu-item"><i class="icon-qrcode"></i> <div><?php echo $app->trans('qr.code') ?></div></a>
                     <a href="#" id="customer-chat-header-menu-logs" class="customer-chat-header-menu-item"><i class="icon-info-sign"></i> <div><?php echo $app->trans('logs') ?></div></a>

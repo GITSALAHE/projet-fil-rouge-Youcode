@@ -2,6 +2,8 @@
 include('../app/database/connect.php');
 include('../app/database/db.php');
 include('../app/controllers/category.php');
+include('../app/controllers/product.php');
+include('../app/controllers/cart.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,13 +45,25 @@ include('../app/controllers/category.php');
 
           <?php endforeach; ?>
           <li><a href="login-reg.php">Account</a></li>
-          <li><a href="ContactUs.php">Contact Us</a></li>
-          <li><a href="#">
+          <?php if(isset($_SESSION['idU'])): ?>
+            <li><a href="myaccount.php">My Account</a></li>
+          <?php else: ?>
+            <li><a href="login-reg.php">Account</a></li>
+          <?php endif; ?>          <?php if(isset($_SESSION['idU'])) :?>
+          <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
                 <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items">2</span>
+                <span class="nav-cart-items"><?php echo $countCart ?></span>
               </div>
             </a></li>
+          <?php else: ?>
+          <li><a href="cart2.php">
+              <div class="cart-nav nav-item-link">
+                <span class="fa-shopping-cart"></span>
+                <span class="nav-cart-items">0</span>
+              </div>
+            </a></li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>

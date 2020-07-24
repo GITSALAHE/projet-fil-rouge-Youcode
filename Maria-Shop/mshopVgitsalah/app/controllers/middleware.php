@@ -21,3 +21,13 @@ function alreadyLoggedAdmin($redirect = '/backoffice/dashboard.php')
         exit(0);
     }
 }
+
+function showCart($redirect = '/views/index.php')
+{
+    if (empty($_SESSION['idU'])) {
+        $_SESSION['message'] = 'please login first or register';
+        $_SESSION['type'] = 'error';
+        header('location: ' . BASE_URL . $redirect);
+        exit(0);
+    }
+}

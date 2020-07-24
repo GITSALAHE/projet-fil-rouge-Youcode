@@ -3,6 +3,7 @@ include('../app/database/connect.php');
 include('../app/database/db.php');
 include('../app/controllers/category.php');
 include('../app/controllers/product.php');
+include('../app/controllers/cart.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,12 +46,21 @@ include('../app/controllers/product.php');
           <?php endforeach; ?>
           <li><a href="login-reg.php">Account</a></li>
           <li><a href="ContactUs.php">Contact Us</a></li>
-          <li><a href="#">
+          <?php if(isset($_SESSION['idU'])) :?>
+          <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
                 <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items">2</span>
+                <span class="nav-cart-items"><?php echo $countCart ?></span>
               </div>
             </a></li>
+          <?php else: ?>
+          <li><a href="cart2.php">
+              <div class="cart-nav nav-item-link">
+                <span class="fa-shopping-cart"></span>
+                <span class="nav-cart-items">0</span>
+              </div>
+            </a></li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
@@ -59,6 +69,7 @@ include('../app/controllers/product.php');
 
  <!-- Single product -->
 <main class="card main-grid">
+  <?php include('../app/helpers/flashmessage.php') ?>
   <div class="card__content">
    
     <div class="card__head">
@@ -67,23 +78,30 @@ include('../app/controllers/product.php');
       <p class="card__text">Shirt sleeve T-shirt with a round <br> neckline and a contrast from print.</p>
       <p class="card__price">$ <?php echo $priceProduct ?></p>
     </div>
+    <form method="post" action="">
+      <input type="hidden" name="idP" value="<?php echo $_GET['singleIdP'] ?>">
+      <input type="hidden" name="idU" value="<?php echo $_SESSION['idU'] ?>">
+    <?php if(count($sizeProduct) == 0 ): ?>
+    <?php else: ?>
     <div class="card__choose">
       <div class="card__size">
         <label for="size" class="card__label">size</label>
-        <select name="size" id="size" class="card__select">
+        <select name="idSize" id="size" class="card__select">
           <?php foreach($sizeProduct as $size): ?>
-          <option value=""><?php $sizeName = $crud->selectOne('size', ['idSize' => $size['idSize']]); echo $sizeName['nameSize']?></option>
+          <option value="<?php echo $size['idSize'] ?>"><?php $sizeName = $crud->selectOne('size', ['idSize' => $size['idSize']]); echo $sizeName['nameSize']?></option>
           <?php endforeach; ?>
         </select>
       </div>
     </div>
+          <?php endif; ?>
     <div class="card__counter">
-        <button class="card__numb" id="sub">-</button>
-        <input type="number" class="card__count" value="1" disabled="disabled"></input>
-        <button class="card__numb" id="add">+</button> 
+        <button type="button" class="card__numb" id="sub">-</button>
+        <input type="number" class="card__count" name="qte" value="1" ></input>
+        <button type="button" class="card__numb" id="add">+</button> 
       </div>
-     <button class="btn btn--primary">Add to cart</button>
-  
+     <button type="submit" name="addToCart" class="btn btn--primary">Add to cart</button>
+     </form>
+    
   </div>
 
   <div class="card__image">
@@ -194,5 +212,11 @@ include('../app/controllers/product.php');
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+  
+  $( "input[type=number]" ).focus(function() {
+  $( this ).blur();
+});
+</script>
 </body>
 </html>

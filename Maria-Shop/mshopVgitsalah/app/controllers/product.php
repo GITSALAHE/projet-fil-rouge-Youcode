@@ -53,6 +53,8 @@ if (isset($_POST['addProduct'])) {
         $_POST['description'] = htmlentities($_POST['description']);
         unset($_POST['addProduct']);
         $add_product = $crud->create($table, $_POST);
+        $_SESSION['message'] = "Product added '" . $_POST['nameProduct'] . "'" . ' !';
+        $_SESSION['type'] = 'success';
         header('location:index.php');
         exit();
     }
@@ -126,6 +128,8 @@ if (isset($_POST['editProduct'])) {
         $idProduct = $_POST['idP'];
         unset($_POST['editProduct'], $_POST['idP']);
         $crud->update($table, $idProduct, $_POST, 'idP');
+        $_SESSION['message'] = "Product edited '" . $_POST['nameProduct'] . "'" . ' !';
+        $_SESSION['type'] = 'success';
         header('location:index.php');
         exit();
     }
@@ -138,6 +142,8 @@ if (isset($_GET['del_pr'])) {
     $idDelproduct = $_GET['del_pr'];
     $crud->delete('size_product', 'idP', $idDelproduct);
     $crud->delete($table, 'idP', $idDelproduct);
+    $_SESSION['message'] = 'product deleted !';
+    $_SESSION['type'] = 'success';
     header('location:index.php');
     exit();
 }

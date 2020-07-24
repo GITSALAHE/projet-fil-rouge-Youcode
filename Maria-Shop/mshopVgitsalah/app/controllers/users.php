@@ -14,8 +14,9 @@ if (isset($_POST['register'])) {
     if (count($errorRegister) == 0) {
         unset($_POST['register']);
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        printIt($_POST);
         $add_user = $crud->create($table, $_POST);
+        $loginUserR  = $crud->selectOne($table, ['email' => $_POST['email']]);
+        loginUser($loginUserR);
     }
 }
 //end add new user

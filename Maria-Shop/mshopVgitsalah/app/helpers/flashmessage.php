@@ -131,3 +131,15 @@ if (isset($_POST['editUserBackoffice'])) {
         </div>
 <?php endif;
 } ?>
+
+<?php
+if (isset($_POST['addToCart'])) {
+    if (count($errorAddToCart) > 0) : ?>
+
+        <div class="alert alert-danger">
+            <?php foreach ($errorAddToCart as $error) : ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </div>
+<?php endif;
+} ?>

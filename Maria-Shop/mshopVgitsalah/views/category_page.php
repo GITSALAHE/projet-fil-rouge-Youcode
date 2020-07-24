@@ -2,6 +2,8 @@
 include('../app/database/connect.php');
 include('../app/database/db.php');
 include('../app/controllers/category.php');
+include('../app/controllers/product.php');
+include('../app/controllers/cart.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,14 +49,27 @@ include('../app/controllers/category.php');
                     </li>
 
                     <?php endforeach; ?>
+                    <?php if(isset($_SESSION['idU'])): ?>
+                    <li><a href="myaccount.php">My Account</a></li>
+                    <?php else: ?>
                     <li><a href="login-reg.php">Account</a></li>
+                    <?php endif; ?>
                     <li><a href="ContactUs.php">Contact Us</a></li>
-                    <li><a href="#">
+                    <?php if(isset($_SESSION['idU'])) :?>
+                    <li><a href="cart2.php">
                             <div class="cart-nav nav-item-link">
                                 <span class="fa-shopping-cart"></span>
-                                <span class="nav-cart-items">2</span>
+                                <span class="nav-cart-items"><?php echo $countCart ?></span>
                             </div>
                         </a></li>
+                    <?php else: ?>
+                    <li><a href="cart2.php">
+                            <div class="cart-nav nav-item-link">
+                                <span class="fa-shopping-cart"></span>
+                                <span class="nav-cart-items">0</span>
+                            </div>
+                        </a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -79,15 +94,19 @@ include('../app/controllers/category.php');
                                 style="height: 260.5px;">
                         </a>
                         <ul class="social">
-                            <li><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        
+                            <li><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"
+                                    data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+
                         </ul>
                     </div>
                     <div class="product-content">
-                        <h3 class="title"><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo $product['nameProduct'] ?></a></h3>
+                        <h3 class="title"><a
+                                href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo $product['nameProduct'] ?></a>
+                        </h3>
                         <div class="price">$ <?php echo $product['Price'] ?>.00
                         </div>
-                        <a class="add-to-cart" href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>">+ More info</a>
+                        <a class="add-to-cart" href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>">+ More
+                            info</a>
                     </div>
                 </div>
             </div>

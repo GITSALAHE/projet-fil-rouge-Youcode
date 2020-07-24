@@ -18,6 +18,8 @@ include('../app/controllers/dashboard.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <title>Title</title>
     <style>
         #wrapper {
@@ -127,6 +129,7 @@ include('../app/controllers/dashboard.php');
 </head>
 
 <body>
+    <?php include('../app/helpers/messageSuccess.php') ?>
     <div class="d-flex" id="wrapper">
 
         <!-- Sidebar -->

@@ -96,7 +96,7 @@ include('../app/controllers/category.php');
                                     </div>
                                     <div class="col-md-12">
                                       <fieldset>
-                                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                                        <textarea style="resize: vertical;" name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
                                       </fieldset>
                                     </div>
                                     <div class="col-md-12">

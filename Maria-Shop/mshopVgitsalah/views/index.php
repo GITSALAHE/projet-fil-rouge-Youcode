@@ -2,6 +2,8 @@
 include('../app/database/connect.php');
 include('../app/database/db.php');
 include('../app/controllers/category.php');
+include('../app/controllers/product.php');
+include('../app/controllers/cart.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +16,8 @@ include('../app/controllers/category.php');
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
   <link rel="stylesheet" href="../assets/css/index.css">
 
@@ -57,12 +61,21 @@ include('../app/controllers/category.php');
             <li><a href="login-reg.php">Account</a></li>
           <?php endif; ?>
           <li><a href="#">Contact Us</a></li>
-          <li><a href="#">
+          <?php if(isset($_SESSION['idU'])) :?>
+          <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
                 <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items">2</span>
+                <span class="nav-cart-items"><?php echo $countCart ?></span>
               </div>
             </a></li>
+          <?php else: ?>
+          <li><a href="cart2.php">
+              <div class="cart-nav nav-item-link">
+                <span class="fa-shopping-cart"></span>
+                <span class="nav-cart-items">0</span>
+              </div>
+            </a></li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
@@ -72,6 +85,7 @@ include('../app/controllers/category.php');
   <!--container header-->
   <div class="image">
     <div class="container">
+      <?php include('../app/helpers/messageSuccess.php') ?>
       <div class="promo-text">
         <h1 class="heading">MARIA SHOP</h1>
         <h1 class="promo">25% Off On All Products</h1>
