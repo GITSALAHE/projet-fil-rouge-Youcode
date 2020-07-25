@@ -51,6 +51,7 @@ include('../app/controllers/cart.php');
                             $total = $total + ($productInfo['Price'] * $dataCart['qte'])
                         ?>
                         <form method="POST">
+                            <input type="hidden" name="idU" value="<?php echo $_SESSION['idU'] ?>">
                             <input type="hidden" name="idCart" value="<?php echo $dataCart['idCart'] ?>">
                             <input type="hidden" name="idP" value="<?php echo $dataCart['idP'] ?>">
                             <div class="row">
@@ -100,7 +101,7 @@ include('../app/controllers/cart.php');
                                 <h4 class="text-right">Total <strong><?php echo $total . '$' ?></strong></h4>
                             </div>
                             <div class="col-xs-3">
-                                <a href="checkout.php">
+                                <a href="checkout2.php">
                                     <input value="Checkout" name="checkout" class="btn btn-success btn-block">
                                 </a>
 

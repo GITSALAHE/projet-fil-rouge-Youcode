@@ -49,6 +49,7 @@ if (isset($_POST['editCategory'])) {
 
 //delete category 
 if (isset($_GET['delete_ctg'])) {
+    $deleteItems = $crud->delete('product', 'idC', $_GET['delete_ctg']);
     $delete = $crud->delete($table, $idName, $_GET['delete_ctg']);
     header('location:index.php');
     exit();

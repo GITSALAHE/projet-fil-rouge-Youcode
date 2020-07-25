@@ -31,3 +31,14 @@ function showCart($redirect = '/views/index.php')
         exit(0);
     }
 }
+
+// function showThankyouPage($redirect = '/views/index.php'){
+//     $order = new Order();
+//     $lastOrder = $order->getOrderId('orders', ['idU' => $_SESSION['idU']], 'idOrder');
+//     if($_GET['idOrder'] != $lastOrder['idOrder']){
+//         $_SESSION['message'] = 'unothorized';
+//         $_SESSION['type'] = 'error';
+//         header('location: ' . BASE_URL . $redirect);
+//         exit(0);
+//     }
+// }

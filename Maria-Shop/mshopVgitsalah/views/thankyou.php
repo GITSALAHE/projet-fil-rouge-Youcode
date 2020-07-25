@@ -1,3 +1,14 @@
+<?php
+include('../app/database/connect.php');
+include('../app/database/db.php');
+
+include('../app/controllers/category.php');
+include('../app/controllers/product.php');
+include('../app/controllers/cart.php');
+include('../app/controllers/orders.php');
+// include('../app/controllers/middleware.php');
+// showThankyouPage(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +24,11 @@
 <body>
 <div class="container">
     <div class="row">
-        <h1>Thank you for ur purchase ur commande ID is #<?php ?> !</h1>
+        <h1>Thank you for ur purchase ur commande ID is #<?php echo $_GET['idOrder'] ?> !</h1>
     </div>
+    <a name="" id="" class="btn btn-primary" href="index.php" role="button">Continue shopping</a>
 </div>
+<?php ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>

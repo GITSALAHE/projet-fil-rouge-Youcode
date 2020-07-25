@@ -127,6 +127,7 @@ class CRUD extends DB
         $stmt = $this->executeQuery($sql, ['$idName' => $id]);
         return $stmt->affected_rows;
     }
+   
 }
 
 class Paginator extends DB
@@ -167,5 +168,31 @@ class Paginator extends DB
         $query_all = mysqli_query($conn, $select_all);
         $row = mysqli_num_rows($query_all);
         return $row;
+    }
+}
+
+class Order extends DB{
+    public function getOrderId($table, $condition, $idOrder){
+        $conn = $this->connect();
+        $sql = "SELECT * FROM $table";
+        $i = 0;
+        foreach ($condition as $key => $value) {
+            if ($i === 0) {
+                $sql = $sql . " WHERE $key=?";
+            } else {
+                $sql = $sql . " AND $key=?";
+            }
+            $i++;
+        }
+        $sql = $sql . " ORDER BY $idOrder DESC";
+        $sql = $sql . " LIMIT 1";
+        $stmt = $this->connect();
+        $stmt = $conn->prepare($sql);
+        $value = array_values($condition);
+        $type = str_repeat('s', count($value));
+        $stmt->bind_param($type, ...$value);
+        $stmt->execute();
+        $records = $stmt->get_result()->fetch_assoc();
+        return $records;
     }
 }

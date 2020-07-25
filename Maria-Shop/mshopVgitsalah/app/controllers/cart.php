@@ -29,7 +29,6 @@ if(isset($_SESSION['idU'])){
 
 //Update product from cart
 if(isset($_POST['updateCart'])){
-   
     $idCart = $_POST['idCart'];
     unset($_POST['idCart'], $_POST['updateCart'], $_POST['idP']);
     $crud->update('cart', $idCart, $_POST, 'idCart');
