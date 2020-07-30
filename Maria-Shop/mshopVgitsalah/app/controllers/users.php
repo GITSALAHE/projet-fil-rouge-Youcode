@@ -39,6 +39,7 @@ if (isset($_POST['login'])) {
 function loginUser($user)
 {
     $_SESSION['idU'] = $user['idU'];
+    $_SESSION['username'] = $user['fullname'];
     $_SESSION['message'] = 'YOU ARE NOW LOGGED IN';
     $_SESSION['type'] = 'success';
     header('location:index.php');
@@ -54,6 +55,7 @@ function loginUser($user)
 function loginAdmin($user)
 {
     $_SESSION['idU'] = $user['idU'];
+    
     $_SESSION['Admin'] = $user['fullname'];
     $_SESSION['superAdmin'] = $user['superAdmin'];
     $_SESSION['message'] = 'YOU ARE NOW LOGGED IN';

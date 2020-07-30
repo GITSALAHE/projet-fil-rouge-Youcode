@@ -120,7 +120,17 @@ include('../../app/controllers/product.php');
                                 </td>
                                 <td style="font-family: poppins;font-weight:bold;font-size:30px"><?php echo $product['nameProduct']; ?> </td>
                                 <td><?php echo $product['Price'] ?> $</td>
-                                <td><?php echo $product['Qte'] ?> unt</td>
+                                <td><?php
+                                // $classOrder = new Order();
+                                // $qteInOrder = $crud->selectAll('orders', ['idP' => $product['idP'], ['calculated' == 0]]);
+                                // foreach($qteInOrder as $newQte):
+                                // $product['Qte'] = ($product['Qte'] - $newQte['qte']);
+                                // $newQte['calculated'] = 1;
+                                // $classOrder->updateCalculated($newQte['idOrder']);
+                                // endforeach;
+                                // $crud->update('product', $product['idP'], $product, 'idP');
+                                
+                                echo $product['Qte'] ?> unt</td>
                                 <td><?php echo $nameC['nameCategory'] ?></td>
                                 <td><?php $sizeManageProduct = $crud->selectAll('size_product', ['idP' => $product['idP']]);
                                     ?>

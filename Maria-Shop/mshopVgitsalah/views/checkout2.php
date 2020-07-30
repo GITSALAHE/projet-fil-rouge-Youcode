@@ -1,6 +1,8 @@
 <?php
 include('../app/database/connect.php');
 include('../app/database/db.php');
+include('../app/controllers/middleware.php');
+showCheckout();
 include('../app/controllers/category.php');
 include('../app/controllers/product.php');
 include('../app/controllers/cart.php');

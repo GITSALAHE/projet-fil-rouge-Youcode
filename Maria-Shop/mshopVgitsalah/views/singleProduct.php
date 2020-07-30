@@ -82,6 +82,7 @@ include('../app/controllers/cart.php');
       <input type="hidden" name="idP" value="<?php echo $_GET['singleIdP'] ?>">
       <input type="hidden" name="idU" value="<?php echo $_SESSION['idU'] ?>">
     <?php if(count($sizeProduct) == 0 ): ?>
+      <input type="hidden" name="" >
     <?php else: ?>
     <div class="card__choose">
       <div class="card__size">

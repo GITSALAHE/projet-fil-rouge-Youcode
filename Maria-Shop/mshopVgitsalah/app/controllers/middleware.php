@@ -32,13 +32,14 @@ function showCart($redirect = '/views/index.php')
     }
 }
 
-// function showThankyouPage($redirect = '/views/index.php'){
-//     $order = new Order();
-//     $lastOrder = $order->getOrderId('orders', ['idU' => $_SESSION['idU']], 'idOrder');
-//     if($_GET['idOrder'] != $lastOrder['idOrder']){
-//         $_SESSION['message'] = 'unothorized';
-//         $_SESSION['type'] = 'error';
-//         header('location: ' . BASE_URL . $redirect);
-//         exit(0);
-//     }
-// }
+function showCheckout($redirect = '/views/index.php'){
+    $crud = new CRUD();
+    $showingCheckout = $crud->selectAll('cart', ['idU' => $_SESSION['idU']]);
+    
+    if(count($showingCheckout) === 0){
+        $_SESSION['message'] = 'please add a product to cart';
+        $_SESSION['type'] = 'error';
+        header('location: '. BASE_URL . $redirect);
+        exit(0);
+    }
+}

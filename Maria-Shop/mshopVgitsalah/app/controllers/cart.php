@@ -14,6 +14,9 @@ if(isset($_POST['addToCart'])){
     $errorAddToCart = validateAddTocart($_POST);
     if(count($errorAddToCart) == 0){
         unset($_POST['addToCart']);
+        if(!isset($_POST['idSize'])){
+            $_POST['idSize'] = "";
+        }
         $crud->create('cart', $_POST);
         $_SESSION['addToCart'] = 'Product added to cart';
     }

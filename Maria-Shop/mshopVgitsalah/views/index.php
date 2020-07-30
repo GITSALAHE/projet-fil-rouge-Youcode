@@ -60,7 +60,7 @@ include('../app/controllers/cart.php');
           <?php else: ?>
             <li><a href="login-reg.php">Account</a></li>
           <?php endif; ?>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="contactus.php">Contact Us</a></li>
           <?php if(isset($_SESSION['idU'])) :?>
           <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
@@ -92,8 +92,9 @@ include('../app/controllers/cart.php');
       </div>
 
       <div class="btn-grp">
-        <button class="btn btn-large btnm1">SHOP NOW</button>
-        <button class="btn btn-large btnm2">FIND MORE</button>
+        <a name="" id="" class="btn btn-large btnm1" href="store.php?store=true&page=1" role="button">SHOP NOW</a>
+        <a name="" id="" class="btn btn-large btnm2" href="store.php?store=true&page=1" role="button">FIND MORE</a>
+      
       </div>
     </div>
   </div>

@@ -75,6 +75,7 @@ include('../app/controllers/cart.php');
     <div class="row" style="margin-top: 100px;">
     <h3 class="h3">Store</h3>
     <?php foreach($allProductShow as $product): ?>
+        
         <div class="col-md-3 col-sm-6">
             <div class="product-grid">
                 <div class="product-image">

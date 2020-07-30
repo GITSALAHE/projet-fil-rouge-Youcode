@@ -43,7 +43,7 @@ include('../app/controllers/category.php');
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="index">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li><a href="#">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>

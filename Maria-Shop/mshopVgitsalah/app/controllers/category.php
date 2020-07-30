@@ -64,12 +64,12 @@ $navbar_categories = $crud->selectAll('category');
 $pagination = new Paginator();
 
 //pagination 
-
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 } else {
     $page = 1;
 }
+
 //pagination formula 
 $perPage = 12;
 $start = ($perPage * $page) - $perPage;
@@ -79,7 +79,8 @@ if (isset($_GET['categoryId'])) {
     $pages = ceil($row / $perPage);
 }
 
-if (isset($_GET['store'])) {
+if(isset($_GET['store']))
+{
     $allProductShow = $pagination->showingAllItems('product', $start, $perPage);
     $rows = $pagination->AllButtonPagination('product');
     $pageStore = ceil($rows / $perPage);

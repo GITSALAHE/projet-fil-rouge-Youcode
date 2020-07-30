@@ -83,7 +83,10 @@ include('../app/controllers/cart.php');
     $nameC = '';
     $nameCategory = $crud->selectOne('category', ['idC' => $_GET['categoryId']]);
     echo $nameC = $nameCategory['nameCategory']; ?></h3>
-            <?php foreach($showingProduct as $product): ?>
+            <?php foreach($showingProduct as $product):
+                if($product['Qte'] > 0):
+                ?>
+                
             <div class="col-md-3 col-sm-6">
                 <div class="product-grid">
                     <div class="product-image">
@@ -110,6 +113,7 @@ include('../app/controllers/cart.php');
                     </div>
                 </div>
             </div>
+                <?php endif; ?>
             <?php endforeach; ?>
 
         </div>

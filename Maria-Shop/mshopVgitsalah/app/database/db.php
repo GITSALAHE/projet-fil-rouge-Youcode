@@ -195,4 +195,28 @@ class Order extends DB{
         $records = $stmt->get_result()->fetch_assoc();
         return $records;
     }
+
+    public function getDiffNumOrder($table, $order)
+    {
+        $conn = $this->connect();
+       $sql = "SELECT * FROM `$table` GROUP BY $order HAVING COUNT($order) > 1";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+
+    
+    }
+    public function getOneProductQte($table, $order){
+        $conn = $this->connect();
+        $sql = "SELECT * FROM `$table` GROUP BY $order HAVING COUNT($order) = 1";
+         $query = mysqli_query($conn, $sql);
+         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+         return $result;
+    }
+    public function updateCalculated($idOrder){
+        $conn = $this->connect();
+        $sql = "UPDATE `orders` SET `calculated` = '1' WHERE `orders`.`idOrder` = $idOrder";
+        $query = mysqli_query($conn, $sql);
+        return $query;
+    }
 }

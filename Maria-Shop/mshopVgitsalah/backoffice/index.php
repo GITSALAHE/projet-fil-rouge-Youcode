@@ -24,7 +24,7 @@ include('../app/controllers/users.php');
             overflow-x: hidden;
             height: 100%;
             background-image: linear-gradient(to right, #D500F9, #FFD54F);
-            background-repeat: no-repeat
+            
         }
 
         input,

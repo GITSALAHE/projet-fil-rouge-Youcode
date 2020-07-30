@@ -17,10 +17,11 @@ $count_product = count($product);
 
 
 //counting orders 
+$orderCountsDash = new Order();
+$orders = $orderCountsDash->getOneProductQte('orders', 'orderNumber');
+$ordersDiff = $orderCountsDash->getDiffNumOrder('orders', 'orderNumber');
 
-$orders = $crud->selectAll('orders');
-
-$count_orders = count($orders);
+$count_orders = count($orders) + count($ordersDiff);
 
 
 //counting users 

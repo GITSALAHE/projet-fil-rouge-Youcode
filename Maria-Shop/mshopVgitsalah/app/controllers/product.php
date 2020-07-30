@@ -150,7 +150,7 @@ if (isset($_GET['del_pr'])) {
 //end delete product 
 
 
-//showing product in sigleproduc.php 
+//showing product in sigleprodct.php 
 $nameProduct = '';
 $priceProduct = '';
 $image1 = '';
