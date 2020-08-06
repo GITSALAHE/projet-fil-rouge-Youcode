@@ -1,4 +1,5 @@
 <?php
+define('BASE_URL', "http://localhost/eshop");
 function printIt($value)
 {
     echo "<pre>", print_r($value), "</pre>";

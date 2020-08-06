@@ -19,21 +19,24 @@ include('../../app/controllers/product.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Manage Sizes</title>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body>
     <div class="container">
         <h1 style="text-align: center;">Manage sizes</h1>
         <a name="" id="" class="btn btn-primary" href="addSize.php" role="button">Add size</a>
-        
+        <a name="" id="" class="btn btn-primary" href="index.php" role="button">Back to product</a>
+        <?php include('../../app/helpers/messageSuccess.php') ?>
         <table class="table table-dark mt-5">
             <tbody>
-                <?php foreach ($manage_sizes as $sizes) : ?>
+                <?php foreach ($sizes as $size) : ?>
                     <tr>
                         <td>
-                            <?php echo $sizes['nameSize'] ?>
-                            <a name="" id="" class="btn btn-success ml-5" href="editSize.php?editSizeId=<?php echo $sizes['idSize'] ?>" role="button">edit</a>
-                            <a name="" id="" class="btn btn-danger ml-5" href="manageSize.php?del_idS=<?php echo $sizes['idSize'] ?>" role="button">delete</a>
+                            <?php echo $size['nameSize'] ?>
+                            <a name="" id="" class="btn btn-success ml-5" href="editSize.php?editSizeId=<?php echo $size['idSize'] ?>" role="button">edit</a>
+                            <a name="" id="" class="btn btn-danger ml-5" href="manageSize.php?del_idS=<?php echo $size['idSize'] ?>" role="button">delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

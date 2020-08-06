@@ -1,12 +1,13 @@
 <?php
-include('../app/database/connect.php');
-include('../app/database/db.php');
-include('../app/controllers/middleware.php');
+include('../path.php');
+include(ROOT_PATH .'/app/database/connect.php');
+include(ROOT_PATH .'/app/database/db.php');
+include(ROOT_PATH .'/app/controllers/middleware.php');
 showCheckout();
-include('../app/controllers/category.php');
-include('../app/controllers/product.php');
-include('../app/controllers/cart.php');
-include('../app/controllers/orders.php');
+include(ROOT_PATH .'/app/controllers/category.php');
+include(ROOT_PATH .'/app/controllers/product.php');
+include(ROOT_PATH .'/app/controllers/cart.php');
+include(ROOT_PATH .'/app/controllers/orders.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

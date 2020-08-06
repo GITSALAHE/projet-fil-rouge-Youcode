@@ -1,6 +1,4 @@
 <?php
-define('BASE_URL', "http://localhost/eshop");
-
 function adminOnly($redirect = '/views')
 {
     if (empty($_SESSION['Admin'])) {

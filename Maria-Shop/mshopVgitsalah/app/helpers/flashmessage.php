@@ -49,10 +49,10 @@ if (isset($_POST['editProduct'])) {
 
 <?php
 if (isset($_POST['addSize'])) {
-    if (count($errorAddSize) > 0) : ?>
+    if (count($errorsAddSizeList) > 0) : ?>
 
         <div class="alert alert-danger">
-            <?php foreach ($errorAddSize as $error) : ?>
+            <?php foreach ($errorsAddSizeList as $error) : ?>
                 <li><?php echo $error; ?></li>
             <?php endforeach; ?>
         </div>
@@ -61,10 +61,10 @@ if (isset($_POST['addSize'])) {
 
 <?php
 if (isset($_POST['editSize'])) {
-    if (count($errorsEdit) > 0) : ?>
+    if (count($errorsEditSizeList) > 0) : ?>
 
         <div class="alert alert-danger">
-            <?php foreach ($errorsEdit as $error) : ?>
+            <?php foreach ($errorsEditSizeList as $error) : ?>
                 <li><?php echo $error; ?></li>
             <?php endforeach; ?>
         </div>

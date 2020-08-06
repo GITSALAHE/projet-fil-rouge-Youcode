@@ -7,6 +7,43 @@ $table = 'product';
 //selecting all categories and sizes from DATABASE for editing or adding product
 $categories_product = $crud->selectAll('category');
 $sizes = $crud->selectAll('size');
+
+//add size list 
+$errorsAddSizeList = array();
+if(isset($_POST['addSize'])){
+    $errorsAddSizeList = validateAddSizeList($_POST);
+    if(count($errorsAddSizeList) == 0){
+        unset($_POST['addSize']);
+        $crud->create('size', $_POST);
+        $_SESSION['message'] = 'size add successfuly';
+        $_SESSION['type'] = 'success';
+        header('location:manageSize.php');
+        exit();
+    }
+}
+
+//update size List 
+$errorsEditSizeList = array();
+if(isset($_GET['editSizeId'])){
+    $searchSizeId = $crud->selectOne('size', ['idSize' => $_GET['editSizeId']]);
+    $sizename = $searchSizeId['nameSize'];
+}
+
+if(isset($_POST['editSize'])){
+    $errorsEditSizeList = validateEditSizeList($_POST);
+    if(count($errorsEditSizeList) == 0){
+        $idSizeList = $_POST['idSize'];
+        unset($_POST['editSize'], $_POST['idSize']);
+        $crud->update('size', $idSizeList, $_POST, 'idSize');
+        $_SESSION['message'] = 'size updated successfuly';
+        $_SESSION['type'] = 'success';
+        header('location:manageSize.php');
+        exit();
+    }
+}
+
+
+
 //end selecting categories and sizes for editing or adding product
 
 
@@ -150,7 +187,7 @@ if (isset($_GET['del_pr'])) {
 //end delete product 
 
 
-//showing product in sigleprodct.php 
+//showing product in sigleproduct.php 
 $nameProduct = '';
 $priceProduct = '';
 $image1 = '';
