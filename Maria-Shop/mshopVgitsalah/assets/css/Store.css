@@ -72,10 +72,15 @@ body {
 }
 
 h3.h3 {
-    text-align: center;
-    margin: 1em;
+    text-align: left;
+    margin-top: 100px;
+    margin-left: 15px;
     text-transform: capitalize;
-    font-size: 1.7em;
+    font-size: 15px;
+}
+h3.h3 a {
+    text-decoration: none;
+    color: #FBAE32;
 }
 
 /********************* shopping Demo-1 **********************/
@@ -87,7 +92,7 @@ h3.h3 {
     overflow: hidden;
     position: relative;
     z-index: 1;
-    margin-top:100px;
+    
 }
 
 .product-grid .product-image {
@@ -283,11 +288,10 @@ h3.h3 {
 
     .navbar-nav {
         text-align: center;
-        background-color: #c59d30;
-    }
-
+        background-color: #ffb049;
+      }
     .navbar-default .navbar-nav>li>a {
-        color: #dddcdc;
+        color: #f3f0f0;
         margin: 10px 5px 5px 5px;
         margin-top: 30px;
         font-size: 15px;

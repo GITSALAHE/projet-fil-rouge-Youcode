@@ -451,50 +451,7 @@ margin-right: auto
 	color: #000000;;
 }
 
-/* footer */
-a:hover{
-  text-decoration:none;
-}
-.section-padding {
-padding: 10px 0;
-}
 
-.bottom .copyright {
-  color: #e5e5e5;
-  font-weight: 600;
-}
-.copyright a {
-  color: #ffb049;
-  margin-left: 3px;
-  padding-right: 3px;
-}
-.bottom p {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   line-height: 50px;
-  font-size: 16px;
-  font-weight: 400;
-}
-.copyright p span {
-  color: #d1caca;
-}
-.bottom .copyright p, .bottom .copyright a:hover{
-  color: #6c6d83;
-}
-
-.list-inline-item a{
-  color: #cecece;
-  margin-left: 10px;
-}
-.list-inline-item a:hover{
-  color: #8f8c8c;
-  cursor: pointer;
-}
-.pt-4 h4{
-  text-align: center;
-  font-size: 25px;
-  font-weight: 700;
-  margin-top: 50px;
-
-}
 @media screen and (max-width:500px) {
 
   .navbar-default .navbar-collapse, .navbar-default .navbar-form {
@@ -502,7 +459,10 @@ padding: 10px 0;
 }
 .navbar-nav {
   text-align: center;
-  background-color: #c59d30;
+  background-color: #ffb049;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #f3f0f0;
 }
 .Picontainer{
   width:100%;

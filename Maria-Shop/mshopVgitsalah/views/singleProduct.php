@@ -75,7 +75,7 @@ include('../app/controllers/cart.php');
     <div class="card__head">
       <h2><?php echo $nameProduct?>
       </h2>
-      <p class="card__text">Shirt sleeve T-shirt with a round <br> neckline and a contrast from print.</p>
+      <h3 class="card__text"> <?php echo $description ?></h3>
       <p class="card__price">$ <?php echo $priceProduct ?></p>
     </div>
     <form method="post" action="">

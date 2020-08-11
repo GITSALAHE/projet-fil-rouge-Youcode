@@ -192,12 +192,14 @@ $nameProduct = '';
 $priceProduct = '';
 $image1 = '';
 $image2 = '';
+$description = '';
 if(isset($_GET['singleIdP'])){
     $singleProduct = $crud->selectOne($table, ['idP' => $_GET['singleIdP']]);
     $nameProduct = $singleProduct['nameProduct'];
     $priceProduct = $singleProduct['Price'];
     $image1 = $singleProduct['Image'];
     $image2 = $singleProduct['Image2'];
+    $description = $singleProduct['description'];
     $sizeProduct = $crud->selectAll('size_product', ['idP' => $_GET['singleIdP']]);
     
 }

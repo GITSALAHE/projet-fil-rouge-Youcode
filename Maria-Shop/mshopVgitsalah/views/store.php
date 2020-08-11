@@ -41,7 +41,9 @@ include('../app/controllers/cart.php');
           <li><a class="active"  href="#">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>
-            <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1"><?php echo $category['nameCategory'] ?></a></li>
+            <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
+            <?php echo $category['nameCategory'] ?></a>
+          </li>
 
           <?php endforeach; ?>
           <li><a href="login-reg.php">Account</a></li>
@@ -72,16 +74,19 @@ include('../app/controllers/cart.php');
 
   <!--.product grid -->
   <div class="container">
-    <div class="row" style="margin-top: 100px;">
-    <h3 class="h3">Store</h3>
+    <div class="row" style="margin-top: 90px;">
+    <h3 class="h3">
+      <a href="index.php">Home</a>
+      &nbsp; / &nbsp; Store
+    </h3> <br/>
     <?php foreach($allProductShow as $product): ?>
         
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6" style="margin-bottom:50px;">
             <div class="product-grid">
                 <div class="product-image">
                     <a href="#">
-                        <img class="pic-1" style="height: 260.5px;" src="../assets/img/<?php echo $product['Image'] ?>">
-                        <img class="pic-2" src="../assets/img/<?php echo $product['Image2'] ?>" style="height: 260.5px;">
+                        <img class="pic-1" style="height: 400px;" src="../assets/img/<?php echo $product['Image'] ?>">
+                        <img class="pic-2" src="../assets/img/<?php echo $product['Image2'] ?>" style="height: 400px;">
                     </a>
                     <ul class="social">
                         <li><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>" data-tip="View product"><i class="fa fa-search"></i></a></li>
@@ -89,7 +94,7 @@ include('../app/controllers/cart.php');
                 </div>
                 <div class="product-content">
                     <h3 class="title"><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo $product['nameProduct'] ?></a></h3>
-                    <div class="price">$ <?php echo $product['Price'] ?>.00
+                    <div class="price">$ <?php echo $product['Price'] ?>
                     </div>
                     <?php
                                                             $nameC = $crud->selectOne('category', ['idC' => $product['idC']]);?>
@@ -116,7 +121,7 @@ include('../app/controllers/cart.php');
         </nav>
     </div>
 
-
+  <?php include_once ('footer.php') ?>
 
 
 

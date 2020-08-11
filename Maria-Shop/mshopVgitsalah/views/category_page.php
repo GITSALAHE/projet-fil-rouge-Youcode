@@ -41,11 +41,13 @@ include('../app/controllers/cart.php');
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.php">Home</a></li>
-                    <li><a class="active" href="store.php?store=true&page=1">Store</a></li>
+                    <li><a href="store.php?store=true&page=1">Store</a></li>
 
                     <?php foreach ($navbar_categories as $category) : ?>
-                    <li><a
-                            href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1"><?php echo $category['nameCategory'] ?></a>
+                    <li><a class="active"
+                   
+                          href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
+                          <?php echo $category['nameCategory'] ?></a>
                     </li>
 
                     <?php endforeach; ?>
@@ -79,22 +81,27 @@ include('../app/controllers/cart.php');
     <!--.product grid -->
     <div class="container">
         <div class="row" style="margin-top: 100px;">
-            <h3 class="h3" style="font-family: Lato;"><?php 
+     <h3 class="h3">
+      <a href="store.php?store=true&page=1">Store</a>
+      &nbsp; / &nbsp; 
+      <?php 
     $nameC = '';
     $nameCategory = $crud->selectOne('category', ['idC' => $_GET['categoryId']]);
-    echo $nameC = $nameCategory['nameCategory']; ?></h3>
+    echo $nameC = $nameCategory['nameCategory']; ?>
+    </h3> <br/>
+    
             <?php foreach($showingProduct as $product):
                 if($product['Qte'] > 0):
                 ?>
                 
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6"  style="margin-bottom:50px;">
                 <div class="product-grid">
                     <div class="product-image">
                         <a href="#">
-                            <img class="pic-1" style="height: 260.5px;"
+                            <img class="pic-1" style="height: 400px;"
                                 src="../assets/img/<?php echo $product['Image'] ?>">
                             <img class="pic-2" src="../assets/img/<?php echo $product['Image2'] ?>"
-                                style="height: 260.5px;">
+                                style="height: 400px;">
                         </a>
                         <ul class="social">
                             <li><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"
@@ -135,9 +142,7 @@ include('../app/controllers/cart.php');
         </nav>
     </div>
 
-
-
-
+<?php include_once ('footer.php') ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>

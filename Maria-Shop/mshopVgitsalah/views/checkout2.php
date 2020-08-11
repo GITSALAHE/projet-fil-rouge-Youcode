@@ -36,7 +36,7 @@ include(ROOT_PATH .'/app/controllers/orders.php');
             <div class="col-md-4 order-md-2 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill"><?php?></span>
+                    <span class="badge badge-secondary badge-pill"><?php ?></span>
                 </h4>
                 <ul class="list-group mb-3">
                     <?php
