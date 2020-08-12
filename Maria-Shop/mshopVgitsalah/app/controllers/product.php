@@ -91,6 +91,9 @@ if (isset($_POST['addProduct'])) {
         $_POST['description'] = htmlentities($_POST['description']);
         unset($_POST['addProduct']);
         $add_product = $crud->create($table, $_POST);
+        $nameCat =  $crud->selectOne('category', ['idC' => $_POST['idC']]);
+        $_POST['idC'] = $nameCat['nameCategory'];
+        $crud->create('product_history', $_POST);
         $_SESSION['message'] = "Product added '" . $_POST['nameProduct'] . "'" . ' !';
         $_SESSION['type'] = 'success';
         header('location:index.php');
@@ -168,6 +171,7 @@ if (isset($_POST['editProduct'])) {
         $idProduct = $_POST['idP'];
         unset($_POST['editProduct'], $_POST['idP']);
         $crud->update($table, $idProduct, $_POST, 'idP');
+        $crud->update('product_history', $idProduct, $_POST, 'idP');
         $_SESSION['message'] = "Product edited '" . $_POST['nameProduct'] . "'" . ' !';
         $_SESSION['type'] = 'success';
         header('location:index.php');
@@ -182,6 +186,7 @@ if (isset($_GET['del_pr'])) {
     $idDelproduct = $_GET['del_pr'];
     $crud->delete('size_product', 'idP', $idDelproduct);
     $crud->delete($table, 'idP', $idDelproduct);
+    $crud->delete('cart', 'idP', $idDelproduct);
     $_SESSION['message'] = 'product deleted !';
     $_SESSION['type'] = 'success';
     header('location:index.php');

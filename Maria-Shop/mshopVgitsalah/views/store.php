@@ -38,7 +38,7 @@ include('../app/controllers/cart.php');
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.php">Home</a></li>
-          <li><a class="active"  href="#">Store</a></li>
+          <li><a class="active"  href="store.php?store=true&page=1">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>
             <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
@@ -46,7 +46,6 @@ include('../app/controllers/cart.php');
           </li>
 
           <?php endforeach; ?>
-          <li><a href="login-reg.php">Account</a></li>
           <?php if(isset($_SESSION['idU'])): ?>
             <li><a href="myaccount.php">My Account</a></li>
           <?php else: ?>

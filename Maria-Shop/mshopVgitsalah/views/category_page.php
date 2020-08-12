@@ -113,7 +113,7 @@ include('../app/controllers/cart.php');
                         <h3 class="title"><a
                                 href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo $product['nameProduct'] ?></a>
                         </h3>
-                        <div class="price">$ <?php echo $product['Price'] ?>.00
+                        <div class="price">$ <?php echo $product['Price'] ?>
                         </div>
                         <a class="add-to-cart" href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>">+ More
                             info</a>

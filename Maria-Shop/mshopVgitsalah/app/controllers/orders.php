@@ -15,6 +15,8 @@ if(isset($_POST['checkout'])){
         $_POST['idP'] = $cart['idP'];
         $_POST['qte'] = $cart['qte'];
         $_POST['idU'] = $cart['idU'];
+        $productDetail = $crud->selectOne('product', ['idP' => $cart['idP']]);
+        $_POST['price'] = $cart['qte'] * $productDetail['Price'];
         unset($_POST['checkout'],  $_POST['payment'], $_POST['email']);
         
         $crud->create('orders', $_POST);
@@ -63,7 +65,7 @@ if(isset($_GET['invoice'])){
     $total = 0;
     $productForInvoice = $crud->selectAll('orders', ['orderNumber' => $_GET['invoice']]);
     foreach($productForInvoice as $productM){
-        $productNamePdf = $crud->selectOne('product', ['idP' => $productM['idP']]);
+        $productNamePdf = $crud->selectOne('product_history', ['idP' => $productM['idP']]);
         $amount = 0;
         $amount = $productNamePdf['Price'] * $productM['qte'];
         $total = $total + $amount;
@@ -173,7 +175,7 @@ if(isset($_GET['invoice'])){
   <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
   <sethtmlpagefooter name="myfooter" value="on" />
   mpdf-->
-      <div style="text-align: right">Date: 13th November 2020</div>
+      <div style="text-align: right">Date: '. date('F j, Y', strtotime($dataForinvoice['created_at'])) .'</div>
       <table width="100%" style="font-family: serif;" cellpadding="10">
           <tr>
               <td width="45%" style="border: 0.1mm solid #888888;">

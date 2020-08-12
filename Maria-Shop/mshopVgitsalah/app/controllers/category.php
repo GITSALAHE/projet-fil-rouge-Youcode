@@ -88,5 +88,8 @@ if(isset($_GET['store']))
 //serch product in store.php
 if(isset($_POST['search'])){
     $searchDb = new Search();
+    
     $allProductShow = $searchDb->searchProduct($_POST['search']);
+    $rows = count($allProductShow);
+    $pageStore = ceil($rows / $perPage);
 }

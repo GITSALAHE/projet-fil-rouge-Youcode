@@ -140,7 +140,7 @@ Phone:
 										<td class="center"><?php echo $_GET['orderNum'] ?></td>
 
 										<td>
-											<a href="#"><?php $prname =  $crud->selectOne('product', ['idP' => $orderD['idP']]); echo $prname['nameProduct']?></a>
+											<a href="#"><?php $prname =  $crud->selectOne('product_history', ['idP' => $orderD['idP']]); echo $prname['nameProduct']?></a>
 										</td>
 										<td class="hidden-xs">
 											<?php echo $prname['description'] ?>
