@@ -87,6 +87,7 @@ if (isset($_POST['addProduct'])) {
     }
 
     if (count($errorsProduct) == 0) {
+        $_POST['nameProduct'] = htmlentities($_POST['nameProduct']);
         $_POST['description'] = htmlentities($_POST['description']);
         unset($_POST['addProduct']);
         $add_product = $crud->create($table, $_POST);
@@ -114,6 +115,7 @@ $qte_edit = '';
 $size_edit = '';
 $category_edit = '';
 $idP_edit = '';
+$description_edit = '';
 if (isset($_GET['idModPr'])) {
     $get_data_product = $crud->selectOne($table, ['idP' => $_GET['idModPr']]);
     $idP_edit = $get_data_product['idP'];
@@ -121,6 +123,7 @@ if (isset($_GET['idModPr'])) {
     $price_edit = $get_data_product['Price'];
     $qte_edit = $get_data_product['Qte'];
     $category_edit = $get_data_product['idC'];
+    $description_edit = $get_data_product['description'];
 }
 
 
@@ -203,3 +206,4 @@ if(isset($_GET['singleIdP'])){
     $sizeProduct = $crud->selectAll('size_product', ['idP' => $_GET['singleIdP']]);
     
 }
+

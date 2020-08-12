@@ -79,6 +79,16 @@ include('../app/controllers/cart.php');
       <a href="index.php">Home</a>
       &nbsp; / &nbsp; Store
     </h3> <br/>
+    <!-- search product -->
+    <form action="" method="post">
+    <div class="input-group MB-5">
+      <input type="text" class="form-control" placeholder="Search" name="search">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+  </form>
+  <!-- end search product -->
     <?php foreach($allProductShow as $product): ?>
         
         <div class="col-md-3 col-sm-6" style="margin-bottom:50px;">
@@ -93,7 +103,7 @@ include('../app/controllers/cart.php');
                     </ul>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo $product['nameProduct'] ?></a></h3>
+                    <h3 class="title"><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo html_entity_decode($product['nameProduct'])  ?></a></h3>
                     <div class="price">$ <?php echo $product['Price'] ?>
                     </div>
                     <?php

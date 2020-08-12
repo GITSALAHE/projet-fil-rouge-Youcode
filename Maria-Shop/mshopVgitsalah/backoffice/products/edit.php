@@ -57,7 +57,7 @@ include('../../app/controllers/product.php');
             </div>
             <div class="form-group">
                 <label for="my-textarea">Text</label>
-                <textarea id="my-textarea" class="form-control" name="description" rows="3"></textarea>
+                <textarea id="my-textarea" class="form-control"  name="description" rows="3"><?php echo $description_edit ?></textarea>
             </div>
             <div class="form-group">
                 <label for="my-select">Category</label>
