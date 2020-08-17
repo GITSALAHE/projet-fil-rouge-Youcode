@@ -78,10 +78,18 @@ if (isset($_GET['categoryId'])) {
     $row = $pagination->buttonPagination('product', 'idC', $_GET['categoryId']);
     $pages = ceil($row / $perPage);
 }
-
+$allProductShow =array();
 if(isset($_GET['store']))
 {
     $allProductShow = $pagination->showingAllItems('product', $start, $perPage);
     $rows = $pagination->AllButtonPagination('product');
+    $pageStore = ceil($rows / $perPage);
+}
+//serch product in store.php
+if(isset($_POST['search'])){
+    $searchDb = new Search();
+    
+    $allProductShow = $searchDb->searchProduct($_POST['search']);
+    $rows = count($allProductShow);
     $pageStore = ceil($rows / $perPage);
 }

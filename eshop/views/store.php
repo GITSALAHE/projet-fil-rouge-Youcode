@@ -38,7 +38,7 @@ include('../app/controllers/cart.php');
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.php">Home</a></li>
-          <li><a class="active"  href="#">Store</a></li>
+          <li><a class="active"  href="store.php?store=true&page=1">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>
             <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
@@ -50,7 +50,9 @@ include('../app/controllers/cart.php');
             <li><a href="myaccount.php">My Account</a></li>
           <?php else: ?>
             <li><a href="login-reg.php">Account</a></li>
-          <?php endif; ?>          <?php if(isset($_SESSION['idU'])) :?>
+          <?php endif; ?>          
+          <li><a href="contactus.php">Contact Us</a></li>
+          <?php if(isset($_SESSION['idU'])) :?>
           <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
                 <span class="fa-shopping-cart"></span>
@@ -77,7 +79,18 @@ include('../app/controllers/cart.php');
     <h3 class="h3">
       <a href="index.php">Home</a>
       &nbsp; / &nbsp; Store
-    </h3> <br/>
+      <a name="" id="" class="btn" style="background-color: #FBAE32; color:#fff" href="#search" role="button">search</a> <br/>
+    </h3> 
+    <!-- search product -->
+    <div id="search">
+    <button type="button" class="close">×</button>
+    <form method="post">
+        <input type="text" name="search" placeholder="type keyword(s) here" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    </div>
+  <!-- end search product -->
+            <?php if(count($allProductShow) > 0) :?>
     <?php foreach($allProductShow as $product): ?>
         
         <div class="col-md-3 col-sm-6" style="margin-bottom:50px;">
@@ -92,7 +105,7 @@ include('../app/controllers/cart.php');
                     </ul>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo $product['nameProduct'] ?></a></h3>
+                    <h3 class="title"><a href="singleProduct.php?singleIdP=<?php echo $product['idP'] ?>"><?php echo html_entity_decode($product['nameProduct'])  ?></a></h3>
                     <div class="price">$ <?php echo $product['Price'] ?>
                     </div>
                     <?php
@@ -102,7 +115,9 @@ include('../app/controllers/cart.php');
             </div>
         </div>
           <?php endforeach; ?>
-      
+    <?php else: ?>
+      <h1 class="lost">Any product finded</h1>
+    <?php endif; ?>
     </div>
 </div>
 <hr>
@@ -127,3 +142,21 @@ include('../app/controllers/cart.php');
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+  <script>
+    $(function () {
+    $('a[href="#search"]').on('click', function(event) {
+        event.preventDefault();
+        $('#search').addClass('open');
+        $('#search > form > input[type="text"]').focus();
+    });
+    
+    $('#search, #search button.close').on('click keyup', function(event) {
+        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+            $(this).removeClass('open');
+        }
+    });
+    
+    
+   
+});
+  </script>

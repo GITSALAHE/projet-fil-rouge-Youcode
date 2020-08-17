@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', "http://localhost/eshop");
+define('BASE_URL', "https://app-638ce113-294b-4d3a-9516-b41b16d2b075.cleverapps.io/");
 function printIt($value)
 {
     echo "<pre>", print_r($value), "</pre>";
@@ -220,4 +220,17 @@ class Order extends DB{
         $query = mysqli_query($conn, $sql);
         return $query;
     }
+}
+class Search extends DB{
+   
+
+    public function searchProduct($term){
+        $match = '%' . $term . '%';
+        $conn = $this->connect();
+        $sql = "SELECT p.* FROM product AS p WHERE p.nameProduct LIKE '$match'";
+        $query = mysqli_query($conn, $sql);
+        $records = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $records;
+    }
+    
 }

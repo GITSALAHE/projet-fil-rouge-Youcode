@@ -200,7 +200,7 @@ include('../app/controllers/cart.php');
     <!-- icon box -->
   </div>
   <!-- /container gris-->
-<?php include ('Footer.php') ?>
+<?php include_once('footer.php') ?>
 
   <!--Bottom Footer-->
   <!--Bottom Footer-->
@@ -233,7 +233,7 @@ include('../app/controllers/cart.php');
       });
     });
   </script>
-  <script>(function(d,t,u,s,e){e=d.getElementsByTagName(t)[0];s=d.createElement(t);s.src=u;s.async=1;e.parentNode.insertBefore(s,e);})(document,'script','//localhost/eshop/backoffice/livechat/php/app.php?widget-init.js');</script>
+  <script>(function(d,t,u,s,e){e=d.getElementsByTagName(t)[0];s=d.createElement(t);s.src=u;s.async=1;e.parentNode.insertBefore(s,e);})(document,'script','//https://app-638ce113-294b-4d3a-9516-b41b16d2b075.cleverapps.io//backoffice/livechat/php/app.php?widget-init.js');</script>
 </body>
 
 </html>

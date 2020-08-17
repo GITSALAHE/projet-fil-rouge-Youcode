@@ -32,11 +32,6 @@
             FAQ
           </a>
         </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-fb mx-1" href="terms.php">
-          Terms and conditions
-          </a>
-        </li>
       </ul>
       <!-- Social buttons -->
 

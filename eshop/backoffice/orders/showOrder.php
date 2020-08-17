@@ -58,11 +58,11 @@ include('../../app/controllers/orders.php')
 
 					<div class="widget-toolbar no-border invoice-info">
 						<span class="invoice-info-label">Invoice:</span>
-						<span class="red">#121212</span>
+						<span class="red">#<?php echo $_GET['orderNum'] ?></span>
 
 						<br>
 						<span class="invoice-info-label">Date:</span>
-						<span class="blue">xx/xx/2020</span>
+						<span class="blue"><?php echo $timeOrder ?></span>
 					</div>
 
 					<div class="widget-toolbar hidden-480">
@@ -140,7 +140,7 @@ Phone:
 										<td class="center"><?php echo $_GET['orderNum'] ?></td>
 
 										<td>
-											<a href="#"><?php $prname =  $crud->selectOne('product', ['idP' => $orderD['idP']]); echo $prname['nameProduct']?></a>
+											<a href="#"><?php $prname =  $crud->selectOne('product_history', ['idP' => $orderD['idP']]); echo $prname['nameProduct']?></a>
 										</td>
 										<td class="hidden-xs">
 											<?php echo $prname['description'] ?>

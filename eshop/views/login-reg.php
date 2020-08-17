@@ -26,7 +26,7 @@ include('../app/controllers/cart.php'); ?>
 <body>
   <!--.nav-collapse -->
   <nav class="navbar navbar-default">
-    <div class="container">
+    <div class="container"">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
@@ -41,7 +41,7 @@ include('../app/controllers/cart.php'); ?>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.php">Home</a></li>
-          <li><a  href="#">Store</a></li>
+          <li><a class="active"  href="store.php?store=true&page=1">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>
             <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
@@ -75,7 +75,7 @@ include('../app/controllers/cart.php'); ?>
   <!--/.nav-collapse -->
   
 
-  <div class="container">
+  <div class="container"  style="display: flex; justify-content:center" >
   <div class="form-wrap">
 		<div class="tabs">
 			<h3 class="signup-tab"><a class="active" href="#signup-tab-content"> Sign Up</a></h3>
@@ -84,19 +84,10 @@ include('../app/controllers/cart.php'); ?>
 
 		<div class="tabs-content">
 			<div id="signup-tab-content" class="active">
-      <?php
-        if (isset($_POST['login'])) {
-            if (count($errorLogin) > 0) : ?>
-
-                <div class="alert alert-danger">
-                    <?php foreach ($errorLogin as $error) : ?>
-                        <li><?php echo $error; ?></li>
-                    <?php endforeach; ?>
-                </div>
-        <?php endif;
-        } ?>
+      
+         <?php include('../app/helpers/flashmessage.php') ?>
 				<form class="signup-form" action="" method="post">
-                <?php include('../app/helpers/flashmessage.php') ?>
+               
                     <input type="text" class="input" name="fullname" id="user_name" autocomplete="off" placeholder="full name">
 					<input type="email" class="input" name="email" id="user_email" autocomplete="off" placeholder="Email">
                     <input type="password" class="input" name="password" id="user_pass" autocomplete="off" placeholder="Password">
@@ -110,6 +101,22 @@ include('../app/controllers/cart.php'); ?>
 			</div><!--.signup-tab-content-->
 
 			<div id="login-tab-content">
+      <?php
+        if (isset($_POST['login'])) {
+            if (count($errorLogin) > 0) : ?>
+
+             <script>
+               document.getElementById("login-tab").click();
+             </script>
+               
+                <div class="alert alert-danger">
+                    <?php foreach ($errorLogin as $error) : ?>
+                        <li><?php echo $error; ?></li>
+                    <?php endforeach; ?>
+                </div>
+               
+        <?php endif;
+        } ?>
 				<form class="login-form" action="login-reg.php" method="post"><br/>
 					<input type="text" name="email" class="input" id="user_login" autocomplete="off" placeholder="Your Email"><br/>
 					<input type="password" name="password" class="input" id="user_pass" autocomplete="off" placeholder="Password"><br/><br/>
@@ -138,7 +145,16 @@ include('../app/controllers/cart.php'); ?>
 		$('div[id$="tab-content"]').removeClass('active');
 		$(tab_content).addClass('active');
 	});
+  <?php
+        if (isset($_POST['login'])) {
+            if (count($errorLogin) > 0) : ?>
+
+        tab.click();
+               
+        <?php endif;
+        } ?>
 });
+
 </script>
 
 <?php include_once ('footer.php') ?>
