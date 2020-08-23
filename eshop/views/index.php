@@ -17,10 +17,7 @@ include('../app/controllers/cart.php');
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
   <link rel="stylesheet" href="../assets/css/index.css">
-
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
 
   <title>index</title>

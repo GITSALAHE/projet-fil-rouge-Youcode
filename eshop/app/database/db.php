@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', "https://app-638ce113-294b-4d3a-9516-b41b16d2b075.cleverapps.io/");
+
 function printIt($value)
 {
     echo "<pre>", print_r($value), "</pre>";
@@ -117,7 +117,7 @@ class CRUD extends DB
         $sql = $sql . " WHERE $table . $idName=?";
         $data['$idName'] = $id;
         $stmt = $this->executeQuery($sql, $data);
-        return $stmt->affected_rows;
+        
     }
 
 
@@ -126,7 +126,7 @@ class CRUD extends DB
         $conn = $this->connect();
         $sql = "DELETE FROM $table WHERE $idName=?";
         $stmt = $this->executeQuery($sql, ['$idName' => $id]);
-        return $stmt->affected_rows;
+        
     }
    
 }

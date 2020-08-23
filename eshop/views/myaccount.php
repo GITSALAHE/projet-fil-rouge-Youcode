@@ -8,7 +8,6 @@ include('../app/controllers/product.php');
 include('../app/controllers/cart.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +16,9 @@ include('../app/controllers/cart.php'); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="../assets/css/Store.css">
-  <link rel="stylesheet" href="../assets/css/Login-reg.css">
+  <link rel="stylesheet" href="../assets/css/MyAccount.css">
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
   <title>My Account</title>
 </head>
@@ -41,7 +41,7 @@ include('../app/controllers/cart.php'); ?>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.php">Home</a></li>
-          <li><a  href="#">Store</a></li>
+          <li><a  href="store.php?store=true&page=1">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>
             <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
@@ -50,10 +50,12 @@ include('../app/controllers/cart.php'); ?>
 
           <?php endforeach; ?>
           <?php if(isset($_SESSION['idU'])): ?>
-            <li><a href="myaccount.php">My Account</a></li>
+            <li><a class="active" href="myaccount.php">My Account</a></li>
           <?php else: ?>
             <li><a href="login-reg.php">Account</a></li>
-          <?php endif; ?>          <?php if(isset($_SESSION['idU'])) :?>
+          <?php endif; ?>
+          <li><a href="contactus.php">Contact Us</a></li>         
+          <?php if(isset($_SESSION['idU'])) :?>
           <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
                 <span class="fa-shopping-cart"></span>
@@ -74,8 +76,28 @@ include('../app/controllers/cart.php'); ?>
   </nav>
   <!--/.nav-collapse -->
   
+  <div class="container">
+  <div class="navVertical">
+  <div class="M-Account">
+  <ul class="nn">
+  <li><a class="active" href="myaccount.php">Dashboard <span class="arrow">»</span></a></li>
+  <li><a href="OrdersHistory.php">Orders <span class="arrow">»</span></a></li>
+  <li><a href="AccountDetail.php"> Account details <span class="arrow">»</span></a></li>
+  <li>Logout <span class="arrow">»</span></li>
+</ul>
+  </div>
+
+<div class="M-Account" style="margin-top: 50px;">
+ <p>Hello </p>
+
+<p>From your account dashboard you can view your recent orders and edit your account details.</p>
+</div>
+
+</div>
+</div>
   <?php include_once ('footer.php') ?>
   
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>

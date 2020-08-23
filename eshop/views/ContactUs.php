@@ -2,6 +2,9 @@
 include('../app/database/connect.php');
 include('../app/database/db.php');
 include('../app/controllers/category.php');
+include('../app/controllers/product.php');
+include('../app/controllers/cart.php'); 
+include('../app/controllers/contact.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,13 +16,9 @@ include('../app/controllers/category.php');
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="../assets/css/ContactUs.css">
-
+  <link rel="stylesheet" href="../assets/css/contact.css">
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
-
   <title>Contact us</title>
-
 </head>
 
 <body>
@@ -44,24 +43,40 @@ include('../app/controllers/category.php');
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.php">Home</a></li>
-          <li><a href="#">Store</a></li>
+          <li><a  href="store.php?store=true&page=1">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>
-            <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>"><?php echo $category['nameCategory'] ?></a></li>
+            <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
+            <?php echo $category['nameCategory'] ?></a>
+          </li>
 
           <?php endforeach; ?>
-          <li><a href="login-reg.php">Account</a></li>
-          <li><a class="active" href="ContactUs.php">Contact Us</a></li>
-          <li><a href="#">
+          <?php if(isset($_SESSION['idU'])): ?>
+            <li><a href="myaccount.php">My Account</a></li>
+          <?php else: ?>
+            <li><a href="login-reg.php">Account</a></li>
+          <?php endif; ?>
+          <li><a class="active" href="contactus.php">Contact Us</a></li>         
+          <?php if(isset($_SESSION['idU'])) :?>
+          <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
                 <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items">2</span>
+                <span class="nav-cart-items"><?php echo $countCart ?></span>
               </div>
             </a></li>
+          <?php else: ?>
+          <li><a href="cart2.php">
+              <div class="cart-nav nav-item-link">
+                <span class="fa-shopping-cart"></span>
+                <span class="nav-cart-items">0</span>
+              </div>
+            </a></li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
   </nav>
+  <!--/.nav-collapse -->
   <!--/.nav-collapse -->
 
   <!--container header-->
@@ -74,7 +89,6 @@ include('../app/controllers/category.php');
   </div>
   <!--end container header-->
 
-
   <main>
         <section class="popular-places">
             <div class="container">
@@ -83,26 +97,42 @@ include('../app/controllers/category.php');
                         <div class="col-md-8"> 
                             <div class="left-content">
                                 <div class="row">
-                                  <form>
+                                <?php  
+                     if(isset($Error))  
+                     {  
+                          echo "<div class='alert simple-alert'>
+                          <p>".$Error."</p>
+                          
+                        </div><br/><br/>";  
+                     }  
+                     else if(isset($Message))  {
+                     echo "<div class='alert simple-alert'>
+                     <p>".$Message."</p>
+                     
+                   </div><br/><br/>";  
+                     }
+
+                     ?>
+                                  <form action="" method="post">
                                     <div class="col-md-6">
                                       <fieldset>
-                                        <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="" >
                                       </fieldset>
                                     </div>
                                      <div class="col-md-6">
                                       <fieldset>
-                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..." required="">
+                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..."  required="" >
                                       </fieldset>
                                     </div>
                                     <div class="col-md-12">
                                       <fieldset>
-                                        <textarea style="resize: vertical;" name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                                        <textarea style="resize: vertical;" name="message" rows="6" class="form-control" id="message" placeholder="Your message..."  required=""></textarea>
                                       </fieldset>
                                     </div>
                                     <div class="col-md-12">
                                       <fieldset>
                                         <div class="blue-button">
-                                        <button class="btn btn-large btnm1">Send Message</button>
+                                        <button name="SendMail" class="btn btn-large btnm1">Send Message</button>
                                         </div>
                                       </fieldset>
                                     </div>

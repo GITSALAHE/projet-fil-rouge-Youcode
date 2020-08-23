@@ -13,176 +13,196 @@ include(ROOT_PATH .'/app/controllers/orders.php');
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/Store.css">
+  <link rel="stylesheet" href="../assets/css/checkout.css">
+  <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
+  <title>Checkout</title>
 </head>
 
 <body>
-    <!-- Navbar -->
-  
-    <!-- Navbar -->
+  <!--.nav-collapse -->
+  <nav class="navbar navbar-default">
     <div class="container">
-        <div class="py-5 text-center">
-            <h2>Checkout form</h2>
-        </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="../assets/img/your-logo__7_-removebg-preview.png" width="200px" height="46px" alt="">
+        </a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.php">Home</a></li>
+          <li><a href="store.php?store=true&page=1">Store</a></li>
 
-        <div class="row">
-            <div class="col-md-4 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill"><?php ?></span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <?php
+          <?php foreach ($navbar_categories as $category) : ?>
+          <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
+              <?php echo $category['nameCategory'] ?></a>
+          </li>
+
+          <?php endforeach; ?>
+          <?php if(isset($_SESSION['idU'])): ?>
+          <li><a href="myaccount.php">My Account</a></li>
+          <?php else: ?>
+          <li><a href="login-reg.php">Account</a></li>
+          <?php endif; ?>
+          <li><a href="contactus.php">Contact Us</a></li>
+          <?php if(isset($_SESSION['idU'])) :?>
+          <li><a href="cart2.php">
+              <div class="cart-nav nav-item-link">
+                <span class="fa-shopping-cart"></span>
+                <span class="nav-cart-items"><?php echo $countCart ?></span>
+              </div>
+            </a></li>
+          <?php else: ?>
+          <li><a href="cart2.php" class="active">
+              <div class="cart-nav nav-item-link">
+                <span class="fa-shopping-cart"></span>
+                <span class="nav-cart-items">0</span>
+              </div>
+            </a></li>
+          <?php endif; ?>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--/.nav-collapse -->
+
+  <div id="container" class="container">
+    <h3 class="h3" style="padding-bottom:30px;">
+      <a href="index.php">Home</a>
+      &nbsp; / &nbsp; <a href="cart2.php">My Shopping Cart</a>
+      &nbsp; / &nbsp; Checkout
+    </h3>
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <?php
                     $total = 0.00;
                     foreach ($cardOfProductCart as  $pcart) :
                         $nameProduct = $crud->selectOne('product', ['idP' => $pcart['idP']]);
                         $total = $total + ($nameProduct['Price'] * $pcart['qte']);
                        
                     ?>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0"><?php echo $nameProduct['nameProduct'] . ' X ' . $pcart['qte'] ?></h6>
-                            </div>
-                            <span class="text-muted">$ <?php echo $nameProduct['Price'] * $pcart['qte'] ?></span>
-                        </li>
-                    <?php endforeach; ?>
-
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (USD)</span>
-                        <strong>$ <?php echo $total ?> </strong>
-                    </li>
-                </ul>
-
-
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0"><?php echo $nameProduct['nameProduct'] . ' X ' . $pcart['qte'] ?></h6>
             </div>
-            <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Billing address</h4>
-                <form class="needs-validation" method="post">
-                        <input type="hidden" name="idP">
-                        <input type="hidden" name="orderNumber" value="">
-                        <input type="hidden" name="qte">
-                       <input type="hidden" name="status" value="pending">
-                <div class="row">
-                            <div class="col-md-6 mb-3">
-                            <label for="firstName">First name</label>
-                            <input type="text" class="form-control" name="firstname" id="firstName" placeholder="" value="" >
-                            <div class="invalid-feedback">
-                                Valid first name is required.
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" name="lastname" id="lastName" placeholder="" value="" >
-                            <div class="invalid-feedback">
-                                Valid last name is required.
-                            </div>
-                        </div>
-                    </div>
+            <span class="text-muted">$ <?php echo $nameProduct['Price'] * $pcart['qte'] ?></span>
+          </li>
+          <?php endforeach; ?>
 
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$ <?php echo $total ?> </strong>
+          </li>
+        </ul>
+      </div>
 
-                    <div class="mb-3">
-                        <label for="email">Email <span class="text-muted"></span></label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" >
-                        <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" >
-                        <div class="invalid-feedback">
-                            Please enter your shipping address.
-                        </div>
-                    </div>
-
-
-
-                    <div class="row">
-                        <!-- <div class="col-md-5 mb-3">
-                            <label for="country">Country</label>
-                            <select class="custom-select d-block w-100" name="country" id="country" >
-                                <option value="">Choose...</option>
-                                <option value="United States">United States</option>
-                                <option value="Morocco">Morocco</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid country.
-                            </div>
-                        </div> -->
-
-                        <div class="col-md-3 mb-3">
-                            <label for="zip">Zip</label>
-                            <input type="text" class="form-control" name="zip" id="zip" placeholder="" >
-                            <div class="invalid-feedback">
-                                Zip code required.
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="mb-4">
-
-                    <h4 class="mb-3">Payment</h4>
-
-                    <div class="d-block my-3">
-
-                        <div class="custom-control custom-radio">
-                            <input id="debit" name="payment" type="radio" class="custom-control-input" checked>
-                            <label class="custom-control-label" for="debit">Cash on delivery</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input id="paypal" name="paypal" type="radio" class="custom-control-input">
-                            <label class="custom-control-label" for="paypal">PayPal</label>
-                        </div>
-                    </div>
-
-                    <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" name="checkout" type="submit">Continue to checkout</button>
-                </form>
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Billing address</h4>
+        <form class="needs-validation" method="post">
+          <input type="hidden" name="idP">
+          <input type="hidden" name="orderNumber" value="">
+          <input type="hidden" name="qte">
+          <input type="hidden" name="status" value="pending">
+          <div class="row"><br />
+            <div class="col-md-6 mb-3">
+              <label for="firstName">First name</label>
+              <input type="text" class="form-control" name="firstname" id="firstName" placeholder="" value=""
+                required="">
             </div>
-        </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName">Last name</label>
+              <input type="text" class="form-control" name="lastname" id="lastName" placeholder="" value="" required="">
+            </div>
+          </div>
 
-        <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">&copy; ESHOP+</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Support</a></li>
-            </ul>
-        </footer>
+
+          <div class="mb-3"><br />
+            <label for="email">Email <span class="text-muted"></span></label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required="">
+          </div><br />
+
+          <div class="mb-3"><br />
+            <label for="address">Address</label>
+            <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" required="">
+          </div><br />
+
+
+
+          <div class="row">
+            <div class="col-md-3 mb-3">
+              <label for="zip">Zip</label>
+              <input type="text" class="form-control" name="zip" id="zip" placeholder="" required="">
+            </div>
+          </div>
+          <hr class="mb-4">
+          <h4 class="mb-3">Payment</h4>
+          <div class="d-block my-3">
+
+            <div class="custom-control custom-radio">
+              <input id="debit" name="payment" type="radio" class="custom-control-input" checked>
+              <label class="custom-control-label" for="debit">Cash on delivery</label>
+            </div><br />
+            <div class="custom-control custom-radio">
+              <input id="paypal" name="paypal" type="radio" class="custom-control-input">
+              <label class="custom-control-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+      </div>
+      <hr class="mb-4">
+      <br /><br /><button id="checkout" class="btn btn-primary btn-lg btn-block" name="checkout" type="submit">Place
+        Your Order</button>
+      </form>
     </div>
-    <script>
-        $(document).ready(function() {
-            $('input[type=radio]').change(function() {
-                // When any radio button on the page is selected,
-                // then deselect all other radio buttons.
-                $('input[type=radio]:checked').not(this).prop('checked', false);
-            });
-        });​
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("input[type=radio]").prop("checked", false);
-            $("input[type=radio]:first").prop("checked", true);
 
-            $("input[type=radio]").click(function(event) {
-                $("input[type=radio]").prop("checked", false);
-                $(this).prop("checked", true);
+  </div>
 
-                //event.preventDefault();
-            });
-        });
-    </script>
+  </div>
+
+  <?php include ('footer.php') ?>
+  <script>
+    $(document).ready(function () {
+      $('input[type=radio]').change(function () {
+        // When any radio button on the page is selected,
+        // then deselect all other radio buttons.
+        $('input[type=radio]:checked').not(this).prop('checked', false);
+      });
+    });​
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("input[type=radio]").prop("checked", false);
+      $("input[type=radio]:first").prop("checked", true);
+
+      $("input[type=radio]").click(function (event) {
+        $("input[type=radio]").prop("checked", false);
+        $(this).prop("checked", true);
+
+        //event.preventDefault();
+      });
+    });
+  </script>
 </body>
 
 </html>

@@ -41,7 +41,7 @@ include('../app/controllers/cart.php'); ?>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.php">Home</a></li>
-          <li><a class="active"  href="store.php?store=true&page=1">Store</a></li>
+          <li><a  href="store.php?store=true&page=1">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>
             <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
@@ -52,7 +52,7 @@ include('../app/controllers/cart.php'); ?>
           <?php if(isset($_SESSION['idU'])): ?>
             <li><a href="myaccount.php">My Account</a></li>
           <?php else: ?>
-            <li><a href="login-reg.php">Account</a></li>
+            <li><a class="active" href="login-reg.php">Account</a></li>
           <?php endif; ?>          <?php if(isset($_SESSION['idU'])) :?>
           <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
@@ -96,7 +96,7 @@ include('../app/controllers/cart.php'); ?>
 				</form><!--.login-form-->
 				<div class="help-text">
 					<p>By signing up, you agree to our</p>
-					<p><a href="#">Terms of service</a></p>
+					<p><a href="terms.php">Terms of service</a></p>
 				</div><!--.help-text-->
 			</div><!--.signup-tab-content-->
 
