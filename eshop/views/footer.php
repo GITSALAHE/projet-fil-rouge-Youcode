@@ -8,17 +8,17 @@
       <!-- Social buttons -->
       <ul class="list-unstyled list-inline text-center">
         <li class="list-inline-item">
-          <a class="btn-floating btn-fb mx-1">
+          <a href="index.php" class="btn-floating btn-fb mx-1">
             Home
           </a>
         </li>
         <li class="list-inline-item">
-          <a class="btn-floating btn-tw mx-1">
+          <a href="myaccount.php" class="btn-floating btn-tw mx-1">
             My account
           </a>
         </li>
         <li class="list-inline-item">
-          <a class="btn-floating btn-gplus mx-1">
+          <a href="cart2.php" class="btn-floating btn-gplus mx-1">
             Cart
           </a>
         </li>
@@ -30,6 +30,11 @@
         <li class="list-inline-item">
           <a class="btn-floating btn-fb mx-1" href="FAQ.php">
             FAQ
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-fb mx-1" href="terms.php">
+          Terms and conditions
           </a>
         </li>
       </ul>

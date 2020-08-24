@@ -3,17 +3,17 @@
 $crud = new CRUD();
 $table = 'category';
 $idName = 'idC';
+
 //showing 
 $data = $crud->selectAll($table);
 $errors = array();
-
 
 //add category
 if (isset($_POST['addCategory'])) {
     $errors = validateCategory($_POST);
     if (count($errors) == 0) {
         unset($_POST['addCategory']);
-        $add_cat = $crud->create($table, $_POST);
+        $crud->create($table, $_POST);
         header('location:index.php');
         exit();
     }
@@ -66,11 +66,12 @@ $pagination = new Paginator();
 //pagination 
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
-} else {
+} 
+else {
     $page = 1;
 }
 
-//pagination formula 
+//pagination formula for category
 $perPage = 12;
 $start = ($perPage * $page) - $perPage;
 if (isset($_GET['categoryId'])) {
@@ -78,6 +79,8 @@ if (isset($_GET['categoryId'])) {
     $row = $pagination->buttonPagination('product', 'idC', $_GET['categoryId']);
     $pages = ceil($row / $perPage);
 }
+
+//pagination formula for store.php
 $allProductShow =array();
 if(isset($_GET['store']))
 {
@@ -85,6 +88,8 @@ if(isset($_GET['store']))
     $rows = $pagination->AllButtonPagination('product');
     $pageStore = ceil($rows / $perPage);
 }
+
+
 //serch product in store.php
 if(isset($_POST['search'])){
     $searchDb = new Search();

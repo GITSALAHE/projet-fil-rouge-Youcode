@@ -696,3 +696,24 @@ padding: 10px 0;
 }
 
 }
+
+.alert {
+  width: 100%;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 0px;
+ 
+}
+.alert h3{
+    font-size: 15px;
+}
+
+
+.simple-alert {
+  background-color: #ebebeb;
+  border-top: 3px solid #4e4e4e;
+}
+.simple-alert .close {
+  border-color: #6c6c6c;
+  color: #6c6c6c;
+}

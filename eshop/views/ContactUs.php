@@ -126,6 +126,11 @@ include('../app/controllers/contact.php');
                                     </div>
                                     <div class="col-md-12">
                                       <fieldset>
+                                      <input name="email" type="email" class="form-control" id="subject" placeholder="email..."  required="" >
+                                      </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                      <fieldset>
                                         <textarea style="resize: vertical;" name="message" rows="6" class="form-control" id="message" placeholder="Your message..."  required=""></textarea>
                                       </fieldset>
                                     </div>

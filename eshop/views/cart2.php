@@ -1,6 +1,8 @@
 <?php
 include('../app/database/connect.php');
 include('../app/database/db.php');
+include('../app/controllers/middleware.php');
+showCart();
 include('../app/controllers/category.php');
 include('../app/controllers/product.php');
 include('../app/controllers/cart.php');
@@ -125,7 +127,7 @@ include('../app/controllers/cart.php');
                                                     class="text-muted"> x</span></strong></h6>
                                     </div>
                                     <div class="col-xs-4">
-                                        <input type="number" min="1" class="form-control input-sm" name="qte"
+                                        <input type="number" min="1" placeholder="put the quantity" class="form-control input-sm" name="qte"
                                             value="<?php echo $dataCart['qte'] ?>">
                                     </div>
                                     <div class="col-xs-2">

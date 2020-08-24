@@ -1,4 +1,5 @@
 <?php
+
 function validateUserRegister($post)
 {
     $crud = new CRUD();
@@ -152,3 +153,54 @@ function validateUserEditBackoffice($post)
     }
     return $errorEditUser;
 }
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+function editUserInFrontOffice($post){
+        $crud = new CRUD();
+        $errorEditCustomer = array();
+        $checkexistingEmail = $crud->selectOne('users', ['email' => $post['email']]);
+        if(empty($post['fullname'])){
+            array_push($errorEditCustomer, 'full name is required');        
+        }
+        elseif(strlen($post['fullname']) < 4){
+            array_push($errorEditCustomer, 'full name is too short');
+        }
+
+        if(empty($post['password'])){
+            array_push($errorEditCustomer, 'password is required');
+        }
+        elseif(strlen($post['password']) < 6){
+            array_push($errorEditCustomer, 'you must use 6 characters in the password');
+        }
+        elseif($post['passwordConf'] !== $post['password']){
+            array_push($errorEditCustomer, "password don't match");
+        }
+        if(empty($post['phone_number'])){
+            array_push($errorEditCustomer, "phone number is required");
+        }
+        elseif(!preg_match('/^[0-9]{10}+$/', $post['phone_number'])){
+            array_push($errorEditCustomer, "phone number is invalid");
+        }
+        if(empty($post["email"])) {
+                array_push($errorEditCustomer, 'email is required');
+        }
+        elseif($checkexistingEmail == true){
+                if(isset($post['editCustomer']) && $checkexistingEmail['idU'] != $post['idU']){
+                    array_push($errorEditCustomer, 'please use an other email');
+                }
+        }
+        else {
+            $email = test_input($post["email"]);
+            
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                array_push($errorEditCustomer, 'invalid format email');
+            }
+        }
+        return $errorEditCustomer;
+    }

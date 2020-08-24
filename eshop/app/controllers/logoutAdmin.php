@@ -1,8 +1,6 @@
 <?php
-define('BASE_URL', "http://localhost/eshop");
-
+include('../database/db.php');
 session_start();
-echo "<pre>", print_r($_SESSION), "</pre>";
 unset($_SESSION['idU']);
 unset($_SESSION['message']);
 unset($_SESSION['type']);

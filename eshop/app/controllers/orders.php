@@ -2,32 +2,7 @@
 
 $crud = new CRUD();
 $order = new Order();
-$cardOfProductCart = $crud->selectAll('cart', ['idU' => $_SESSION['idU']]);
 
-
-if(isset($_POST['checkout'])){
-      $orderId =  $order->getOrderId('orders', ['idU' => $_SESSION['idU']], 'idOrder');
-      $orderNumber = $orderId['idOrder'];
-      $orderIdF = $orderId['idOrder'];
-     
-      foreach($cardOfProductCart as $cart):
-        $_POST['orderNumber'] =  'Mshop' . $orderIdF;
-        $_POST['idP'] = $cart['idP'];
-        $_POST['qte'] = $cart['qte'];
-        $_POST['idU'] = $cart['idU'];
-        $productDetail = $crud->selectOne('product', ['idP' => $cart['idP']]);
-        $_POST['price'] = $cart['qte'] * $productDetail['Price'];
-        unset($_POST['checkout'],  $_POST['payment'], $_POST['email']);
-        
-        $crud->create('orders', $_POST);
-        $idCartTodelete = $cart['idCart'];
-       
-        $crud->delete('cart', 'idCart', $idCartTodelete);
-      endforeach;
-      
-      header("location:thankyou.php?idOrder=Mshop$orderNumber");
-      exit();
-}
 
 
 
@@ -236,7 +211,7 @@ if(isset($_GET['invoice'])){
   ]);
   
   $mpdf->SetProtection(array('print'));
-  $mpdf->SetWatermarkText("ESHOP");
+  $mpdf->SetWatermarkText("MARIA-SHOP");
   $mpdf->showWatermarkText = true;
   $mpdf->watermark_font = 'DejaVuSansCondensed';
   $mpdf->watermarkTextAlpha = 0.1;
@@ -250,7 +225,7 @@ if(isset($_GET['invoice'])){
 
 
 
-// send the order to costumer 
+// send the order to costumer backoffice
 if(isset($_GET['change_status'])){
    $checkTheOrder =  $crud->selectAll('orders', ['orderNumber' => $_GET['change_status']]);
    $newStatus = '';
@@ -270,7 +245,7 @@ if(isset($_GET['change_status'])){
 }
 
 
-// info to costumer the order is shipped 
+// info to costumer the order is shipped backoffice
 
 if(isset($_GET['delivred'])){
   $checkDelivred = $crud->selectAll('orders', ['orderNumber' => $_GET['delivred']]);
@@ -287,3 +262,38 @@ if(isset($_GET['delivred'])){
     exit();
  
 }
+
+//payment COD 
+$cardOfProductCart = $crud->selectAll('cart', ['idU' => $_SESSION['idU']]);
+
+$errorCheckout = array();
+if (isset($_POST['cod'])) {
+    $errorCheckout = validateCheckout($_POST);
+    if (count($errorCheckout) == 0) {
+        $orderId =  $order->getOrderId('orders', '', 'idOrder');
+        $orderNumber = $orderId['idOrder'];
+        $orderIdF = $orderId['idOrder'];
+
+        foreach ($cardOfProductCart as $cart) :
+            $_POST['orderNumber'] =  'Mshop' . $orderIdF;
+            $_POST['idP'] = $cart['idP'];
+            $_POST['qte'] = $cart['qte'];
+            $_POST['idU'] = $cart['idU'];
+            $productDetail = $crud->selectOne('product', ['idP' => $cart['idP']]);
+            $_POST['price'] = $cart['qte'] * $productDetail['Price'];
+            unset($_POST['checkout'],  $_POST['paypal'], $_POST['state'], $_POST['country']);
+            $_POST['cod'] = 1;
+            $crud->create('orders', $_POST);
+            $idCartTodelete = $cart['idCart'];
+            $crud->delete('cart', 'idCart', $idCartTodelete);
+        endforeach;
+
+        header("location:thankyou.php?idOrder=Mshop$orderNumber");
+        exit();
+    }
+}
+
+
+//My account detail order 
+$orderUserGroup = $order->getDiffNumOrderForUser('orders', 'orderNumber', $_SESSION['idU']);
+$orderUserOne = $order->getOneProductQteForUser('orders', 'orderNumber', $_SESSION['idU']);

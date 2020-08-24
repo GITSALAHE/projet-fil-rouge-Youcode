@@ -143,3 +143,39 @@ if (isset($_POST['addToCart'])) {
         </div>
 <?php endif;
 } ?>
+
+<?php
+if (isset($_POST['forgot'])) {
+    if (count($errorResetPassword) > 0) : ?>
+
+        <div class="alert alert-danger">
+            <?php foreach ($errorResetPassword as $error) : ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </div>
+<?php endif;
+} ?>
+
+<?php
+if (isset($_POST['editCustomer'])) {
+    if (count($errorEditCustomer) > 0) : ?>
+
+        <div class="alert alert-danger">
+            <?php foreach ($errorEditCustomer as $error) : ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </div>
+<?php endif;
+} ?>
+
+<?php
+if (isset($_POST['cod'])) {
+    if (count($errorCheckout) > 0) : ?>
+
+        <div class="alert alert-danger">
+            <?php foreach ($errorCheckout as $error) : ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </div>
+<?php endif;
+} ?>

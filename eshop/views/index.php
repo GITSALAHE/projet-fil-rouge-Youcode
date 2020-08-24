@@ -17,7 +17,10 @@ include('../app/controllers/cart.php');
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
   <link rel="stylesheet" href="../assets/css/index.css">
+
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
 
   <title>index</title>
@@ -197,7 +200,7 @@ include('../app/controllers/cart.php');
     <!-- icon box -->
   </div>
   <!-- /container gris-->
-<?php include_once('footer.php') ?>
+<?php include ('Footer.php') ?>
 
   <!--Bottom Footer-->
   <!--Bottom Footer-->
@@ -230,7 +233,7 @@ include('../app/controllers/cart.php');
       });
     });
   </script>
-  <script>(function(d,t,u,s,e){e=d.getElementsByTagName(t)[0];s=d.createElement(t);s.src=u;s.async=1;e.parentNode.insertBefore(s,e);})(document,'script','//https://app-638ce113-294b-4d3a-9516-b41b16d2b075.cleverapps.io//backoffice/livechat/php/app.php?widget-init.js');</script>
+  <script>(function(d,t,u,s,e){e=d.getElementsByTagName(t)[0];s=d.createElement(t);s.src=u;s.async=1;e.parentNode.insertBefore(s,e);})(document,'script','//localhost/eshop/backoffice/livechat/php/app.php?widget-init.js');</script>
 </body>
 
 </html>

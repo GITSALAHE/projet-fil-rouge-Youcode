@@ -5,7 +5,8 @@ include('../app/helpers/validateUser.php');
 include('../app/controllers/users.php');
 include('../app/controllers/category.php');
 include('../app/controllers/product.php');
-include('../app/controllers/cart.php'); ?>
+include('../app/controllers/cart.php');
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,12 +84,12 @@ include('../app/controllers/cart.php'); ?>
   <li><a class="active" href="myaccount.php">Dashboard <span class="arrow">»</span></a></li>
   <li><a href="OrdersHistory.php">Orders <span class="arrow">»</span></a></li>
   <li><a href="AccountDetail.php"> Account details <span class="arrow">»</span></a></li>
-  <li>Logout <span class="arrow">»</span></li>
+  <li><a href="../app/controllers/logout.php"> Logout <span class="arrow">»</span></a></li>
 </ul>
   </div>
 
 <div class="M-Account" style="margin-top: 50px;">
- <p>Hello </p>
+ <p>Hello "<?php echo $_SESSION["username"] ?>"</p>
 
 <p>From your account dashboard you can view your recent orders and edit your account details.</p>
 </div>

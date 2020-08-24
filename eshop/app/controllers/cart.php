@@ -18,7 +18,9 @@ if(isset($_POST['addToCart'])){
             $_POST['idSize'] = "";
         }
         $crud->create('cart', $_POST);
-        $_SESSION['addToCart'] = 'Product added to cart';
+        $nameProductFlash = $crud->selectOne('product', ['idP' => $_POST['idP']]);
+        $_SESSION['addToCart'] = "Product added to cart: '".$nameProductFlash['nameProduct']."'";
+        
     }
    
 }

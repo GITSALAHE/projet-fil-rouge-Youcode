@@ -19,6 +19,8 @@ include('../app/controllers/cart.php'); ?>
   <link rel="stylesheet" href="../assets/css/Store.css">
   <link rel="stylesheet" href="../assets/css/MyAccount.css">
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <title>My Account</title>
 </head>
 
@@ -77,29 +79,32 @@ include('../app/controllers/cart.php'); ?>
 
   <div class="container">
   <div class="navVertical">
+  <?php include('../app/helpers/messageSuccess.php'); ?>
   <div class="M-Account">
   <ul class="nn">
   <li><a href="myaccount.php">Dashboard <span class="arrow">»</span></a></li>
   <li><a href="OrdersHistory.php">Orders <span class="arrow">»</span></a></li>
   <li><a class="active" href="AccountDetail.php"> Account details <span class="arrow">»</span></a></li>
-  <li>Logout <span class="arrow">»</span></li>
+  <li><a  href="../app/controllers/logout.php">Logout <span class="arrow">»</span></a></li>
 </ul>
   </div>
   
 <div class="container-fluid">
 <div class="row">
+<?php include('../app/helpers/flashmessage.php') ?>
 <form action="" method="post">
+<input type="hidden" name="idU" value="<?php echo $dataUserToEdit['idU'] ?>">
 <label><b>Full Name</b></label><br/>
-<input name="fullname" type="text" placeholder="Mariem Elhadki" ><br/><br/>
+<input name="fullname" value="<?php echo $dataUserToEdit['fullname'] ?>" type="text" placeholder="Full name..." ><br/><br/>
 <label><b>Email</b></label><br/>
-<input name="email" type="text" placeholder="Elhadki@gmail.com"><br/><br/>
+<input name="email" type="text" value="<?php echo $dataUserToEdit['email'] ?>" placeholder="Your email..."><br/><br/>
 <label><b>New Password</b></label><br/>
 <input name="password" type="password" placeholder="*****" ><br/><br/>
 <label><b>Confirm new password</b></label><br/>
-<input name="password" type="password" placeholder="*****" ><br/><br/>
+<input name="passwordConf" type="password" placeholder="*****" ><br/><br/>
 <label><b>Phone Number</b></label><br/>
-<input name="phone_number" type="text" placeholder="063212346" ><br/><br/>
-<button type="Signup"class="btnm1"><b>Save Changes</b></button>
+<input name="phone_number" type="text" value="<?php echo $dataUserToEdit['phone_number'] ?>" placeholder="Your number..." ><br/><br/>
+<button type="submit" name="editCustomer" class="btnm1"><b>Save Changes</b></button>
 </div>
 </form>
 

@@ -33,12 +33,14 @@ function validateEditCategory($post)
     if (empty($post['nameCategory'])) {
         array_push($errorsEdit, 'Category name is required');
     }
+  
+  
     //checking if there is an exist category 
     $existingCategory  = $cruds->selectOne('category', ['nameCategory' => $post['nameCategory']]);
     // LET S BLOCK THE PROCESS
     if ($existingCategory == true) {
         if (isset($post['editCategory']) && $existingCategory['idC'] != $post['idC']) {
-            array_push($errorsEdit, 'Post with that title already exists');
+            array_push($errorsEdit, 'Category with that title already exists');
         }
     }
     return $errorsEdit;

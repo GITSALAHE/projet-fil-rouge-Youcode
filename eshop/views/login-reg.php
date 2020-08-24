@@ -5,7 +5,14 @@ include('../app/helpers/validateUser.php');
 include('../app/controllers/users.php');
 include('../app/controllers/category.php');
 include('../app/controllers/product.php');
-include('../app/controllers/cart.php'); ?>
+include('../app/controllers/cart.php'); 
+if(isset($_SESSION['idU'])){
+  header('location:index.php');
+  $_SESSION['message'] = 'You already connected to your account !';
+  $_SESSION['type'] = 'error';
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +27,8 @@ include('../app/controllers/cart.php'); ?>
   <link rel="stylesheet" href="../assets/css/Store.css">
   <link rel="stylesheet" href="../assets/css/Login-reg.css">
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <title>Account</title>
 </head>
 
@@ -41,7 +50,7 @@ include('../app/controllers/cart.php'); ?>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="index.php">Home</a></li>
-          <li><a  href="store.php?store=true&page=1">Store</a></li>
+          <li><a class="active"  href="store.php?store=true&page=1">Store</a></li>
 
           <?php foreach ($navbar_categories as $category) : ?>
             <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
@@ -52,8 +61,10 @@ include('../app/controllers/cart.php'); ?>
           <?php if(isset($_SESSION['idU'])): ?>
             <li><a href="myaccount.php">My Account</a></li>
           <?php else: ?>
-            <li><a class="active" href="login-reg.php">Account</a></li>
-          <?php endif; ?>          <?php if(isset($_SESSION['idU'])) :?>
+            <li><a href="login-reg.php">Account</a></li>
+          <?php endif; ?>          
+          <li><a href="contactus.php">Contact Us</a></li>
+          <?php if(isset($_SESSION['idU'])) :?>
           <li><a href="cart2.php">
               <div class="cart-nav nav-item-link">
                 <span class="fa-shopping-cart"></span>
@@ -76,6 +87,8 @@ include('../app/controllers/cart.php'); ?>
   
 
   <div class="container"  style="display: flex; justify-content:center" >
+  <?php include('../app/helpers/messageSuccess.php') ?>
+
   <div class="form-wrap">
 		<div class="tabs">
 			<h3 class="signup-tab"><a class="active" href="#signup-tab-content"> Sign Up</a></h3>
@@ -121,7 +134,10 @@ include('../app/controllers/cart.php'); ?>
 					<input type="text" name="email" class="input" id="user_login" autocomplete="off" placeholder="Your Email"><br/>
 					<input type="password" name="password" class="input" id="user_pass" autocomplete="off" placeholder="Password"><br/><br/>
 					<input type="submit"  name="login" class="button" value="Login">
-				</form><!--.login-form-->
+				</form>
+        <div class="help-text">
+					<p><a href="forgotPass.php">Reset your password</a></p>
+				</div><!--.help-text--><!--.login-form-->
 			</div><!--.login-tab-content-->
 		</div><!--.tabs-content-->
     </div><!--.form-wrap-->

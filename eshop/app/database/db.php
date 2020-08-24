@@ -1,12 +1,11 @@
 <?php
-
+define('BASE_URL', "http://localhost/mshopVgitsalah");
 function printIt($value)
 {
     echo "<pre>", print_r($value), "</pre>";
 }
 
 session_start();
-
 class CRUD extends DB
 {
     public function selectOne($table, $condition)
@@ -117,7 +116,7 @@ class CRUD extends DB
         $sql = $sql . " WHERE $table . $idName=?";
         $data['$idName'] = $id;
         $stmt = $this->executeQuery($sql, $data);
-        
+        return $stmt->affected_rows;
     }
 
 
@@ -126,7 +125,7 @@ class CRUD extends DB
         $conn = $this->connect();
         $sql = "DELETE FROM $table WHERE $idName=?";
         $stmt = $this->executeQuery($sql, ['$idName' => $id]);
-        
+        return $stmt->affected_rows;
     }
    
 }
@@ -152,7 +151,6 @@ class Paginator extends DB
     }
 
 
-
     public function showingAllItems($table, $start, $perPage)
     {
         $conn = $this->connect();
@@ -176,15 +174,6 @@ class Order extends DB{
     public function getOrderId($table, $condition, $idOrder){
         $conn = $this->connect();
         $sql = "SELECT * FROM $table";
-        $i = 0;
-        foreach ($condition as $key => $value) {
-            if ($i === 0) {
-                $sql = $sql . " WHERE $key=?";
-            } else {
-                $sql = $sql . " AND $key=?";
-            }
-            $i++;
-        }
         $sql = $sql . " ORDER BY $idOrder DESC";
         $sql = $sql . " LIMIT 1";
         $stmt = $this->connect();
@@ -207,9 +196,27 @@ class Order extends DB{
 
     
     }
+
+    public function getDiffNumOrderForUser($table, $order, $idU)
+    {
+        $conn = $this->connect();
+       $sql = "SELECT * FROM `$table` WHERE idU = $idU GROUP BY $order HAVING COUNT($order) > 1";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+
+    
+    }
     public function getOneProductQte($table, $order){
         $conn = $this->connect();
         $sql = "SELECT * FROM `$table` GROUP BY $order HAVING COUNT($order) = 1";
+         $query = mysqli_query($conn, $sql);
+         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+         return $result;
+    }
+    public function getOneProductQteForUser($table, $order, $idU){
+        $conn = $this->connect();
+        $sql = "SELECT * FROM `$table` WHERE idU = $idU GROUP BY $order HAVING COUNT($order) = 1";
          $query = mysqli_query($conn, $sql);
          $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
          return $result;

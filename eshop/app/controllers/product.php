@@ -70,7 +70,7 @@ if (isset($_POST['addProduct'])) {
     }
     
     //push image 2
-    if (!empty($_FILES['Image2']['name'])) {
+    if (!empty($_FILES['Image2']['nam!e'])) {
         $image_name = time() . '_' . $_FILES['Image2']['name'];
         $destination = "../../assets/img/" . $image_name;
 

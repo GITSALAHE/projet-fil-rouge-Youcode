@@ -37,7 +37,12 @@ if (isset($_POST['login'])) {
     }
 }
 function loginUser($user)
-{
+{   
+    $crud = new CRUD();
+    $checkReset = $crud->selectOne('password_reset', ['email' => $user['email']]);
+    if($checkReset == true){
+        $crud->delete('password_reset', 'idReset', $checkReset['idReset']);
+    }
     $_SESSION['idU'] = $user['idU'];
     $_SESSION['username'] = $user['fullname'];
     $_SESSION['message'] = 'YOU ARE NOW LOGGED IN';
@@ -145,4 +150,25 @@ if(isset($_GET['Unban_idU'])){
     $crud->update($table, $idToBan, $dataToban, 'idU');
     header('location:index.php');
     exit();
+}
+
+//Account detail for customers 
+if(isset($_SESSION['idU'])){
+    $dataUserToEdit = $crud->selectOne('users', ['idU' => $_SESSION['idU']]);
+
+}
+//edit it 
+$errorEditCustomer = array();
+if(isset($_POST['editCustomer'])){
+    $errorEditCustomer = editUserInFrontOffice($_POST);
+    if(count($errorEditCustomer) == 0 ){
+        $idUeditCustomer = $_POST['idU'];
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        unset($_POST['editCustomer'], $_POST['idU'], $_POST['passwordConf']);
+        $crud->update('users', $idUeditCustomer, $_POST, 'idU');
+        header('location:AccountDetail.php');
+        $_SESSION['message'] = 'Your account has edit successfully';
+        $_SESSION['type'] = 'success';
+        exit();
+    }
 }

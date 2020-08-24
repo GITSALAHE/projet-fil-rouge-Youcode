@@ -5,7 +5,10 @@ include('../app/helpers/validateUser.php');
 include('../app/controllers/users.php');
 include('../app/controllers/category.php');
 include('../app/controllers/product.php');
-include('../app/controllers/cart.php'); ?>
+include('../app/controllers/cart.php');
+include('../app/controllers/orders.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +85,7 @@ include('../app/controllers/cart.php'); ?>
   <li><a href="myaccount.php">Dashboard <span class="arrow">»</span></a></li>
   <li><a class="active" href="OrdersHistory.php">Orders <span class="arrow">»</span></a></li>
   <li><a href="AccountDetail.php"> Account details <span class="arrow">»</span></a></li>
-  <li>Logout <span class="arrow">»</span></li>
+  <li><a  href="../app/controllers/logout.php"> Logout <span class="arrow">»</span></a></li>
 </ul>
   </div>
 
@@ -103,57 +106,53 @@ include('../app/controllers/cart.php'); ?>
         </tr>
       </thead>
       <tbody>
+      <?php
+       $totalPrice = 0;
+      foreach($orderUserGroup as $order): ?>
         <tr>
           <td class="valign-middle" data-label="Order Number">
-            <a href="#">#1542</a>
+            <a href="#">#<?php echo $order['orderNumber'] ?></a>
           </td>
           <td class="valign-middle" data-label="Status">
-          Processing
+          <?php echo $order['status'] ?>
           </td>
           <td class="valign-middle align-right" data-label="Price">
-          $50.00
+            <?php  $calcPrice = $crud->selectAll('orders', ['orderNumber' => $order['orderNumber']]);
+            foreach($calcPrice as $price){
+              $totalPrice = $totalPrice  + $price['price'];
+            }
+           
+            echo $totalPrice; ?> $
           </td>
           <td class="valign-middle align-right">
-            <a class="btn btn-default" href="#" data-toggle="tooltip" title="View" data-placement="bottom" data-trigger="hover">
+            <a class="btn btn-default" href="OrdersHistory.php?invoice=<?php echo $order['orderNumber'] ?>" data-toggle="tooltip" title="View" data-placement="bottom" data-trigger="hover">
               <i class="fa fa-eye"></i>
               <span class="visible-xs">View</span>
             </a>
           </td>
         </tr>
+      <?php endforeach; ?>
+      <?php 
+     
+      foreach($orderUserOne as $order): ?>
         <tr>
           <td class="valign-middle" data-label="Order Number">
-            <a href="#">#1550</a>
+            <a href="#">#<?php echo $order['orderNumber'] ?></a>
           </td>
           <td class="valign-middle" data-label="Status">
-          Completed
+          <?php echo $order['status'] ?>
           </td>
           <td class="valign-middle align-right" data-label="Price">
-          $30.00
+          <?php echo $order['price']?> $
           </td>
           <td class="valign-middle align-right">
-            <a class="btn btn-default" href="#" data-toggle="tooltip" title="View" data-placement="bottom" data-trigger="hover">
+            <a class="btn btn-default" href="OrdersHistory.php?invoice=<?php echo $order['orderNumber']?>" data-toggle="tooltip" title="View" data-placement="bottom" data-trigger="hover">
               <i class="fa fa-eye"></i>
               <span class="visible-xs">View</span>
             </a>
           </td>
         </tr>
-        <tr>
-          <td class="valign-middle" data-label="Order Number">
-            <a href="#">#1590</a>
-          </td>
-          <td class="valign-middle" data-label="Status">
-          Processing
-          </td>
-          <td class="valign-middle align-right" data-label="Price">
-          $15.00
-          </td>
-          <td class="valign-middle align-right">
-            <a class="btn btn-default" href="#" data-toggle="tooltip" title="View" data-placement="bottom" data-trigger="hover">
-              <i class="fa fa-eye"></i>
-              <span class="visible-xs">View</span>
-            </a>
-          </td>
-        </tr>
+      <?php endforeach; ?>
       </tbody>
     </table>
 

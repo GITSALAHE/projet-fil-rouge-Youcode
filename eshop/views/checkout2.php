@@ -7,6 +7,7 @@ showCheckout();
 include(ROOT_PATH .'/app/controllers/category.php');
 include(ROOT_PATH .'/app/controllers/product.php');
 include(ROOT_PATH .'/app/controllers/cart.php');
+include(ROOT_PATH .'/app/helpers/validateCheckout.php');
 include(ROOT_PATH .'/app/controllers/orders.php');
 ?>
 <!DOCTYPE html>
@@ -24,6 +25,7 @@ include(ROOT_PATH .'/app/controllers/orders.php');
   <link rel="stylesheet" href="../assets/css/checkout.css">
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
   <title>Checkout</title>
+  <style>li{list-style: none;}</style>
 </head>
 
 <body>
@@ -86,6 +88,7 @@ include(ROOT_PATH .'/app/controllers/orders.php');
       &nbsp; / &nbsp; <a href="cart2.php">My Shopping Cart</a>
       &nbsp; / &nbsp; Checkout
     </h3>
+    <?php include('../app/helpers/flashmessage.php') ?>
     <div class="row">
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -113,8 +116,9 @@ include(ROOT_PATH .'/app/controllers/orders.php');
           </li>
         </ul>
       </div>
-
+     
       <div class="col-md-8 order-md-1">
+     
         <h4 class="mb-3">Billing address</h4>
         <form class="needs-validation" method="post">
           <input type="hidden" name="idP">
@@ -125,23 +129,23 @@ include(ROOT_PATH .'/app/controllers/orders.php');
             <div class="col-md-6 mb-3">
               <label for="firstName">First name</label>
               <input type="text" class="form-control" name="firstname" id="firstName" placeholder="" value=""
-                required="">
+                >
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName">Last name</label>
-              <input type="text" class="form-control" name="lastname" id="lastName" placeholder="" value="" required="">
+              <input type="text" class="form-control" name="lastname" id="lastName" placeholder="" value="" >
             </div>
           </div>
 
 
           <div class="mb-3"><br />
             <label for="email">Email <span class="text-muted"></span></label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required="">
+            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" >
           </div><br />
 
           <div class="mb-3"><br />
             <label for="address">Address</label>
-            <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" required="">
+            <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" >
           </div><br />
 
 
@@ -149,7 +153,28 @@ include(ROOT_PATH .'/app/controllers/orders.php');
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="zip">Zip</label>
-              <input type="text" class="form-control" name="zip" id="zip" placeholder="" required="">
+              <input type="text" class="form-control" name="zip" id="zip" placeholder="ex: 40000" >
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label >State</label>
+              <input type="hidden" name="country" id="countryId" value="MA" />
+              <select class="states order-alpha" name="state" id="stateId">
+                <option value="">Select State</option>
+              </select>
+            </div>
+
+            <div style="margin-left: 35px;" class="col-md-2  mb-3">
+            <label >City</label>
+            <select name="city" class="cities order-alpha" id="cityId">
+                <option value="">Select City</option>
+              </select>
+            </div>
+
+
+            <div style="margin-left: 30px;" class="col-md-3 mb-3">
+              <label for="number">Phone number</label>
+              <input type="text" class="form-control" name="phone_number" id="number" placeholder="06 XX XX XX XX" >
             </div>
           </div>
           <hr class="mb-4">
@@ -157,17 +182,17 @@ include(ROOT_PATH .'/app/controllers/orders.php');
           <div class="d-block my-3">
 
             <div class="custom-control custom-radio">
-              <input id="debit" name="payment" type="radio" class="custom-control-input" checked>
+              <input id="debit" name="cod" type="radio" class="custom-control-input" checked>
               <label class="custom-control-label" for="debit">Cash on delivery</label>
             </div><br />
-            <div class="custom-control custom-radio">
+            <!-- <div class="custom-control custom-radio">
               <input id="paypal" name="paypal" type="radio" class="custom-control-input">
               <label class="custom-control-label" for="paypal">PayPal</label>
-            </div>
+            </div> -->
           </div>
       </div>
       <hr class="mb-4">
-      <br /><br /><button id="checkout" class="btn btn-primary btn-lg btn-block" name="checkout" type="submit">Place
+      <br /><br /><button id="checkout" class="btn btn-primary btn-lg btn-block sendButton" name="checkout" type="submit">Place
         Your Order</button>
       </form>
     </div>
@@ -190,6 +215,8 @@ include(ROOT_PATH .'/app/controllers/orders.php');
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script src="//geodata.solutions/includes/statecity.js"></script>
   <script>
     $(document).ready(function () {
       $("input[type=radio]").prop("checked", false);
