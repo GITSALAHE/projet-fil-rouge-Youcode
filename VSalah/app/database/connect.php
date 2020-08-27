@@ -15,7 +15,7 @@ class DB
         $this->servername = "localhost";
         $this->username = "root";
         $this->password = "";
-        $this->dbname = "eshop";
+        $this->dbname = "shop";
 
 
         $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);

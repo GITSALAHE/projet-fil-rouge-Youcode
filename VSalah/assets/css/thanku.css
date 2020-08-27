@@ -17,7 +17,7 @@
 /* No Need To Add */
 .jumbotron {
    
-    background-color: #f4f4f4;
+    background-color: white;
 }
 .jumbotron h2 {
 	color: #000;
@@ -37,7 +37,7 @@
 .checkMark {
 
 	animation: show 1s linear forwards 0.5s;
-	border: 2px solid #ffb049;
+	border: 2px solid #8167a9;
 	border-radius: 50%;
 	height: 100px;
 	margin: 0 auto;
@@ -48,7 +48,7 @@
 	
 	animation: draw 0.5s linear forwards 1s;
 	fill: none;
-	stroke: #ffb049;
+	stroke: #8167a9;
 	stroke-miterlimit: 10;
 	stroke-width: 40px;
 	stroke-dasharray: 500;
@@ -77,8 +77,8 @@
 	}
 }
 .link{			 
-	color: #fff!important;
+	color: #fff !important;
     padding: 10px 20px;
-    background: #ffb049;
+    background: #8167a9;
     margin: 20px 0;
     display: inline-block;}

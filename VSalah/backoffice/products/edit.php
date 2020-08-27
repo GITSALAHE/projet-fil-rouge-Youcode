@@ -80,7 +80,7 @@ include('../../app/controllers/product.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/1gndqq8baocqi4iq981lay51zxdqhz8sdhjq6csuqk2eh0fm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/otdb7wwx8c4tto16wjzqafv3xvasbo0bxj5gklf22xe7htmq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
     tinymce.init({

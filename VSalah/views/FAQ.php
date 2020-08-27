@@ -8,226 +8,18 @@ include('../app/controllers/cart.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/Store.css">
-    <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
-   <link href="https://fonts.googleapis.com/css?family=ABeeZee|Varela+Round" rel="stylesheet">
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-   <title>FAQ</title>
-    <style>
-        .c-faq__answer {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-
-body {
-  box-sizing: border-box;
-  color: #333;
- 
-}
-
-.container {
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section__headline {
-  font-family: "Varela Round", sans-serif;
-  font-size: 62px;
-  font-weight: light;
-  color: #FBAE32;
-  padding-left: 15px;
-  padding-top: 30px;
-}
-
-.c-faqs__headline {
-  font-family: "Varela Round", sans-serif;
-  text-align: left;
-  padding-left: 15px;
-  font-size: 1.5em;
-  margin-top: 1.5em;
-  font-weight: bold;
-}
-
-.c-faqs {
-  margin: 15px 0;
-  padding: 0 15px;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-}
-
-.c-faq {
-  font-family: "Varela Round", sans-serif;
-  list-style: none;
-  margin: 10px 0 5px;
-}
-
-.c-faq__title {
-  cursor: pointer;
-  font-weight: 500;
-  z-index: 10;
-  position: relative;
-  font-size: 1.1em;
-}
-.c-faq__title:hover {
-  text-decoration: underline;
-}
-.c-faq__title::after {
-  white-space: nowrap;
-  font-weight: 300;
-  padding-left: 5px;
-  opacity: 0;
-  transform-origin: 11px;
-  transform: rotateZ(90deg);
-  display: none;
-  content: ">";
-}
-
-.c-faq--active .c-faq__title {
-  color: #FBAE32;
-}
-.c-faq--active .c-faq__title::after {
-  opacity: 1;
-  transform: rotateZ(90deg);
-  display: inline-block;
-}
-
-.c-faq__answer {
-  font-weight: normal;
-  margin-top: -10%;
-  transition: all 0.1s;
-  z-index: 1;
-  font-size: 0.9em;
-  color: #505050;
-}
-
-.c-faq--active .c-faq__answer {
-  opacity: 1;
-  position: relative;
-  top: 0;
-  left: 0;
-  font-weight: 300;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  transition: all 0.2s;
-  border-radius: 3px;
-  border: 1px solid #f1f2f3;
-  border-top: 1px solid #1e88e5;
-  padding: 20px;
-}
-
-@media (min-width: 780px) {
-  .c-faqs {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-  }
-
-  .c-faqs::before {
-    opacity: 0.2;
-  }
-
-  .c-faq {
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-  .c-faq .c-faq__title {
-    width: 50%;
-    padding-right: 40px;
-    display: inline-block;
-  }
-  .c-faq .c-faq__title::after {
-    display: none;
-  }
-  .c-faq .c-faq__answer {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-    left: 50%;
-    width: 50%;
-    border-left-color: #FBAE32;
-    border-top-color: #f1f2f3;
-  }
-}
-.c-note {
-  font-size: 0.8em;
-  padding-left: 15px;
-  opacity: 0.5;
-  -webkit-transition: opacity 0.2s ease-in-out;
-  transition: opacity 0.2s ease-in-out;
-}
-.c-note:hover {
-  opacity: 1;
-  -webkit-transition: opacity 0.2s ease-in-out;
-  transition: opacity 0.2s ease-in-out;
-}
-.c-note a {
-  color: #1e88e5;
-}
-</style>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
+  <link rel="stylesheet" href="../assets/css/FAQ.css">
+  <title>FAQ</title>
+  </head>
 <body>
-    <!--.nav-collapse -->
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-          <img src="../assets/img/your-logo__7_-removebg-preview.png" width="200px" height="46px" alt="">
-        </a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.php">Home</a></li>
-          <li><a class="active"  href="store.php?store=true&page=1">Store</a></li>
 
-          <?php foreach ($navbar_categories as $category) : ?>
-            <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
-            <?php echo $category['nameCategory'] ?></a>
-          </li>
-
-          <?php endforeach; ?>
-          <li><a href="login-reg.php">Account</a></li>
-          <?php if(isset($_SESSION['idU'])): ?>
-            <li><a href="myaccount.php">My Account</a></li>
-          <?php else: ?>
-            <li><a href="login-reg.php">Account</a></li>
-          <?php endif; ?>          <?php if(isset($_SESSION['idU'])) :?>
-          <li><a href="cart2.php">
-              <div class="cart-nav nav-item-link">
-                <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items"><?php echo $countCart ?></span>
-              </div>
-            </a></li>
-          <?php else: ?>
-          <li><a href="cart2.php">
-              <div class="cart-nav nav-item-link">
-                <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items">0</span>
-              </div>
-            </a></li>
-          <?php endif; ?>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!--/.nav-collapse -->
+<?php include_once ('nav.php') ?>
 
 
 <div class="container">
@@ -287,17 +79,40 @@ body {
   </ul>  <!-- /end c-faqs -->
 </div>
 
+<?php include_once ('Footer.php') ?>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
-    $('body').delegate('.c-faq', 'click', function(){
+(function($) { "use strict";
+
+$(function() {
+  var header = $(".start-style");
+  $(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+  
+    if (scroll >= 10) {
+      header.removeClass('start-style').addClass("scroll-on");
+    } else {
+      header.removeClass("scroll-on").addClass('start-style');
+    }
+  });
+});		 
+})(jQuery); 
+
+$('body').delegate('.c-faq', 'click', function(){
   $('.c-faq').removeClass('c-faq--active');
   $(this).addClass('c-faq--active');
 });
+
+$('body').on('mouseenter mouseleave','.nav-item',function(e){
+			if ($(window).width() > 750) {
+				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+				setTimeout(function(){
+				_d[_d.is(':hover')?'addClass':'removeClass']('show');
+				},1);
+			}
+	});	
 </script>
-
-<?php include ('footer.php') ?>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-</body>
-</html>

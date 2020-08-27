@@ -14,95 +14,63 @@ include('../app/controllers/cart.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="Description" content="Enter your description here" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/Store.css">
-  <link rel="stylesheet" href="../assets/css/cart.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
-  <title>Store</title>
-</head>
+  <link rel="stylesheet" href="../assets/css/smoothproducts.css">
+  <link rel="stylesheet" href="../assets/css/cart.css">
+  <title>Cart</title>
+  </head>
 <body>
-  <!--.nav-collapse -->
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-          <img src="../assets/img/your-logo__7_-removebg-preview.png" width="200px" height="46px" alt="">
-        </a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.php">Home</a></li>
-          <li><a  href="store.php?store=true&page=1">Store</a></li>
 
-          <?php foreach ($navbar_categories as $category) : ?>
-            <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
-            <?php echo $category['nameCategory'] ?></a>
-          </li>
+<?php include_once ('nav.php') ?>
 
-          <?php endforeach; ?>
-          <?php if(isset($_SESSION['idU'])): ?>
-            <li><a href="myaccount.php">My Account</a></li>
-          <?php else: ?>
-            <li><a href="login-reg.php">Account</a></li>
-          <?php endif; ?>          
-          <li><a href="contactus.php">Contact Us</a></li>
-          <?php if(isset($_SESSION['idU'])) :?>
-          <li><a href="cart2.php">
-              <div class="cart-nav nav-item-link">
-                <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items"><?php echo $countCart ?></span>
-              </div>
-            </a></li>
-          <?php else: ?>
-          <li><a href="cart2.php" class="active">
-              <div class="cart-nav nav-item-link">
-                <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items">0</span>
-              </div>
-            </a></li>
-          <?php endif; ?>
-        </ul>
-      </div>
+
+<!-- Home -->
+
+<div class="home">
+		<div class="home_container">
+			<div class="home_background" style="background-image:url(../assets/img/categories.jpg)">
+			<div class="home_content_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="home_content">
+								<div class="breadcrumbs">
+									<ul>
+										<li><a href="index.html">Home</a></li>
+										<li><a href="#">Categories</a></li>
+										<li>Shopping Cart</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
     </div>
-  </nav>
-  <!--/.nav-collapse -->
+    </div>
+	</div>
 
-  <div id="Cart" class="container">
-  <h3 class="h3" style="padding-bottom:30px;">
-  <a href="index.php">Home</a>
-      &nbsp; / &nbsp; My Shopping Cart
-  </h3>
-        <div class="row">
-            <div class="col-xs-8">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
-                                </div>
-                                <div class="col-xs-6">
-                                    <a href="http://localhost/eshop/views/store.php?store=true&page=1">
-                                        <button type="button" id="ShopContinue" class="btn btn-primary btn-sm btn-block">
-                                            Continue shopping
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="panel-body">
 
-                        <?php
+   <!-- Cart Info -->
+
+	<div class="cart_info">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+
+					<!-- Column Titles -->
+					<div class="cart_info_columns clearfix">
+						<div class="cart_info_col cart_info_col_product">Product</div>
+						<div class="cart_info_col cart_info_col_price">Price</div>
+						<div class="cart_info_col cart_info_col_quantity">Quantity</div>
+            <div class="cart_info_col cart_info_col_total">Action</div>
+           
+					</div>
+				</div>
+      </div>
+      <?php
                         $total = 0.00;
                         foreach ($getCountCart as $dataCart) :
                             $productInfo = $crud->selectOne('product', ['idP' => $dataCart['idP']]);
@@ -112,77 +80,114 @@ include('../app/controllers/cart.php');
                             <input type="hidden" name="idU" value="<?php echo $_SESSION['idU'] ?>">
                             <input type="hidden" name="idCart" value="<?php echo $dataCart['idCart'] ?>">
                             <input type="hidden" name="idP" value="<?php echo $dataCart['idP'] ?>">
-                            <div class="row">
-                                <div class="col-xs-2">
-                                    <img class="img-responsive" src="../assets/img/<?php echo $productInfo['Image'] ?>">
-                                </div>
-                                <div class="col-xs-4">
-                                    <h4 class="product-name"><strong><?php echo $productInfo['nameProduct'] ?></strong>
-                                    </h4>
-                                    <h4><small>Product description</small></h4>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div class="col-xs-6 text-right">
-                                        <h6><strong><?php echo $productInfo['Price'] ?><span> $</span><span
-                                                    class="text-muted"> x</span></strong></h6>
-                                    </div>
-                                    <div class="col-xs-4">
+			<div class="row cart_items_row">
+				<div class="col">
+
+					<!-- Cart Item -->
+					<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+						<!-- Name -->
+						<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+							<div class="cart_item_image">
+								<div><img src="../assets/img/<?php echo $productInfo['Image'] ?>" alt=""></div>
+							</div>
+							<div class="cart_item_name_container">
+								<div class="cart_item_name"><a href="#"><?php echo $productInfo['nameProduct'] ?></a></div>
+							</div>
+						</div>
+						<!-- Price -->
+						<div class="cart_item_price">$<?php echo $productInfo['Price'] ?></div>
+						<!-- Quantity -->
+						<div class="cart_item_quantity">
+						<div class="col-xs-4">
                                         <input type="number" min="1" class="form-control input-sm" name="qte"
                                             value="<?php echo $dataCart['qte'] ?>">
                                     </div>
-                                    <div class="col-xs-2">
-                                        <a
-                                            href="cart2.php?del_id=<?php echo $dataCart['idCart']; ?>">
-                                            <button type="button" class="btn btn-link btn-xs">
-                                                <span class="glyphicon glyphicon-trash"></span>&nbsp;
-                                                <span style="color: #FBAE32;"><strong>Delete</strong></span>
-                                            </button>
-                                        </a>
-                                    </div><br/>
-                                    <div class="col-xs-2">
-                                         
-                                        <button type="submit" name="updateCart" class="btn btn-link btn-xs">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;
-                                        <span style="color: #FBAE32;"><strong>Edit</strong></span>              
-                                        </button>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                        </form>
-                        <?php endforeach; ?>
-
-
-                    </div>
-                    <div class="panel-footer">
-                        <div class="row text-center">
-                            <div class="col-xs-9">
-                                <h4 class="text-right">Total <strong><?php echo $total . '$' ?></strong></h4>
-                            </div>
-                            <div class="col-xs-3">
-                                <a href="checkout2.php">
-                                    
-                                    <button type="button" name="checkout" id="checkout" class="btn btn-primary btn-sm btn-block">
-                                    checkout
-                                        </button>
-                                </a>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
             </div>
-        </div>
-    </div>
+            
+						<!-- Total -->
+						<div class="cart_item_total">
+            <div class="cart_buttons_right ml-lg-auto">
+							<div class="clear_cart_button">
+              <button><a href="cart2.php?del_id=<?php echo $dataCart['idCart']; ?>">Delete</a></button></div>
+							<div class="update_cart_button">
+                <button type="submit" name="updateCart">Update</button></div>
+						</div>
+            </div>
+					</div>
 
+				</div>
+      </div>
+      </form>
+      <?php endforeach; ?>
+
+			<div class="row row_cart_buttons">
+				<div class="col">
+					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
+						<div class="button continue_shopping_button"><a href="http://localhost/VSalah/views/store.php?store=true&page=1">Continue shopping</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="row row_extra">
+				<div class="col-lg-4">
+				<div class="col-lg-6 offset-lg-2">
+					<div class="cart_total">
+						<div class="section_title">Cart total</div>
+						<div class="section_subtitle">Final info</div>
+						<div class="cart_total_container">
+							<ul>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_total_title">Subtotal</div>
+									<div class="cart_total_value ml-auto"><?php echo $total . '$' ?></div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_total_title">Shipping</div>
+									<div class="cart_total_value ml-auto">Free</div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_total_title">Total</div>
+									<div class="cart_total_value ml-auto"><?php echo $total . '$' ?></div>
+								</li>
+							</ul>
+						</div>
+						<div type="button" name="checkout" id="checkout" class="button checkout_button"><a href="checkout2.php">Proceed to checkout</a></div>
+					</div>
+				</div>
+			</div>
+		</div>		
+  </div>
+  
+
+
+  
     
+    <?php include_once ('Footer.php') ?>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+(function($) { "use strict";
 
-    <?php include ('footer.php') ?>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+$(function() {
+  var header = $(".start-style");
+  $(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+  
+    if (scroll >= 10) {
+      header.removeClass('start-style').addClass("scroll-on");
+    } else {
+      header.removeClass("scroll-on").addClass('start-style');
+    }
+  });
+});		 
+})(jQuery); 
+$('body').on('mouseenter mouseleave','.nav-item',function(e){
+			if ($(window).width() > 750) {
+				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+				setTimeout(function(){
+				_d[_d.is(':hover')?'addClass':'removeClass']('show');
+				},1);
+			}
+	});	
+</script>

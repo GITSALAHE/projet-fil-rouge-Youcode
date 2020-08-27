@@ -7,7 +7,6 @@ include('../app/controllers/cart.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,78 +16,11 @@ include('../app/controllers/cart.php');
   <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
   <link rel="stylesheet" href="../assets/css/index.css">
   <title>index</title>
-  <style>
- 
-
-
-</style>
 </head>
 
 <body>
 
-  <!--.nav-collapse -->
-
-	<div class="navigation-wrap bg-light start-header start-style">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
-					
-						<a class="navbar-brand" href="index2.php" target="_blank"><img src="../assets/img/logo__3_-removebg-preview.png" alt=""></a>	
-						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0">
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-                                <a class="nav-link" href="#">Home</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">Store</a>
-                                </li>
-                                <?php foreach ($navbar_categories as $category) : ?>
-                              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                  <a class="nav-link" href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1"><?php echo $category['nameCategory'] ?></a>
-                             </li>
-
-                                 <?php endforeach; ?>
-                                 <?php if(isset($_SESSION['idU'])): ?>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a  href="myaccount.php" class="nav-link" href="#">My Account</a>
-                                </li>
-                                <?php else: ?>
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="login-reg.php">Account</a></li>
-                                <?php endif; ?>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">Contact</a>
-                                </li>
-                                <?php if(isset($_SESSION['idU'])) :?>
-          <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a class="nav-link" href="cart2.php">
-              <div class="cart-nav nav-item-link">
-                <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items"><?php echo $countCart ?></span>
-              </div>
-            </a></li>
-          <?php else: ?>
-          <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"><a class="nav-link" href="cart2.php">
-              <div class="cart-nav nav-item-link">
-                <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items">0</span>
-              </div>
-            </a></li>
-          <?php endif; ?>
-							</ul>
-						</div>
-						
-					</nav>		
-				</div>
-			</div>
-		</div>
-    </div>
-<!-- Navbar -->
+<?php include_once ('nav.php') ?>
 
 <!-- slider image -->
 
@@ -230,80 +162,10 @@ include('../app/controllers/cart.php');
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-    <footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="footer-widget">
-          <h3>Stay in touch</h3>
-          <div class="footer-widget-content">
-            <a href="mailto:support@example.com" class="contact-link red">sales@gmail.com </a>
-            <a href="tel:0121234" class="contact-link">(212) 456-789</a>
-            <div class="footer-social">
-            <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-              <li><a href="#"><i class="fa fa-rss"></i></a></li>
-            </ul>
-              </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-      <div class="footer-widget">
-        <h3>Links</h3>
-        <div class="footer-widget-content">
-          <div class="media">
-              <div class="media-body">
-                 <p><a href="#">Home </a></p>
-                
-              </div>
-           </div>
-          <div class="media">
-              <div class="media-body">
-                 <p><a href="#">My Account</a></p>
-              </div>
-           </div>
-           <div class="media">
-              <div class="media-body">
-                 <p><a href="#">Cart</a></p>
-              </div>
-           </div>
-           <div class="media">
-              <div class="media-body">
-                 <p><a href="#">Contact</a></p>
-              </div>
-           </div>
-        </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-      <div class="footer-widget">
-        <h3>Other Business</h3>
-        <div class="footer-widget-content">
-          <div class="media">
-              <div class="media-body">
-                 <p><a href="#">FAQ </a></p>
-                
-              </div>
-           </div>
-          <div class="media">
-              <div class="media-body">
-                 <p><a href="#">terms and Condition</a></p>
-              </div>
-           </div>
-        </div>
-        </div>
-      </div>
-    </div>
   </div>
-</footer>
-    </body>
+  
+  <?php include_once ('Footer.php') ?>
+</body>
 </html>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -325,11 +187,17 @@ include('../app/controllers/cart.php');
 		});
 	});		
 		
-
+	$('body').on('mouseenter mouseleave','.nav-item',function(e){
+			if ($(window).width() > 750) {
+				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+				setTimeout(function(){
+				_d[_d.is(':hover')?'addClass':'removeClass']('show');
+				},1);
+			}
+	});	
 		
   })(jQuery); 
   $('#myCarousel').carousel({
     interval: 3000,
  })
 </script>
-  <script>

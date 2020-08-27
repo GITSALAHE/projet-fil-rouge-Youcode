@@ -1,53 +1,74 @@
 
   <link rel="stylesheet" href="../assets/css/Footer.css">
   <!-- Footer -->
-  <footer class="page-footer font-small special-color-dark pt-4">
-    <h4>Quick Links</h4>
-    <!-- Footer Elements -->
-    <div class="container" style="margin-top: 40px;">
-      <!-- Social buttons -->
-      <ul class="list-unstyled list-inline text-center">
-        <li class="list-inline-item">
-          <a class="btn-floating btn-fb mx-1">
-            Home
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-tw mx-1">
-            My account
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-gplus mx-1">
-            Cart
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-li mx-1">
-            Contact
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="btn-floating btn-fb mx-1" href="FAQ.php">
-            FAQ
-          </a>
-        </li>
-      </ul>
-      <!-- Social buttons -->
-
-    </div>
-    <!-- Footer Elements -->
-    <div class="bottom section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <div class="copyright">
-              <p>© <span>2020</span> <a href="#" class="transition">MariaShop</a> All rights reserved.</p>
-            </div>
+  <footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="footer-widget">
+          <h3>Stay in touch</h3>
+          <div class="footer-widget-content">
+            <a href="mailto:support@example.com" class="contact-link red">sales@gmail.com </a>
+            <a href="tel:0121234" class="contact-link">(212) 456-789</a>
+            <div class="footer-social">
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+              <li><a href="#"><i class="fa fa-rss"></i></a></li>
+            </ul>
+              </div>
           </div>
         </div>
       </div>
+      <div class="col-sm-3">
+      <div class="footer-widget">
+        <h3>Links</h3>
+        <div class="footer-widget-content">
+          <div class="media">
+              <div class="media-body">
+                 <p><a href="#">Home </a></p>
+                
+              </div>
+           </div>
+          <div class="media">
+              <div class="media-body">
+                 <p><a href="#">My Account</a></p>
+              </div>
+           </div>
+           <div class="media">
+              <div class="media-body">
+                 <p><a href="#">Cart</a></p>
+              </div>
+           </div>
+           <div class="media">
+              <div class="media-body">
+                 <p><a href="#">Contact</a></p>
+              </div>
+           </div>
+        </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+      <div class="footer-widget">
+        <h3>Other Business</h3>
+        <div class="footer-widget-content">
+          <div class="media">
+              <div class="media-body">
+                 <p><a href="#">FAQ </a></p>
+                
+              </div>
+           </div>
+          <div class="media">
+              <div class="media-body">
+                 <p><a href="#">terms and Condition</a></p>
+              </div>
+           </div>
+        </div>
+        </div>
+      </div>
     </div>
-
-  </footer>
+  </div>
+</footer>
   <!-- Footer -->

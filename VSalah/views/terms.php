@@ -7,71 +7,20 @@ include('../app/controllers/cart.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="Description" content="Enter your description here" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/Store.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://use.fontawesome.com/c18f659ca0.js"></script>
   <link rel="stylesheet" href="../assets/css/terms.css">
   <title>Terms & Conditions</title>
 </head>
 <body>
-  <!--.nav-collapse -->
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-          <img src="../assets/img/your-logo__7_-removebg-preview.png" width="200px" height="46px" alt="">
-        </a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.php">Home</a></li>
-          <li><a  href="store.php?store=true&page=1">Store</a></li>
+  
+<?php include_once ('nav.php') ?>
 
-          <?php foreach ($navbar_categories as $category) : ?>
-            <li><a href="category_page.php?categoryId=<?php echo $category['idC'] ?>&page=1">
-            <?php echo $category['nameCategory'] ?></a>
-          </li>
-
-          <?php endforeach; ?>
-          <li><a href="login-reg.php">Account</a></li>
-          <?php if(isset($_SESSION['idU'])): ?>
-            <li><a href="myaccount.php">My Account</a></li>
-          <?php else: ?>
-            <li><a href="login-reg.php">Account</a></li>
-          <?php endif; ?>          <?php if(isset($_SESSION['idU'])) :?>
-          <li><a href="cart2.php">
-              <div class="cart-nav nav-item-link">
-                <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items"><?php echo $countCart ?></span>
-              </div>
-            </a></li>
-          <?php else: ?>
-          <li><a href="cart2.php">
-              <div class="cart-nav nav-item-link">
-                <span class="fa-shopping-cart"></span>
-                <span class="nav-cart-items">0</span>
-              </div>
-            </a></li>
-          <?php endif; ?>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!--/.nav-collapse -->
   <div class="container part2">
   <h1>Terms and conditions <br></h1>
   <h3><span style="font-weight: 400;">Of processing personal data of end users, serves also as</span><br>
@@ -120,15 +69,15 @@ include('../app/controllers/cart.php');
 
 
 			<h2><span style="font-weight: 400;">Users</span><b>’</b><span style="font-weight: 400;"> &nbsp;rights &nbsp;</span></h2>
-<p><span style="font-weight: 400;">You have the right to know what kind of information related to you is being processed by us, and/or whether your personal data is being processed or not. You have the right to send a request to Oview in order to correct, supplement, delete or block information related to you according to your specification based on legitimate grounds and according to the Dutch&nbsp;and international data protection law.</span> <span style="font-weight: 400;">Maria-Shop is obliged to inform you when we finish all actions related to such a withdrawal, </span><span style="font-weight: 400;">in accordance with</span><span style="font-weight: 400;"> the term fixed by the law.</span></p>
-<p><span style="font-weight: 400;">Users have the right to react to this document and notify Maria-Shop, via email, what they would like to change in the Terms and Conditions and why. Oview reserves the right to change the Terms and Conditions in accordance with these suggestions, but it is not obliged to do so.</span></p>
+<p><span style="font-weight: 400;">You have the right to know what kind of information related to you is being processed by us, and/or whether your personal data is being processed or not. You have the right to send a request to Oview in order to correct, supplement, delete or block information related to you according to your specification based on legitimate grounds and according to the Dutch&nbsp;and international data protection law.</span> <span style="font-weight: 400;">Git-Shop is obliged to inform you when we finish all actions related to such a withdrawal, </span><span style="font-weight: 400;">in accordance with</span><span style="font-weight: 400;"> the term fixed by the law.</span></p>
+<p><span style="font-weight: 400;">Users have the right to react to this document and notify Git-Shop, via email, what they would like to change in the Terms and Conditions and why. Oview reserves the right to change the Terms and Conditions in accordance with these suggestions, but it is not obliged to do so.</span></p>
 <br>
 
 
 			<h2><span style="font-weight: 400;">Providing personal data to third parties</span></h2>
 <p><span style="font-weight: 400;">We keep your personal data in accordance with confidentiality requirements by law and without infringement of your privacy. </span></p>
 <p><span style="font-weight: 400;">We encrypt your personal data during transmission, storage, and backup to increase the level of safety of your personal data.</span></p>
-<p><span style="font-weight: 400;">Specific employees of Maria-Shop</span> <span style="font-weight: 400;">have a key to the codified personal data for the purposes of improvement of the application system including, but not limited to security policy, for ensuring proper operation of the platform, and for other legitimate purposes related to Our activities.</span></p>
+<p><span style="font-weight: 400;">Specific employees of Git-Shop</span> <span style="font-weight: 400;">have a key to the codified personal data for the purposes of improvement of the application system including, but not limited to security policy, for ensuring proper operation of the platform, and for other legitimate purposes related to Our activities.</span></p>
 <p><span style="font-weight: 400;">Third parties can view the statistical reports without any personal identification of the users.</span></p>
 <br>
 
@@ -136,7 +85,7 @@ include('../app/controllers/cart.php');
 
 			<h2><span style="font-weight: 400;">Limitations of the validity of the </span><span style="font-weight: 400;">the Terms and Conditions</span></h2>
 <p><span style="font-weight: 400;">You agree, for an unlimited time, to give your consent regarding your personal data to us according to the terms and conditions as described in the Terms and Conditions.</span></p>
-<p><span style="font-weight: 400;">Maria-Shop has the right to change the Terms and Conditions without any notification unless these changes reduce users</span><b>’</b><span style="font-weight: 400;"> rights; it will not be done without the notice and additional consent of the users.</span></p>
+<p><span style="font-weight: 400;">Git-Shop has the right to change the Terms and Conditions without any notification unless these changes reduce users</span><b>’</b><span style="font-weight: 400;"> rights; it will not be done without the notice and additional consent of the users.</span></p>
 <br>
 
 
@@ -147,12 +96,45 @@ include('../app/controllers/cart.php');
 <p><span style="font-weight: 400;">All terms and their definitions in the Terms and Conditions can be used in the Privacy Policy document, and vice versa, without any changes to their meaning/s. </span></p>
 <p><span style="font-weight: 400;">In the event that any clause in this Terms and Conditions should be and/or become null and void, this mere fact will not have any effect on the validity of the other clauses.</span></p>
 <p><span style="font-weight: 400;">This Terms and Conditions shall be governed and interpreted through and under the Dutch Law and the law of the court in Utrecht.</span></p>
-<p><span style="font-weight: 400;">If you have any questions, suggestions or comments regarding Maria-Shop</span><b>’</b><span style="font-weight: 400;">s processing of personal data, please </span><a href="ContactUs.php"><span style="font-weight: 400;">contact us </span></a><span style="font-weight: 400;">. </span></p>
+<p><span style="font-weight: 400;">If you have any questions, suggestions or comments regarding Git-Shop</span><b>’</b><span style="font-weight: 400;">s processing of personal data, please </span><a href="ContactUs.php"><span style="font-weight: 400;">contact us </span></a><span style="font-weight: 400;">. </span></p>
 <br>
 </div>
 
 <?php include ('Footer.php') ?>
+</body>
+</html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+(function($) { "use strict";
+
+	$(function() {
+		var header = $(".start-style");
+		$(window).scroll(function() {    
+			var scroll = $(window).scrollTop();
+		
+			if (scroll >= 10) {
+				header.removeClass('start-style').addClass("scroll-on");
+			} else {
+				header.removeClass("scroll-on").addClass('start-style');
+			}
+		});
+	});		
+		//show nav items 
+	$('body').on('mouseenter mouseleave','.nav-item',function(e){
+			if ($(window).width() > 750) {
+				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+				setTimeout(function(){
+				_d[_d.is(':hover')?'addClass':'removeClass']('show');
+				},1);
+			}
+	});	
+		
+  })(jQuery); 
+  $('#myCarousel').carousel({
+    interval: 3000,
+ })
+</script>
+

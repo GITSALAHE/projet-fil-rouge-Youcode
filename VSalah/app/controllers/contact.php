@@ -4,16 +4,17 @@
 if(isset($_POST['SendMail'])){
 
    
-        if(!empty($_POST['name'] || $_POST['subject'] || $_POST['message'])){
+        if(!empty($_POST['name'] || $_POST['subject'] || $_POST['email'] || $_POST['message'])){
 
         
             $message="";
             $to = "elhadkimariem3@gmail.com"; // this is your Email address
-            $from = "elhadkimariem3@gmail.com"; // this is the sender's Email address
+            $from =$_POST['email']; // this is the sender's Email address
             $name = $_POST['name'];
-            $message= $_POST['message'];
             $subject = $_POST['subject'];
-            $message = "Client: " .$name . "\n\n a dit:" . "\n\n" .$message;
+            $email=  $_POST['email'];
+            $message= $_POST['message'];
+            $message = "Client: " .$name . "\n\n son Email est :" .$email."\n\n a dit:" . "\n\n" .$message;
             $headers = "From:" . $from;
             mail($to,$subject,$message,$headers);
         

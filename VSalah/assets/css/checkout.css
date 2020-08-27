@@ -1,52 +1,322 @@
-.col-md-8 {
-    background-color: white;
-    margin-top: 40px;
-  }
-#container{
-     position: relative;
-     top: 100px;
-     padding-bottom:150px;
+/*********************************
+5. Home
+*********************************/
+
+.home
+{
+	width: 100%;
+	height: 362px;
+	background: #FFFFFF;
+	z-index: 2;
+	padding-top: 130px;
+	padding-left: 60px;
+	padding-right: 60px;
 }
-  .order-md-1 h4 {
-    font-size: 18px;
-    background-color: rgba(0, 0, 0, .03);
-    height: 50px;
-    padding: 10px 10px 10px 10px;
-  }
+.home_container
+{
+	width: 100%;
+	height: 100%;
+}
+.home_background
+{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.home_content_container
+{
+	position: absolute;
+	top: 53%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 100%;
+}
+.home_content
+{
+	width: 580px;
+}
+.breadcrumbs ul li
+{
+	display: inline-block;
+	position: relative;
+	font-size: 14px;
+	font-weight: 500;
+	color: #8167a9;
+}
+.breadcrumbs ul li:not(:last-child)::after
+{
+	display: inline-block;
+	content: '/';
+	margin-left: 10px;
+	margin-right: 6px;
+	color: #FFFFFF;
+}
+.breadcrumbs ul li a
+{
+	font-size: 14px;
+	font-weight: 500;
+	color: #FFFFFF;
+	transition: all 200ms ease;
+}
+.breadcrumbs ul li a:hover
+{
+	color: #e95a5a;
+}
+/*********************************
+6. Checkout
+*********************************/
 
-  #checkout {
-    transition: all 0.5s;
-    position: relative;
-    cursor: pointer;
-    width: auto;
-    float: right;
-    margin-top: 30px;
-    background-color: white;
-    border-color: white;
-    color: black;
-    font-size: 15px;
+.checkout
+{
+	width: 100%;
+	padding-top: 98px;
+	padding-bottom: 99px;
+	background: #FFFFFF;
+	z-index: 2;
+}
+.checkout_section
+{
+	width: 100%;
+	padding-top: 44px;
+}
+.section_title
+{
+	font-size: 24px;
+	font-weight: 600;
+	color: #1b1b1b;
+}
+.section_subtitle
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: #6c6a74;
+	margin-top: 3px;
+}
+.checkout_form_container
+{
+	width: 100%;
+	margin-top: 46px;
+}
+.checkout_form > div:not(:last-child)
+{
+	margin-bottom: 14px;
+}
+.checkout_form label
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: #6c6a74;
+}
+.checkout_input
+{
+	width: 100%;
+	height: 52px;
+	background: #f2f4f8;
+	border: none;
+	outline: none;
+	padding-left: 15px;
+}
+.dropdown_item_select
+{
 
-  }
+    appearance:none;
+	background-image: url(../images/down.png);
+	background-position: center right;
+	background-repeat: no-repeat;
+	margin: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+	color: #1b1b1b !important;
+}
+.dropdown_item_select::-ms-expand
+{
+    display: none;
+}
+.checkout_address_2
+{
+	margin-top: 16px;
+}
+.checkout_extra
+{
+	margin-top: 33px;
+}
+.checkout_extra > div:not(:last-child)
+{
+	margin-bottom: 8px;
+}
+.checkout_extra label
+{
+	display: inline-block;
+}
+.regular_checkbox
+{
+	display: none;
+}
+.regular_checkbox + label
+{
+	position: relative;
+	appearance: none;
+	width: 13px;
+  height: 13px;
+	background: #f2f4f8;
+	cursor: pointer;
+	vertical-align: middle;
+	margin-bottom: 0;
+}
+.regular_checkbox + label img
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.regular_checkbox + label img
+{
+	display: none;
+}
+.regular_checkbox:checked + label img
+{
+	display: block;
+}
+.checkbox_title
+{
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 12px;
+}
+.order
+{
+	width: 100%;
+	padding-left: 60px;
+	background: #f2f4f8;
+	padding-bottom: 53px;
+	padding-right: 58px;
+}
+.order_list_container
+{
+	margin-top: 46px;
+}
+.order_list_bar
+{
+	margin-bottom: 59px;
+}
+.order_list_title,
+.order_list_value
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: #1b1b1b;
+}
+.order_list li:not(:last-child)
+{
+	margin-bottom: 53px;
+}
+.payment_options
+{
+	margin-top: 80px;
+}
+.payment_option
+{
+	display: block;
+	position: relative;
+	padding-left: 31px;
+	cursor: pointer;
+    user-select: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #1b1b1b;
+}
+.payment_option:not(:last-child)
+{
+	margin-bottom: 19px;
+}
+.payment_option input
+{
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+}
+.checkmark
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-top: 4px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	border: solid 2px #6c6a74;
+	background: transparent;
+	transition: all 200ms ease;
+}
+.payment_option input:checked ~ .checkmark
+{
+  border: solid 2px #8167a9;
+  background-color:  #8167a9;
+}
+.payment_option input:hover ~ .checkmark
+{
+  border: solid 2px white;
+  background-color: #8167a9;
+}
+.order_text
+{
+	font-size: 12px;
+	font-weight: 400;
+	font-style: italic;
+	color: #6c6a74;
+	margin-top: 70px;
+}
+.order_button
+{
+	width: 100%;
+	margin-top: 83px;
+}
+.button
+{
+	width: 178px;
+	height: 61px;
+	background: none;
+	text-align: center;
+	border: solid 2px #1b1b1b;
+	overflow: hidden;
+	cursor: pointer;
+}
+.button a
+{
+	display: block;
+	position: relative;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 57px;
+	color: #1b1b1b;
+	background: none;
+	z-index: 1;
+	transition: all 200ms ease;
+}
+.button:hover{
 
-  #checkout:hover {
-    padding-right: 24px;
-    padding-left: 8px;
-    color: white;
-    background-color: black;
-    border-color: black;
+  background-color: #8167a9;
+  border: solid 2px #8167a9;
 
-  }
+}
+@media (max-width: 767px) { 
 
-  #checkout:hover:after {
-    opacity: 1;
-    right: 10px;
-    color: #fff;
-  }
-
-  #checkout:after {
-    content: '\00bb';
-    opacity: 0;
-    color: #ffffff;
-    position: relative;
-    left: 10px;
-  }
+.home
+{
+padding-left: 0px;
+padding-right: 0px;
+}
+.home_content {
+    width: 100%;
+}
+}
